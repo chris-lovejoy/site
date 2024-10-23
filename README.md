@@ -8,7 +8,7 @@
   [![Open in Dev Containers](https://img.shields.io/badge/Dev_Containers-Open-deepskyblue?logo=linuxcontainers)][open-container] -->
 
 
-This theme is a derivative work based on the [Chirpy Jekyll theme](https://github.com/cotes2020/jekyll-theme-chirpy) at commit d47f39.
+This theme is a derivative work based on the [Chirpy Jekyll theme](https://github.com/cotes2020/jekyll-theme-chirpy) at commit [d47f39](https://github.com/cotes2020/jekyll-theme-chirpy/commit/d4f7f39ece2d8feaca963b8bfba331268b28811e).
 
 Copyright (c) 2024 Chris Lovejoy
 
