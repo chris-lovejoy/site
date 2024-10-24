@@ -3,6 +3,55 @@ layout: default
 refactor: true
 ---
 
+<div id="homepage">
+  <section id="about-me">
+         <h1><a href="/about-me">About Me</a></h1>
+         <p> 
+                I’m an AI engineer, <a href="/medicine" class="text-custom-blue hover:underline">academic medical doctor</a> and entrepreneur. I learn, build and teach. (<a href="/about-me" class="text-custom-blue">More about me</a>.)
+         </p>
+  </section>
+  <section id="writing">
+         <h1><a href="/articles">Writing</a></h1>
+         <h3 class="pt-6">Most Popular</h3>
+                <ul>
+                       <li><a href="/youtube-algorithm">I created my own YouTube algorithm (to stop me wasting time)</a> (>100,000 views)</li>
+                       <li><a href="/transition">How I became a Data Scientist during COVID (as a Doctor): 5 takeaways from an unconventional career transition</a> (>25,000 views)</li>
+                       <li><a href="/job-scraper">Automating my job search with Python (Using BeautifulSoup and Selenium)</a> (>20,000 views)</li>
+                </ul>
+         <!-- <h3 class="pt-6">Most Recent</h3> -->
+          <!-- TODO: load in the most recent articles here -->
+  </section>
+  <section id="top-projects">
+    <!-- <h1><a href="/projects">Projects</a></h1> -->
+    <!-- <ul>
+           <li><a href="/medicine">The Modern Medical Student Manual (My Book)</a></li>
+           <li><a href="/ml-medics">Machine Learning for Healthcare (My Free Course and Other Material)</a></li>
+           <li><a href="/books">Book Summaries</a></li>
+    </ul> -->
+</section>
+<section id="newsletter">
+</section>
+<!-- <section id="book-notes">
+    <h1><a href="books">Book Notes</a></h1>
+    <h4>Most Recent</h4>
+    <ul>
+    {% for book in site.books reversed limit:5 %}
+           {% if book.public_date %}
+           <li><a href="{{ book.url }}">{{ book.title }} by {{ book.author }}</a></li>
+           {% endif %}
+    {% endfor %}
+    </ul>
+</section> -->
+<!-- <section id="life-dashboard">
+    <h2>My Life Dashboard</h2>
+</section> -->
+<section id="contact-me">
+    <!-- <h2>Say Hi</h2> -->
+    <!-- <p>Email me at: hi at chrislovejoy.me</p> -->
+    <hr>
+</section>
+</div>
+
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
