@@ -3,6 +3,20 @@ layout: default
 refactor: true
 ---
 
+<h1>About Me</h1>
+<h4> 
+  I’m an AI engineer, <a href="/medicine" class="text-custom-blue hover:underline">academic medical doctor</a> and entrepreneur. I learn, build and teach. (<a href="/about-me" class="text-custom-blue">More about me</a>.)
+</h4>
+
+<h1>Popular Essays</h1>
+<ul>
+  <li><a href="/youtube-algorithm">I created my own YouTube algorithm (to stop me wasting time)</a> (>100,000 views)</li>
+  <li><a href="/transition">How I became a Data Scientist during COVID (as a Doctor): 5 takeaways from an unconventional career transition</a> (>25,000 views)</li>
+  <li><a href="/job-scraper">Automating my job search with Python (Using BeautifulSoup and Selenium)</a> (>20,000 views)</li>
+</ul>
+
+<h1>Recent Essays</h1>
+
 {% include lang.html %}
 
 {% assign pinned = site.posts | where: 'pin', 'true' %}
