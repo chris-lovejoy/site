@@ -223,6 +223,7 @@ exclude:
   - LICENSE
   - "*.config.js"
   - package*.json
+  - scripts
 
 jekyll-archives:
   enabled: [categories, tags]
