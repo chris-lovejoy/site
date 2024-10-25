@@ -4,7 +4,7 @@ class WikilinksToAnchor < Jekyll::Generator
     def generate(site)
         puts "Converting wikilinks to anchor tags..."
 
-        all_docs = site.posts.docs  # + site.pages (TODO)
+        all_docs = site.posts.docs + site.collections['pages'].docs
         link_extension = '.html'
 
         all_docs.each do |current_note|
