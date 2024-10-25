@@ -1,6 +1,6 @@
 ---
 image:
-title: "Machine Learning for Healthcare: The Online Course"
+title: "Machine Learning for Healthcare - The Online Course"
 permalink: ml-health
 redirect_from:
 public_date: 2021-10-30
