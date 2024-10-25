@@ -10,12 +10,16 @@ class WikilinksToAnchor < Jekyll::Generator
         all_docs.each do |current_note|
             all_docs.each do |note_potentially_linked_to|
 
-                note_title_regexp_pattern = Regexp.escape(
-                    File.basename(
-                        note_potentially_linked_to.basename,
-                        File.extname(note_potentially_linked_to.basename)
-                    )
-                    ).gsub('\_', '[ _]').gsub('\-', '[ -]').capitalize
+                # Remove YYYY-MM-DD- pattern from the basename
+                basename_without_date = File.basename(
+                    note_potentially_linked_to.basename,
+                    File.extname(note_potentially_linked_to.basename)
+                ).gsub(/^\d{4}-\d{2}-\d{2}-/, '')
+
+                note_title_regexp_pattern = Regexp.escape(basename_without_date)
+                    .gsub('\_', '[ _]')
+                    .gsub('\-', '[ -]')
+                    .capitalize
 
                 title_from_data = note_potentially_linked_to.data['title']
                 if title_from_data
