@@ -47,9 +47,9 @@ social:
     # The first element serves as the copyright owner's link
     - https://twitter.com/ChrisLovejoy_ # change to your Twitter homepage
     - https://github.com/chris-lovejoy # change to your GitHub homepage
+    - https://www.linkedin.com/in/dr-christopher-lovejoy
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
 
 # Site Verification Settings
 webmaster_verifications:
