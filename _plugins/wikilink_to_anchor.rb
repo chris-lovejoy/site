@@ -58,22 +58,19 @@ class WikilinksToAnchor < Jekyll::Generator
                 )
             end
         
-            # At this point, all remaining double-bracket-wrapped words are
-            # pointing to non-existing pages, so let's turn them into disabled
-            # links by greying them out and changing the cursor
-            no_link_anchor_tag = "<a class='internal-link' href='/404'>\\1</a>"
-
-            # Convert remaining to 404 links and print notes names
-            current_note.content = current_note.content.gsub(/\[\[([^\]]+)\]\]/i) do |match|
-                puts "In #{current_note.path}: Converting unresolved link: #{match}"
-                no_link_anchor_tag.gsub('\\1', $1)
+            # Handle remaining unmatched links
+            current_note.content = current_note.content.gsub(/\[\[([^\]|]+)\|([^\]]+)\]\]/i) do |match|
+                # For links with pipe: [[title|link text]]
+                title, link_text = $1, $2
+                puts "In #{current_note.path}: Converting unresolved piped link: [[#{title}|#{link_text}]]"
+                "<a class='internal-link' href='/404'>#{link_text}</a>"
             end
 
-            # Alternative with no logging
-            # current_note.content = current_note.content.gsub(
-            #     /\[\[([^\]]+)\]\]/i, # match on the remaining double-bracket links
-            #     no_link_anchor_tag
-            # ) 
+            # Handle any remaining simple links without pipes: [[link]]
+            current_note.content = current_note.content.gsub(/\[\[([^\]]+)\]\]/i) do |match|
+                puts "In #{current_note.path}: Converting unresolved simple link: #{match}"
+                "<a class='internal-link' href='/404'>#{$1}</a>"
+            end
 
         end
         puts "Finished converting wikilinks to anchor tags."
