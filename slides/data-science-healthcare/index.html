@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+	<link rel="shortcut icon" type="image/png" href="https://chrislovejoy.me/assets/favicon.ico">
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# What is data science and machine learning?
+# And why healthcare?
+</div>
+
+<aside class="notes"><p>general next steps / considerations for improvement:</p>
+<ul>
+<li>should I add a slide on types of medical data? (or does this came in later?)</li>
+<li>TODO: add my name, date (last updated), etc at the bottom of the presentation</li>
+<li>TODO: I could <em>consider</em> sorting as vertical columns of slides, which get linked</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What does it mean to *do* data science?
+</div>
+
+<aside class="notes"><p>Firstly, what does it mean to do data science?</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What does it mean to *do* data science?
+
+Fundamentally, data science is about **using data to answer questions and to make predictions**.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why is data science useful?
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Increasing amounts of the world is stored as data.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->New tools (machine learning) can learn from large datasets to perform new tasks
+</div>
+
+<aside class="notes"><ul>
+<li>&shy;<!-- .element: class="fragment" data-fragment-index="3" -->Hence the need (and the power) of data scientists</li>
+<li>[I think I should have some more discussion here about really <em>how</em> you can apply data science to the real-world - particularly given the new angle of the title here]</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Where does AI and machine learning fit in?
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Machine learning techniques are *one* set of the tools used in data science
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->There's a sub-area of machine learning called ***deep learning*** which:
+	- is particularly good for certain data types (like image and text)
+	- require large volumes of data to train
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->In most real-world cases, only simpler non-deep learning approaches are required
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->There are areas of machine learning that don't easily fit into the "data science" paradigm, such as generative AI (like chatGPT and stable diffusion)
+</div>
+
+<aside class="notes"><ul>
+<li>So we&#39;ve talked about data science... but what about machine learning and AI?</li>
+<li>(ask for some thoughts)</li>
+<li>ML techniques are commonly used although sometimes &quot;boring&quot; statistical techniques are more appropriate</li>
+<li>with deep learning you might want to e.g. say whether a X-ray is normal or not</li>
+</ul>
+<p>So let&#39;s formalise that (on the next slide) with some definitions...</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/AI ML DL for slides.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+<aside class="notes"><ul>
+<li>now definitions for DS, AI, ML and DL</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+
+**Machine learning**: Computers learning without being explicitly programmed
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+
+**Machine learning**: Computers learning without being explicitly programmed
+
+**Deep Learning**: A method of machine learning which utilises 'artificial neural networks' (loosely inspired by the human brain) trained on large amounts of data.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+
+**Machine learning**: Computers learning without being explicitly programmed
+
+**Deep Learning**: A method of machine learning which utilises 'artificial neural networks' (loosely inspired by the human brain) trained on large amounts of data.
+
+<div class="" style="padding: 50px; box-sizing: border-box" >
+
+<div class="callout callout-color-default">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-pencil-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+**Machine learning (a technical definition)**
+
+</div>
+</div>
+<div class="callout-content">
+
+“A computer program learns from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.” – Tom Mitchell (1998)
+
+</div>
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Why data science and machine learning in healthcare?
+
+<aside class="notes"><ul>
+<li>what do you think are some of the reasons?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 1: We have the data
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 1: We have the data
+
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->An increasing amount of our health is collected as data
+	- The shift to Electronic Health Records (EHRs)
+	- Personal data collection, such wearables, genomics, microbiome
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Images and text are important in medicine - and well suited for deep learning
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2: Strengths of machine learning match some of the challenges of healthcare
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2: Strengths of machine learning match some of the challenges of healthcare 
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Machine learning is good at:
+- **Pattern recognition**, to find complex relationships within large quantities of data
+- **Speed**, to provide output very quickly, at scale
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2: Strengths of machine learning match some of the challenges of healthcare 
+
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Machine learning is good at:
+- **Pattern recognition**, to find complex relationships within large quantities of data
+- **Speed**, to provide output very quickly, at scale
+
+
+In healthcare, good **pattern recognition** can enable:
+- Identifying new insights about disease and treatment
+- Identifiying patterns personalised to an individual (e.g. to enable personalised treatment)
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2: Strengths of machine learning match some of the challenges of healthcare 
+
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Machine learning is good at:
+- **Pattern recognition**, to find complex relationships within large quantities of data
+- **Speed**, to provide output very quickly, at scale
+
+
+In healthcare, good **pattern recognition** can enable:
+- Identifying new insights about disease and treatment
+- Identifiying patterns personalised to an individual (e.g. to enable personalised treatment)
+
+
+In healthcare, **speed** can enable:
+- Real-time decision support despite constrained resources
+- Scaling up research (e.g. generating labels across a large dataset)
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2: Strengths of machine learning match some of the challenges of healthcare 
+
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Machine learning is good at:
+- **Pattern recognition**, to find complex relationships within large quantities of data
+- **Speed**, to provide output very quickly, at scale
+
+
+In healthcare, good **pattern recognition** can enable:
+- Identifying new insights about disease and treatment
+- Identifiying patterns personalised to an individual (e.g. to enable personalised treatment)
+
+
+In healthcare, **speed** can enable:
+- Real-time decision support despite constrained resources
+- Scaling up research (e.g. generating labels across a large dataset)
+</div>
+
+
+*(See also: [Medical AI is well-suited to complex input, personalised output and scaling through automation](https://chrislovejoy.me/6c4f85c7b6e1c57868387578b611474dd6e8d844))*
+</div>
+
+<aside class="notes"><ul>
+<li>perhaps improve spacing here</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Use Cases
+
+
+<aside class="notes"><p><em>to include this if I&#39;m making it interactive - including making questions to consider into a visible slide</em></p>
+<ul>
+<li>I have some interesting use cases, but I actually want to hear about examples that you may have heard of. So I&#39;m going to put you into break out rooms to discuss examples you&#39;ve seen.<ul>
+<li>relatively quick, just 3-4 minutes or so, we&#39;ll do some more extensive group sessions later</li>
+</ul>
+</li>
+<li>Then a couple of groups can share an example they discussed. Please pick one and we will each present it briefly when you come back</li>
+</ul>
+<h2 id="questions-to-consider">Questions to consider</h2>
+<ul>
+<li>What is the problem it&#39;s solving?</li>
+<li>Is it helpful? Does the use case make sense?</li>
+<li>Is it currently being used?</li>
+<li>Any potential risks?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 1. Diagnosing skin cancer from images
+
+*The Paper: [Dermatologist-level classification of skin cancer with deep neural networks](https://pubmed.ncbi.nlm.nih.gov/28117445/)*
+
+- One of the first publications applying deep learning to healthcare (published in Nature in February 2017)
+- Trained a model on 127,000 images of skin lesions
+- Can distinguish between two specific lesions (not representative of full scope of dermatologist work)
+- Performed very well (AUC 0.91-0.96)
+- Majority / all of the dataset was caucasian skin
+
+*(see summary of the paper [here](https://explainthispaper.com/distinguishing-cancerous-non-cancerous-skin-lesions/)\*)*
+
+<div class="" style="font-size: 18px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+\*https://explainthispaper.com/distinguishing-cancerous-non-cancerous-skin-lesions/
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li><em>malignant melanoma</em> vs <em>benign nevi</em><ul>
+<li><em>keratinocyte carcinomas</em> vs <em>benign seborrheic keratoses</em></li>
+</ul>
+</li>
+</ul>
+<p>[TODO: add an image of a skin lesion at bottom of slide -&gt; original paper ones not great]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2. Early detection of stroke
+
+- The company [Viz.ai](https://www.viz.ai) have developed AI algorithms to identify risk of stroke (based on CT angiogram imaging)
+- The faster stroke is treated, the better the outcomes (there's a 4-6 hour time window to treat certain strokes)
+- [This study](https://pubmed.ncbi.nlm.nih.gov/36457286/) (Jan 2023) compared the algorithm vs doctors (neuroradiologists) and found it performed well
+- This uses both **pattern recognition** (what does a stroke look like) as well as **speed** (to provide immediate warning of stroke - even if a doctor isn't available)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 3. Real-time colonoscopy polyp detection
+
+*The Paper: [Effect of a deep-learning computer-aided detection system on adenoma detection during colonoscopy (CADe-DB trial): a double-blind randomised study](<https://www.thelancet.com/pdfs/journals/langas/PIIS2468-1253(19)30411-X.pdf>)*
+
+- This was the one of first randomised control trials (RCTs) using AI
+- With the AI, more polyps were detected - it was particularly good at flatter polyps
+- It's unclear whether detecting more polyps leads to better cancer detection
+
+
+<img src="10-19 Public Creation/13 Personal website/02-personal-website/assets/images/article-images/colonoscopy_RCT.png" alt="" style="width: 1600px; object-fit: fill">
+</div>
+
+<aside class="notes"></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Other use cases
+
+1. [Recommending treatments for sepsis (using reinforcement learning)](https://pubmed.ncbi.nlm.nih.gov/30349085/)
+2. [Diagnosing retinal disease from eye scans](https://pubmed.ncbi.nlm.nih.gov/30104768/)
+3. [Detecting atrial fibrillation using a smart watch](https://www.nejm.org/doi/10.1056/NEJMoa1901183)
+4. [Predicting protein structure based on sequence (AlphaFold)](https://pubmed.ncbi.nlm.nih.gov/34265844/)
+
+
+<aside class="notes"><p>Perhaps add more from following:
+3. [speech detection of mental health? other things from speech?]
+4. ?perhaps one of the entrepreneurial EF stuff? biomarkers?</p>
+<ul>
+<li>[a bioinformatics type one, or two]</li>
+</ul>
+<ol start="5">
+<li>Developing AI-powered chatbots for patient care</li>
+<li>Designing personalized treatment plans </li>
+<li>Monitoring and predicting disease outbreaks</li>
+<li>Drug discovery and prescription optimization </li>
+<li>Automated medical billing processes </li>
+<li>Generating reports from medical data</div></li>
+</ol>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Trends to note
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Most of the early deep learning papers in healthcare are using computer vision rather than natural language processing.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->We may be beginning to see movements away from this, towards more multimodal data
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->The deep learning research is cutting-edge, but a lot of doing data science and machine learning in healthcare is much simpler
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->*(see also: [Multimodal biomedical AI - Nature Medicine](https://www.nature.com/articles/s41591-022-01981-2))*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><h2 id="resources">Resources</h2>
+<p>[TODO]
+[perhaps add a concluding link to the next presentation?]</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Appendix
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Perspectives on AI in healthcare
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Geoffrey Hinton on Radiologists
+
+
+<div class="callout callout-color8">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-list" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Geoffrey Hinton:
+
+</div>
+</div>
+<div class="callout-content">
+
+“I think that if you work as a radiologist you are like coyote that has already run over the edge of the cliff, but hasn’t yet looked dow so doesn’t realise there’s no ground underneath him. **People should stop training radiologists right now.** It’s just completely obvious that within five years deep learning is going to do better than radiologists. It might be ten years.” – Geoff Hinton (in 2016)
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Vinod Khosla on doctors
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202164732.png" alt="" style="object-fit: scale-down">
+</div></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

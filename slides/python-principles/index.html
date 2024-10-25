@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Introduction to Python Programming
+
+<aside class="notes"><ul>
+<li>(should I touch on the nocode point in these slides?)</li>
+<li>Related: An introduction to Python Programming (YouTube video)</li>
+<li><strong>TODO: this is ready to put on site</strong></div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why Python?
+
+- It's the most popular language for data science and machine learning
+- Most of the core principles of programming are the same across languages
+
+
+<aside class="notes"><ul>
+<li>You can&#39;t really go wrong by learning python</li>
+<li>R is popular in academic, but there&#39;s less you can do with it + not that helpful for ML</li>
+<li>(this isn&#39;t likely to change any time soon -&gt; if it is <em>does</em> change, being proficient at python will give you the base principles that will transfer to any other language that you interact with)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why Python?
+
+### General Popularity
+
+<img src="10-19 Public Creation/17 Teaching ML for health/in-demand-programming.webp" alt="" style="object-fit: scale-down">
+
+
+<aside class="notes"><ul>
+<li>general in demand</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why Python?
+
+### For Data Science and Machine Learning
+
+<img src="10-19 Public Creation/17 Teaching ML for health/data-science-programming-popularity.png" alt="" style="object-fit: scale-down">
+
+
+<aside class="notes"><ul>
+<li>in data science -&gt; even stronger skew towards it</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How to learn Python
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Learn the fundamentals (variables, data structures, conditionals, functions)
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Think of things to do/make and try to do/make them
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->When in doubt, ask the code itself
+
+
+<aside class="notes"><ul>
+<li>Doing courses is necessary to get the foundations. That&#39;s the idea behind our course, and there are other courses too (like the datacamp one)<ul>
+<li>The priority is on learning <strong>from the environment itself</strong>. Just play around and see what works</li>
+</ul>
+</li>
+<li>I remember when I first did a course (back in 2017), it explained things like ints, floats, dictionaries, etc. And I didn&#39;t really get <em>why</em>. But then when I got back into programming, I realised that these are just fundamentals that you need to know in order to communicate with the computer.</li>
+<li>(It&#39;s a continuous loop of trying to do things, learning what you need to do them, and expanding your circle of competence. It never really stops - to this day I&#39;m still <em>continually</em> learning new things)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How to learn Python
+
+- Learn the fundamentals (variables, data structures, conditionals, functions)
+- Think of things to do/make and try to do/make them
+- When in doubt, ask the code itself
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-05-05 at 14.40.56.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Jupyter Notebook Demo
+
+- Data Types (integer, float, string, boolean)
+- Data structures (lists, dictionaries)
+- Declaring variables
+- Conditionals
+- Functions
+
+
+<aside class="notes"><ul>
+<li><strong>I just want to give a high-level overview (really, the core stuff) -&gt; and this will be covered in more depth in the exercises.</strong> But this is all stuff you absolutely need to know</li>
+<li><strong>This is a lot like learning a new langauge</strong> -&gt; start by learning the building blocks (new vocab), then later start to combine them to make sentence, and then start to build more complex paragraphs/essays (which are like computer programs)<ul>
+<li>TODO: consider adding a graph with a pyramid of both langauges and programming? some analogy here?</li>
+</ul>
+</li>
+<li><strong>for this slide, I should do a run through of the kind of things I could cover and have in mind how I&#39;ll play through them all for people</strong></li>
+<li>explain data types + show you can check with type()</li>
+<li>with lists, show defining it, pop and push</li>
+<li>with dictionaries, show diff ways to define it, go through keys etc</li>
+<li>if and else</li>
+<li>create a function</li>
+<li>[maybe modules]</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Exercises
+
+- Python Principles ([1](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Python_Principles.ipynb), [2](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Python_Principles_2.ipynb), [3](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Python_Principles_3.ipynb), [4](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Python_Principles_4.ipynb), [5](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Python_Principles_5.ipynb))
+- [Coding a medical calculator](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Coding_Medical_Calculator.ipynb)
+</div></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0,"controls":true,"progress":true,"slideNumber":true,"transition":"concave","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Key Challenges and Considerations 
+## for Real-World use of ML in Healthcare
+
+<aside class="notes"><ul>
+<li>consider whether to include any more points here from my key considerations article</li>
+<li>LINKING ARTICLE HERE: Key considerations for the use of AI in healthcare and clinical research</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Imbalanced data is where you have more data from a certain category than another.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->This is common in medical data: the majority of tests/scans come back normal.
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->It's a particular challenge for rare diseases.
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->There are various techniques for dealing with this.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### (1) Getting more data
+
+If possible, getting more real-world data is the most robsut way to deal with imbalance.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### (2) Undersampling and Oversampling
+
+- **Undersampling** involves taking a subset of the more common category
+- **Oversampling** involves making copies of data in the less common category
+
+<img src="00-09 Meta/08 Attachments/Screenshot 2021-04-28 at 14.33.08.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### (3) Creating synthetic data
+
+**Synthetic data** is artificially-generated data which imitates real-world data.
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->One advantage in healthcare is that it helps maintain privacy compared to real-world data (where the data, by definition, is about a real individual).
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->However, the quality of synthetic data is not as good as *real* data.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### (3) Creating synthetic data
+
+Various techniques exist for creating synthetic data, which depend on the type of data being created.
+
+One option is to fit a statistical distribution over existing data and then "sample" non-existent data from that distribution.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### (3) Creating synthetic data
+
+For images, there are simple data augmentation techniques like rotating, flipping and applying noise to existing images.
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230316160633.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### (3) Creating synthetic data
+
+There are also **Generative Adversarial Networks (GANs)**, which are trained to generate new images that are hard to distinguish from fake images.
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230316160641.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Dealing with imbalanced data
+
+
+### Face Generation with Generative Adversarial Networks 
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230316160726.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+*(source: https://www.whichfaceisreal.com/)*
+
+<aside class="notes"><ul>
+<li>one of these is real, the other isn&#39;t. The right one is real. Can tell a bit from the teeth of left.</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Variability within the dataset
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Soft-tissue organs – wide range of normal shapes exist
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Pathologies which vary in shape and location (such as cancer)
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Free-hand ultrasound images – a lot of possible views
+
+
+<aside class="notes"><ul>
+<li>another challenge is...</li>
+<li>the solution is basically more data, so that the model can generalise / understand the variability</li>
+</ul>
+<p>previous potential slide:</p>
+<h2 id="dealing-with-large-datasets">Dealing with large datasets</h2>
+<ul>
+<li>I can&#39;t remember what I was going to say here?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Interpretability
+
+- We want to understand how the model makes decisions
+- This can be challenging with deep learning
+- Some approaches have been developed – e.g. saliency maps for CNNs
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230316161340.png" alt="" style="width: 700px; object-fit: fill">
+
+
+*(see also: [AI models are inherently difficult to interpret](https://chrislovejoy.me/ec8a0c6b2ddf9d2ba9385cb638b92d74998b801d) and [methods for interpreting and explaining AI models](https://chrislovejoy.me/9537beebe3aa370886ec4946e4d68d80db73b2cd))*
+
+<aside class="notes"><ul>
+<li></div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Clinical Integration
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->What will the model output? 
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->How will it be used? 
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Where will it fit into existing clinical pathways? (Screening? Triaging? Diagnosis?)
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Who will use it?
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->What skills will they require? 
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->How will they be educated and trained to use the model? (including understanding its limitations)
+- &shy;<!-- .element: class="fragment" data-fragment-index="7" -->Who will make the final decision?
+- &shy;<!-- .element: class="fragment" data-fragment-index="8" -->How will it be monitored over time? (as performance can change)
+
+
+<aside class="notes"><ul>
+<li>want to minimise disruption - best to plan how it will fit into workflow from the start</li>
+<li>TODO: consider merging / combining with slide on deployment in The 6 steps of the data science pipeline (Slides)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## When may AI not be appropriate?
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The decision is too important for automation
+	- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->around withdrawing life-supporting treatment
+	- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->involving particularly sensitivie clinical data (such as sexual history, infection status)
+	- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->where risk of discriminatory bias
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->The task is not possible with current AI (e.g. a decision based on images, where image alone is not enough)
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Sensitive areas needing human interaction (e.g. breaking bad news)
+
+*(see also [Some clinical decisions are inappropriate for AI](https://chrislovejoy.me/6cdfda9718c2dec736f12140ddb320631037b9d5))*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Regulation
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->AI model performance can change
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->FDA have said medical AI models will be treated as a medical device
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->>500 algorithms have been approved by the FDA (mostly from retrospective studies)
+
+*(see also: [The regulatory landscape for medical AI is evolving and unclear](https://www.chrislovejoy.me/1c60910946425645c0230ea67e4eb4ba5f2ca3e0))*
+
+<aside class="notes"></div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Ethics
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->There may be bias in the training data. How do we deal with that?
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Who takes ultimate responsibility for the decisions? Who faces the consequences if the model is wrong? (The clinician? The model developers?)
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->NLP models (like chatGPT) can lie ("hallucinations"). How do we prevent the impact of this? (one approach: retrieval-augmented generation)
+
+<aside class="notes"><ul>
+<li>TODO: improve this slide</div></li>
+</ul>
+</aside></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+	<link rel="shortcut icon" type="image/png" href="https://chrislovejoy.me/assets/favicon.ico">
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Python for Data Science and Machine Learning in Healthcare
+
+<aside class="notes"><ul>
+<li>welcome to the course</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Module Details
+
+- **Course Leads**: Christopher Lovejoy, Simon Rowland 
+- **Teaching Assistants**: Aaron Smith, Sunir Gohil, Jess Caterson, Oleksandr Teslenko, Tao Cao, Emily Jin, Guzal Bulatova, Nathan Kafi, Lawrence Adams, 
+- **Lectures**: Mondays 1400 - 1530 BST
+- **Practicals**: Fridays 1400 - 1600 BST
+- **Office Hours**: Wednesdays 1300 - 1400 BST
+
+<aside class="notes"><ul>
+<li>This is best place for introductions - Chris and Simon to introduce<ul>
+<li>Chris: medical doctor, transitioned into full-time data science role, currently freelancing across multiple projects</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prerequisites
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+No formal coding experience required
+
+However, would benefit from an introductory course to coding in Python. For example:
+- [Introduction to Python for Data Science (DataCamp)](https://www.datacamp.com/courses/intro-to-python-for-data-science)
+- [Python - Full Course for Beginners (freeCodeCamp)](https://www.youtube.com/watch?v=rfscVS0vtbw)
+</div>
+
+ <aside class="notes"><ul>
+<li>this is a foundational course -&gt; aimed to introduce both the theory and the practical side.</li>
+<li>So it&#39;s not essential to do any of these courses.</li>
+<li>Could consider doing them alongside this course, or in the future to reinforce some of what we cover in this course</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Course Aims
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+The primary aim of the course is to improve technical skills for the implementation of data science and machine learning. We will do so through a healthcare / biomedical lens.
+
+We will learn the necessary theory for doing so, and then apply the theory in a number of practical exercises.
+
+By the end of this course, you will have:
+- implemented a neural network
+- used a large language model (such as GPT)
+- created your own medical calculator
+- built algorithms to predict stroke, pneumonia and breast cancer
+</div>
+
+<aside class="notes"><ul>
+<li>There&#39;s a technical focus, but also covering a decent amount of theory</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Things worth Noting
+
+- This is the first time we've run this course - we're still learning!
+- There is a lot of practical material. You might not finish all of it.
+</div>
+
+<aside class="notes"><ul>
+<li>It&#39;s summative, so the marks won&#39;t be recorded / won&#39;t count. But you can get feedback on every exercise by submitting it.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Material
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+All material is accessible here:
+- **Slides**: www.chrislovejoy.me/imperial
+- **Practical exercises**: www.github.com/chris-lovejoy/CodingForMedicine
+
+(We may make tweaks to these throughout the course).
+</div>
+
+<aside class="notes"><ul>
+<li><p>this information will always be accessible. (I lost access to some of masters content at UCL, don&#39;t really agree with this)</p>
+</li>
+<li><p>You can start on the practical exercises at any point -&gt; you don&#39;t need to wait until the Friday session</p>
+</li>
+<li><p><strong>then click on to the slides link and walk through the different weeks at a high level</strong></p>
+</div></li>
+</ul>
+</aside></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"center":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

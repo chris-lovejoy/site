@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+	<link rel="shortcut icon" type="image/png" href="https://chrislovejoy.me/assets/favicon.ico">
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# So how does machine learning work?
+
+### ie. How does the machine *learn*?
+
+
+<aside class="notes"><ul>
+<li>TODO: review whether I&#39;m using &quot;performance measure&quot; appropriately here - it may be that it&#39;s not the best term for the <em>training</em> phase</li>
+<li>TODO: add link to neural network / CNN slides, for continuation of the learning process explanation</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Different approaches to learning
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**Supervised learning**: Learn the function that best approximates the relationship between input and output observable in the data. Data has corresponding label/output. "Learning with a teacher". (*Majority of healthcare applications are supervised learning*)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->**Unsupervised learning**: Infer a natural structure within a set of data points. Data has no corresponding label/output. "Learning without a teacher".
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**Reinforcement learning**: Learn the function for behaviour that maximises a reward (based on a particular environment or set of rules) 
+
+<aside class="notes"><ol>
+<li>&shy;<!-- .element: class="fragment" data-fragment-index="4" --><strong>(Semi-supervised learning)</strong>: Identify patterns in both data with a label/output and data without it, to be able to perform <em>either</em> supervised or unsupervised tasks.</li>
+</ol>
+<ul>
+<li>The majority of applications in healthcare are <strong>supervised learning</strong>.</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Supervised vs unsupervised learning tasks
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172020.png" alt="" style="width: 1000px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>so let&#39;s talking about supervised learning (partly given that this is most common in healthcare)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Regression
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Predict **continuous** variable given input variables.
+
+Medical examples:
+- Life expectancy
+- Length of hospital stay
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172105.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Classification
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Predict **categorical** variable(s) (ie. "classes") given input variables.
+
+Medical examples:
+- Presence vs absence of particular disease
+- Low-risk vs high-risk for developing a particular condition in future
+- Diabetic vs prediabetic vs non-diabetic
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172141.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Step 1: Training
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-02-02 at 17.23.03.png" alt="" style="width: 2000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Step 2: Inference
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-02-02 at 17.23.45.png" alt="" style="width: 2000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How *does* the machine *learn*?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How *does* the machine *learn*?
+
+> “A computer program learns from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.” – Tom Mitchell (1998) 
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Step-by-step:
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The task (T) is defined (e.g. classifying moles as cancerous or not)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The type of machine learning algorithm is chosen
+</div>
+
+<aside class="notes"><p>[The task may be regression, classification, clustering, dim reduction - as per the diagram earlier]</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Wait... but what is the 'algorithm'?
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->The algorithm is the framework and how it learns.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->This can be simple (like linear regression) or more complex (like a deep neural network).
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->But in all cases there is a model with parameters, and a method for learning those parameters.
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Wait... but what is the 'algorithm'?
+
+<div class="" style="padding: 0px 0px 60px 0px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- The algorithm is the framework and how it learns.
+- This can be simple (like linear regression) or more complex (like a deep neural network).
+- But in all cases there is a model with parameters, and a method for learning those parameters.
+</div>
+
+<div class="has-light-background flex-even" style="background-color: white; padding: 30px 40px; box-sizing: border-box; display: flex; flex-direction: row; align-items: center; justify-content: space-between" drag="100 80" align="justify">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 16.50.07.png" alt="" style="width: 400px; object-fit: fill">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202174303.png" alt="" style="width: 400px; object-fit: fill">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202174247.png" alt="" style="width: 400px; object-fit: fill">
+
+</div>
+
+<aside class="notes"><p>(<em>ie. Not the ALS algorithm</em>:) 
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202174313.png" alt="" style="object-fit: scale-down"></p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Algorithm choice depends on the task at hand and the type of data
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Predicting weight based on height -> linear regression
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Classifying as high vs low risk of Alzheimer -> classification algorithm
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Predicting blood glucose responses -> recurrent neural network
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Detecting polyps on colonoscopy -> convolutional neural network
+</div>
+
+<aside class="notes"><p>[and may often involve some trial and error - e.g. it&#39;s common to try multiple classifiers and compare their performance before selecting one]</p>
+<p>[TODO: consider adding some images, as appropriate]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How *does* the machine *learn*?
+
+> “A computer program learns from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.” – Tom Mitchell (1998) 
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Step-by-step:
+1. The task (T) is defined (e.g. classifying moles as cancerous or not)
+2. The type of machine learning algorithm is chosen
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->A performance measure (P) is established (e.g. correct or incorrect classification)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Data is fed in (E) and the machine updates its parameters to learn the parameters that best fit the data
+</div>
+
+<aside class="notes"><p>For performance measure:</p>
+<ul>
+<li>usually involves minimising an error</li>
+<li>not as simple as right vs wrong - can calculate error from the confidence. E.g. 70% confident that was X diagnosis, then there is an error</li>
+</ul>
+<p>For learning:</p>
+<ul>
+<li>the &#39;parameters&#39; are variables within the equation / model.<ul>
+<li>as a simple example, in linear regression the parameters are m and c</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 1: Define the task.**  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+Predict body surface area given height  <!-- .element: class="fragment" data-fragment-index="2" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+
+**STEP 2: Choose the algorithm.**  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+This is the data: <!-- .element: class="fragment" data-fragment-index="2" -->
+<div class="has-light-background" style="background-color: white" >
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.15.23.png" alt="" style="object-fit: scale-down">
+
+</div> <!-- .element: class="fragment" data-fragment-index="3" -->
+
+
+<aside class="notes"><p>what&#39;s an appropriate algorithm?</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+
+**STEP 2: Choose the algorithm**.
+
+A linear regression model looks well suited to fit our data (y = mx + c)
+
+<aside class="notes"></div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 3: Define the performance measure.**  <!-- .element: class="fragment" data-fragment-index="1" -->
+
+For linear regression, a common metric is:  <!-- .element: class="fragment" data-fragment-index="2" -->
+
+`$(\text{error of the guesses})^2$`  <!-- .element: class="fragment" data-fragment-index="2" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+**STEP 3: Define the performance measure**.
+
+For linear regression, a common metric is:
+
+`$(\text{error of the guesses})^2$`
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Pasted image 20230302171743.png" alt="" style="width: 500px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 4: Undergo learning / "fit the model"**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 4: Undergo learning / "fit the model"**
+
+Let's use gradient descent.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Start with our data:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.20.20.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Make a random guess:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.20.52.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Quantify the errors:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.21.09.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Plot the error:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.21.47.png" alt="" style="width: 1000px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>the model can&#39;t see this graph - but it can see the error and the direction of improvement -&gt; ie. that it should update the guess in that direction</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.23.06.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.23.55.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.58.46.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.06.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.09.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.15.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.17.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.20.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.24.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Update the guess:
+
+
+<img src="00-09 Meta/08 Attachments/Captura de Pantalla 2023-05-15 a la(s) 10.59.27.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 4: Undergo learning / "fit the model"**
+
+There is an alternative to gradient descent: **the normal equation**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+**STEP 4: Undergo learning / "fit the model"**
+
+There is an alternative to gradient descent: **the normal equation**
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.25.30.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Things are actually more complicated
+
+<div class="" style="padding: 0px 0px 60px 0px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- We have to deal with multiple dimensions
+- the "error surface" is not that simple
+</div>
+
+<div class="has-light-background" style="background-color: white" >
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Pasted image 20230302172629.png" alt="" style="object-fit: scale-down">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Pasted image 20230302172633.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+<aside class="notes"><ul>
+<li>I&#39;ve not included the classification example, as it doesn&#39;t illustrate <em>that</em> much more, but I could in future: it&#39;s slide 40 to 47 in &quot;2. how does the machine learn&quot;</li>
+<li><strong>pause here for questions / to clarify things</strong></div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting length of stay from age and number of medications
+
+
+
+|           | Age | Number of regular medications | Length of stay (days) |
+| --------- | --- | ----------------------------- | --------------------- |
+| Patient 1 | 89  | 3                             | 10.1                  |
+| Patient 2 | 71  | 6                             | 10.4                  |
+| Patient 3 | 82  | 8                             | 11.8                  |
+| Patient 4 | 68  | 2                             | 8.1                   |
+| Patient 5 | 25  | 1                             | 3.3                   |
+</div>
+
+<aside class="notes"><ul>
+<li>this is an artificial example to further demonstrate the principle</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 1: Define the Task**
+
+<aside class="notes"><ul>
+<li>so what&#39;s our task?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 1: Define the Task**
+
+Task: Predict length of stay from age and number of meds
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 2: Define the algorithm**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 2: Define the algorithm**
+
+An equation:
+
+`$$\text{predicted length of stay} = (a \times age) + (b \times meds)$$`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 20%; width: 35%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-02 at 17.08.58.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+**STEP 3: Define the performance metric**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+**STEP 3: Define the performance metric**
+
+We can use the same as before - the errors of the predictions:
+
+`$(\text{error of the guesses})^2$`
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Pasted image 20230302171743.png" alt="" style="width: 500px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+**STEP 4: Undergo learning / "fit the model"**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+**STEP 4: Undergo learning / "fit the model"**
+
+Let's use gradient descent again
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+First, a random guess:
+
+`$a=0.5$`, `$b=0.1$`
+
+|           | Age | Number of regular medications | Length of stay (days) |
+| --------- | --- | ----------------------------- | --------------------- |
+| Patient 1 | 89  | 3                             | 10.1                  |
+| Patient 2 | 71  | 6                             | 10.4                  |
+| Patient 3 | 82  | 8                             | 11.8                  |
+| Patient 4 | 68  | 2                             | 8.1                   |
+| Patient 5 | 25  | 1                             | 3.3                   |
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+First, a random guess:
+
+`$a=0.5$`, `$b=0.1$`
+
+`$$\text{Predicted length of stay} = (0.5 \times \text{age}) + (0.1 \times \text{meds})$$`
+
+|           | Age | No. of regular meds | ACTUAL length of stay | PREDICTED length of stay |
+| --------- | --- | ------------------- | --------------------- | ------------------------ |
+| Patient 1 | 89  | 3                   | 10.1                  | 44.8                     |
+| Patient 2 | 71  | 6                   | 10.4                  | 36.1                     |
+| Patient 3 | 82  | 8                   | 11.8                  | 41.8                     |
+| Patient 4 | 68  | 2                   | 8.1                   | 34.2                     |
+| Patient 5 | 25  | 1                   | 3.3                   | 12.6                     |
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Un updated guess:
+
+`$a=0.4$`, `$b=0.25$`
+
+`$$\text{Predicted length of stay} = (0.4 \times \text{age}) + (0.25 \times \text{meds})$$`
+
+|           | Age | No. of regular meds | ACTUAL length of stay | PREDICTED length of stay |
+| --------- | --- | ------------------- | --------------------- | ------------------------ |
+| Patient 1 | 89  | 3                   | 10.1                  | 36.5                     |
+| Patient 2 | 71  | 6                   | 10.4                  | 29.9                     |
+| Patient 3 | 82  | 8                   | 11.8                  | 34.8                     |
+| Patient 4 | 68  | 2                   | 8.1                   | 27.7                     |
+| Patient 5 | 25  | 1                   | 3.3                   | 10.25                     |
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+Keep updating the values incrementally using gradient descent:
+
+a=0.35 and b=0.30 <!-- .element: class="fragment" data-fragment-index="1" -->
+
+a=0.30 and b=0.35 <!-- .element: class="fragment" data-fragment-index="2" -->
+
+a=0.20 and b=0.40 <!-- .element: class="fragment" data-fragment-index="3" -->
+
+a=0.10 and b=0.50 <!-- .element: class="fragment" data-fragment-index="4" -->
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: predicting body surface area from height
+
+
+
+Final values:
+`$a=0.1$`, `$b=0.5$`
+
+`$$\text{Predicted length of stay} = (0.1 \times \text{age}) + (0.5 \times \text{meds})$$`
+
+|           | Age | No. of regular meds | ACTUAL length of stay | PREDICTED length of stay |
+| --------- | --- | ------------------- | --------------------- | ------------------------ |
+| Patient 1 | 89  | 3                   | 10.1                  | 10.4                     |
+| Patient 2 | 71  | 6                   | 10.4                  | 10.1                     |
+| Patient 3 | 82  | 8                   | 11.8                  | 12.2                     |
+| Patient 4 | 68  | 2                   | 8.1                   | 7.8                     |
+| Patient 5 | 25  | 1                   | 3.3                   | 3                     |
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## In Summary
+
+
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Methods of learning can be broadly divided into **supervised learning**, **unsupervised learning**, **reinforcement learning**
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->**Supervised learning** is most-used in medicine and includes both *classification* and *regression*
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->To train a machine learning model, you:
+	1. define the **task**
+	2. define the **algorithm**
+	3. define the **performance measure**
+	4. **use data to train the model**
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->A common method for training is **gradient descent**, which involves incrementally changing the parameters until the model stops improving
+</div></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

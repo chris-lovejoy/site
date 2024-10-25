@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Analysing image data in healthcare
+
+
+<aside class="notes"><ul>
+<li>I have some slides towards the end that I haven&#39;t written - I could consider adding in future, as inclined<ul>
+<li>ground truth</li>
+<li>transfer learning</li>
+<li>Challenges and considerations</li>
+<li>generative images in healthcare</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why analyse images?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why analyse images?
+
+
+A lot of medical decisions are made based on images.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why analyse images?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+A lot of medical decisions are made based on images.
+
+This includes:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**radiological images**: CXR, CT, MRI, Ultrasound
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->**histology samples**
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**photographs** (e.g. skin, retina)
+</div>
+
+<aside class="notes"><ul>
+<li>on next slides, we&#39;ll revisit use cases from first lecture - note that most of them are images</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Use Cases
+
+
+<aside class="notes"><p><em>to include this if I&#39;m making it interactive - including making questions to consider into a visible slide</em></p>
+<ul>
+<li>I have some interesting use cases, but I actually want to hear about examples that you may have heard of. So I&#39;m going to put you into break out rooms to discuss examples you&#39;ve seen.<ul>
+<li>relatively quick, just 3-4 minutes or so, we&#39;ll do some more extensive group sessions later</li>
+</ul>
+</li>
+<li>Then a couple of groups can share an example they discussed. Please pick one and we will each present it briefly when you come back</li>
+</ul>
+<h2 id="questions-to-consider">Questions to consider</h2>
+<ul>
+<li>What is the problem it&#39;s solving?</li>
+<li>Is it helpful? Does the use case make sense?</li>
+<li>Is it currently being used?</li>
+<li>Any potential risks?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 1. Diagnosing skin cancer from images
+
+*The Paper: [Dermatologist-level classification of skin cancer with deep neural networks](https://pubmed.ncbi.nlm.nih.gov/28117445/)*
+
+- One of the first publications applying deep learning to healthcare (published in Nature in February 2017)
+- Trained a model on 127,000 images of skin lesions
+- Can distinguish between two specific lesions (not representative of full scope of dermatologist work)
+- Performed very well (AUC 0.91-0.96)
+- Majority / all of the dataset was caucasian skin
+
+*(see summary of the paper [here](https://explainthispaper.com/distinguishing-cancerous-non-cancerous-skin-lesions/)\*)*
+
+<div class="" style="font-size: 18px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-evenly" align="right">
+
+\*https://explainthispaper.com/distinguishing-cancerous-non-cancerous-skin-lesions/
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li><em>malignant melanoma</em> vs <em>benign nevi</em><ul>
+<li><em>keratinocyte carcinomas</em> vs <em>benign seborrheic keratoses</em></li>
+</ul>
+</li>
+</ul>
+<p>[TODO: add an image of a skin lesion at bottom of slide -&gt; original paper ones not great]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2. Early detection of stroke
+
+- The company [Viz.ai](https://www.viz.ai) have developed AI algorithms to identify risk of stroke (based on CT angiogram imaging)
+- The faster stroke is treated, the better the outcomes (there's a 4-6 hour time window to treat certain strokes)
+- [This study](https://pubmed.ncbi.nlm.nih.gov/36457286/) (Jan 2023) compared the algorithm vs doctors (neuroradiologists) and found it performed well
+- This uses both **pattern recognition** (what does a stroke look like) as well as **speed** (to provide immediate warning of stroke - even if a doctor isn't available)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 3. Real-time colonoscopy polyp detection
+
+*The Paper: [Effect of a deep-learning computer-aided detection system on adenoma detection during colonoscopy (CADe-DB trial): a double-blind randomised study](<https://www.thelancet.com/pdfs/journals/langas/PIIS2468-1253(19)30411-X.pdf>)*
+
+- This was the one of first randomised control trials (RCTs) using AI
+- With the AI, more polyps were detected - it was particularly good at flatter polyps
+- It's unclear whether detecting more polyps leads to better cancer detection
+
+
+<img src="10-19 Public Creation/13 Personal website/02-personal-website/assets/images/article-images/colonoscopy_RCT.png" alt="" style="width: 1600px; object-fit: fill">
+</div>
+
+<aside class="notes"></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Other use cases
+
+1. [Recommending treatments for sepsis (using reinforcement learning)](https://pubmed.ncbi.nlm.nih.gov/30349085/)
+2. [Diagnosing retinal disease from eye scans](https://pubmed.ncbi.nlm.nih.gov/30104768/)
+3. [Detecting atrial fibrillation using a smart watch](https://www.nejm.org/doi/10.1056/NEJMoa1901183)
+4. [Predicting protein structure based on sequence (AlphaFold)](https://pubmed.ncbi.nlm.nih.gov/34265844/)
+
+
+<aside class="notes"><p>Perhaps add more from following:
+3. [speech detection of mental health? other things from speech?]
+4. ?perhaps one of the entrepreneurial EF stuff? biomarkers?</p>
+<ul>
+<li>[a bioinformatics type one, or two]</li>
+</ul>
+<ol start="5">
+<li>Developing AI-powered chatbots for patient care</li>
+<li>Designing personalized treatment plans </li>
+<li>Monitoring and predicting disease outbreaks</li>
+<li>Drug discovery and prescription optimization </li>
+<li>Automated medical billing processes </li>
+<li>Generating reports from medical data</div></li>
+</ol>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Trends to note
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Most of the early deep learning papers in healthcare are using computer vision rather than natural language processing.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->We may be beginning to see movements away from this, towards more multimodal data
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->The deep learning research is cutting-edge, but a lot of doing data science and machine learning in healthcare is much simpler
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->*(see also: [Multimodal biomedical AI - Nature Medicine](https://www.nature.com/articles/s41591-022-01981-2))*
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How can we analyse images?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What ***is*** imaging data?
+
+
+
+<aside class="notes"><ul>
+<li>it&#39;s useful to first understand what imaging data looks like to the computer. How it is encoded. Does anybody know how?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What ***is*** imaging data?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/image_matrix_values.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What ***is*** imaging data?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322142435.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><ul>
+<li>describe what it looks like</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How can we analyse images?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How can we analyse images?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+We want to identify patterns in the data which relate to an outcome of interest.
+
+For example, if a chest X-ray is white in a particular area, it represents pneumonia. 
+
+We want the algorithm to learn to recognise that (without us telling it).
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/pneumonia_CXR_labelled.jpeg" alt="" style="width: 500px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Convolutional Neural Networks (CNNs) are well-suited to analysing images
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322144628.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><ul>
+<li>A convolutional neural network takes in the values for the original image and applies lots of multiplications</li>
+<li>There are various types of multiplications. An important one is the convolution, which I&#39;m going to talk about on the next slide</li>
+<li>(this is a VGG19)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### "Convolutions" are activated by patterns
+
+
+The patterns can include lines, shapes and changes in colour.
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322144825.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### "Convolutions" are activated by patterns
+
+
+The patterns can include lines, shapes and changes in colour.
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322144825.png" alt="" style="object-fit: scale-down">
+
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322144829.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><ul>
+<li>if you take the image on the left and apply a &quot;horizontal lines&quot; convolution, it will extract that feature from the image (denoted by the white lines in the image on the right)</li>
+<li>You can imagine the same for alternative types of features that you can pick up</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Later layers can build on features from earlier layers
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Later layers can build on features from earlier layers
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Multiple convolutions are applied simultaneously.
+
+In early layers, the network can identify simple patterns.
+
+In later layers, the network can combine these patterns to detect "high-level" features.
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Later layers can build on features from earlier layers
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Multiple convolutions are applied simultaneously.
+
+In early layers, the network can identify simple patterns.
+
+In later layers, the network can combine these patterns to detect "high-level" features.
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322145945.png" alt="" style="width: 1100px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Later layers can build on features from earlier layers
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Multiple convolutions are applied simultaneously.
+
+In early layers, the network can identify simple patterns.
+
+In later layers, the network can combine these patterns to detect "high-level" features.
+</div>
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322162614.png" alt="" style="width: 1100px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Later layers can build on features from earlier layers
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-03-22 at 16.30.27.png" alt="" style="object-fit: scale-down">
+
+
+<aside class="notes"><ul>
+<li>possible CXR image to include: 10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322162743.png</li>
+<li>in the context of chest x-rays, it may be that first identify edges, then identify lung border, then check whether it&#39;s pneumonia or not</li>
+<li>Consider also adding a slide with the red square moving over the CXR<ul>
+<li>from slide 32 of 3. Deep Learning: 10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-03-22 at 16.32.03.png</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The same principle can be seen in *simpler* neural networks
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-03-22 at 16.28.53.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><ul>
+<li>(and walk through / explain this -&gt; I think there are some initial notes in 3. Deep Learning slides, can use as starting point if want)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Why convolutions?
+
+
+- Considers spatial/temporal relationships between variables (cf. feed-forward neural networks)
+- Computationally efficient:
+	-   Parameters and weight are re-used
+	-   Sparcity of connections
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322163255.png" alt="" style="width: 800px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>we need to go from a 3D structure to a single dimension layer which we can feed into the next neural network layer</li>
+<li>consider adding a slide here: &quot;What about the other layers?&quot;, where I give a quick summary of the role of pooling and max layers + why use them<ul>
+<li>10-19 Public Creation/17 Teaching ML for health/Pooling layers.png</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Training the model involves learning the convolutions
+
+
+In the [our simple neural network](https://www.chrislovejoy.me/slides/neural-networks), we learnt the weights between nodes.
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.50.33.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Training the model involves learning the convolutions
+
+
+In a convolutional neural network, the same principles are applied to learning the **convolutional weights**.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Training the model involves learning the convolutions
+
+
+In a convolutional neural network, the same principles are applied to learning the **convolutional weights**.
+
+We train the network using **Gradient Descent**. (Explained in [these slides](https://chrislovejoy.me/slides/how-machine-learns).)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Training the model involves learning the convolutions
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+This involves:
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Starting with random values for all weights
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Calculating *how wrong* the network is (using labelled training data)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Updating each weight very slightly, in the direction of better performance (ie. the guess being *less wrong*)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Repeat that process until training is complete
+</div>
+
+<aside class="notes"><ul>
+<li>for a different kind of image, different patterns will be relevant -&gt; we want to train the model on lots of examples of that so that it works.</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What does this look like in practice?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Steps of training and evaluating a CNN
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" --> Collect suitable amount of data
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" --> Label ‘ground truth’
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" --> Decide a CNN architecture / try multiple (can use transfer learning)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" --> Train the network 
+1. &shy;<!-- .element: class="fragment" data-fragment-index="5" --> Test it on another set of data
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Resources
+- [The Fundamentals of Deep Learning + How It Will Change Healthcare (video)](https://youtube.com/watch?v=sVz8UKTBY1E)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><p>potentially make this slide in future
+    ### Labelling a ground truth</p>
+<pre><code>    [and some of the notes and considerations around that. why, how, what]
+</code></pre>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><h3 id="transfer-learning">Transfer Learning</h3>
+<p>Potential slide to include:</p>
+<ul>
+<li>Model trained for one task is re-used as starting point for another task</li>
+<li>Commonly used with imaging and text data</li>
+<li>Examples in medicine:<ul>
+<li>Radiological images</li>
+<li>Symptom checkers</li>
+</ul>
+</li>
+</ul>
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-03-22 at 16.48.07.png" alt="" style="object-fit: scale-down">
+
+<ul>
+<li>original source for this is slide 47 of 3. Deep learning</li>
+</ul>
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322164829.png" alt="" style="object-fit: scale-down">
+
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322141801.png" alt="" style="object-fit: scale-down">
+
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322141823.png" alt="" style="object-fit: scale-down">
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322141825.png" alt="" style="object-fit: scale-down">
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><h3 id="challenges-and-considerations">Challenges and considerations</h3>
+<pre><code>- the challenges as outlined in [challenges slides]
+    - data imbalances, etc
+(I think these are all covered in the other slides)
+1. Small datasets, due to uncommon imaging modality and/or pathology
+2. Variability within dataset:
+    -   Soft-tissue organs – wide range of normal shapes exist
+    -   Pathologies which vary in shape and location (such as cancer)
+    -   Free-hand ultrasound images – a lot of possible views
+3. Skewed datasets
+</code></pre>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><h2 id="generative-images-for-healthcare">Generative images for healthcare</h2>
+<pre><code>- look at topol multimodal paper and write this
+</code></pre>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><p>Possible slide: AI replacing radiologists?</p>
+<ul>
+<li>CNNs can extract information from images</li>
+<li>Many clinical problems require imaging <strong>in combination</strong> with clinical information</li>
+</ul>
+<p>Points to consider:</p>
+<ul>
+<li>Radiologists don’t just interpret scans</li>
+<li>Responsibility for decisions</li>
+<li>Improved efficiency</li>
+<li>Productivity gains may drive demands</li>
+<li>Technical challenge of full automation</div></li>
+</ul>
+</aside></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

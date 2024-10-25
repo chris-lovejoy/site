@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Analysing sequential data in healthcare 
+## *including Natural Language Processing*
+
+
+
+<aside class="notes"><ul>
+<li>Structure of this talk broadly:</li>
+</ul>
+<ol>
+<li>Introduction to sequential data, and how we might use it in healthcare</li>
+<li>How RNNs actually work</li>
+<li>NLP + looking to the future</div></li>
+</ol>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Moving beyond images
+
+
+CNNs are great for images. But what about other types of data?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Moving beyond images
+
+
+What do all these data types have in common?
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->ECG recordings
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->vital signs / observations
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->gyroscope measurements from a wearable or smart phone
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->blood glucose measurements from a continuous glucose monitor (every 15 minutes)
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->EEGs, EMGs, etc
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->Voice recordings
+- &shy;<!-- .element: class="fragment" data-fragment-index="7" -->Genetic sequences
+</div>
+
+<aside class="notes"><p>the answer is they have a time-based component / sequential order</p>
+<p>[TODO: consider adding images here]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Sequential data
+
+
+> “Whenever there is a sequence of data and that temporal dynamics that connects the data is more important than the spatial content of each individual frame.” – Lex Fridman (MIT)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Sequential data
+
+
+> “Whenever there is a sequence of data and that temporal dynamics that connects the data is more important than the spatial content of each individual frame.” – Lex Fridman (MIT)
+
+What is a special form of sequential data?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Sequential data
+
+
+> “Whenever there is a sequence of data and that temporal dynamics that connects the data is more important than the spatial content of each individual frame.” – Lex Fridman (MIT)
+
+What is a special form of sequential data? 
+
+(Hint: we use it a lot every day.. we're even using it right now)
+</div>
+
+<aside class="notes"><p>answer is natural language</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How might we use sequential data in healthcare?
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->[Predicting fall risk](https://pubmed.ncbi.nlm.nih.gov/36211616/), using data on gait, balance and other features
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->[Classification of sleep staging](https://pubmed.ncbi.nlm.nih.gov/30386226/), using EEG recordings
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->[Diagnosing Parkinson's Disease](https://pubmed.ncbi.nlm.nih.gov/34237382/), using EEG recordings
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->[Predicting complications in critical care](https://pubmed.ncbi.nlm.nih.gov/30274956/)
+</div>
+
+<aside class="notes"><p>To consider adding:</p>
+<ul>
+<li>Blood glucose<ul>
+<li>[personalised response to food]</li>
+</ul>
+</li>
+<li><h2 id="hr-measurements">HR measurements</h2>
+</li>
+</ul>
+<p>prompt students to consider the previous data types -&gt; and how they could be used</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How do we analyse sequential data?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How do we analyse sequential data?
+
+
+The first machine learning approach was the **Recurrent Neural Network** (RNN).
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20221013173340.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><ul>
+<li>RNNs have an internal memory, through the ‘recurrent’ unit, which is carried forward</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The P wave detector
+
+<img src="10-19 Public Creation/17 Teaching ML for health/P_wave_detector.png" alt="" style="object-fit: scale-down">
+
+
+
+
+<aside class="notes"><p>So how does this work?</p>
+<p>Well, we... [walk through it]</p>
+<p>And you can imagine how this would work for, for example:
+[describe the cases as per the slide a few back]</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The RNN structure can vary
+
+<img src="10-19 Public Creation/17 Teaching ML for health/RNN_types.jpeg" alt="" style="width: 1000px; object-fit: fill">
+
+
+
+For example, for translation:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-02-27 at 10.51.50.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## A brief history of analysing sequential data
+
+
+<aside class="notes"><p>The aim of these slides is to provide the high-level view. Not going to explain things, but can read about based on interests.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### From RNNs to LSTMs
+
+
+RNNs worked, but only for short sequences.
+
+The problem was "vanishing gradients".
+
+Long Short-Term Memory (LSTM) networks were created to overcome this.
+
+
+<aside class="notes"><ul>
+<li>&quot;vanishing gradients&quot; refers to how the weights of the neural network went towards zero over multiple timesteps </li>
+<li>while this may look complex, the main takeaway is that there is the cell state (c) which gets passed along (along the top) - which helps it to remember things for longer<ul>
+<li>[an example would be in a translation &quot;the king was at home in his castle looking after [his] dog -&gt; the model needs to remember it started king to know it should be his. or could even be in the next sentence&quot;]</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### From RNNs to LSTMs
+
+
+RNNs worked, but only for short sequences.
+
+The problem was "vanishing gradients".
+
+Long Short-Term Memory (LSTM) networks were created to overcome this.
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/LSTM_unit.jpeg" alt="" style="width: 800px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>&quot;vanishing gradients&quot; refers to how the weights of the neural network went towards zero over multiple timesteps </li>
+<li>while this may look complex, the main takeaway is that there is the cell state (c) which gets passed along (along the top) - which helps it to remember things for longer<ul>
+<li>[an example would be in a translation &quot;the king was at home in his castle looking after [his] dog -&gt; the model needs to remember it started king to know it should be his. or could even be in the next sentence&quot;]</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### From LSTMs to Transformers
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+LSTMs improved on RNNs, but still had limitations:
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->They take a long time to train
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Performance still drops over long sequences
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### From LSTMs to Transformers
+
+
+This led to **the transformer architecture**:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/transfomer.png" alt="" style="object-fit: scale-down">
+
+
+*(Proposed in this 2017 paper: [Attention Is All You Need - Vaswani et al](https://arxiv.org/abs/1706.03762))*
+
+<aside class="notes"><ul>
+<li>computationally expensive to train -&gt; have to keep passing the training back every step</li>
+<li>GPUs are great at parallelising things -&gt; and transformers enable us to do that</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What are Transformers?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/transfomer.png" alt="" style="object-fit: scale-down">
+
+
+Transformers are characterised by:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Self-attention
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Positional encodings
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Multi-head architecture
+
+<aside class="notes"><ul>
+<li><p>Training them is more efficient (as it can be parallelised) so they can be trained on huge amounts of text efficiently</p>
+</li>
+<li><p>They look at all inputs simultaneously, which leads to better performance</p>
+</li>
+<li><p>Again, the specific architecture isn&#39;t important - but the key takeaway is that...</p>
+</li>
+<li><p>The fact they can be trained on huge text has been key in enabling the interesting developments we&#39;ve seen -&gt; they&#39;ve been trained on HUGE amounts of data (books, the whole internet)</p>
+</li>
+<li><p><strong>If I wanted to improve this in future, I&#39;d add a diagram to show how the whole sequence is fed in at the same time - I think that&#39;s one of the key aspects of this really</strong></p>
+</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What are Transformers?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Advantages:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Training is more efficient than RNNs
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Better performance by considering all inputs
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### The Transformer Takeover
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Since 2017, transformers have become one of the most popular methods for NLP and beyond.
+
+Popular transformers include:
+- The "GPT" family: GPT2, GPT3, GPT4, instructGPT, chatGPT
+- BERT
+- T5
+</div>
+
+<aside class="notes"><ul>
+<li>these are all similar, but have different training objectives (to explain this more fully)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Natural Language Processing (NLP)
+</div>
+
+<aside class="notes"><p>Most of the exciting uses of RNNs in healthcare certain around NLP.</p>
+<p>With so much of the medical record now in EHRs and in natural language format, there&#39;s a lot of potential</p>
+<p>[and can mention the trend towards generative models]</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What are the main NLP tasks, generally?
+
+- **Summarisation**
+- **Question-answering**
+- **Machine translation**: From one language to another (including coding languages)
+- **Classification**: what topic is the text about? (topic modelling), what language is it in? (language identification), is this review positive? (sentiment analysis), is it spam? (spam detection)
+- **Speech processing**, such as converting speech-to-text or text-to-speech
+- **Chatbots**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### What are some NLP tasks in healthcare?
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**Summarisation**
+	- All notes from a hospital stay -> a discharge summary
+	- All notes on a medical background -> a summary before a clinic appointment
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->**Question-answering**
+	- From all published academic papers -> the answer to a specific questions
+	- From long medical guidelines documents -> the appropriate guideline for a specific case
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**Machine translation**
+	- From complex medical text to "plain english" text
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->**Classification**
+	- What condition does the text describe? What treatments were used? (How should the hospital bill for this?)
+	- Based on the notes, is this individual at high risk of attempted suicide? ([paper](https://pubmed.ncbi.nlm.nih.gov/30779800/))
+- &shy;<!-- .element: class="fragment" data-fragment-index="5" -->**Speech processing**
+	- Automatic transcription of clinic appointments, ward-rounds
+- &shy;<!-- .element: class="fragment" data-fragment-index="6" -->**Chatbots**
+	- Provide therapy (e.g. CBT)
+	- Answer patient questions
+
+
+<aside class="notes"><ul>
+<li>[radiological image to a text description? - as an example of translation?]</li>
+<li>any others?</li>
+</ul>
+<p>Access information
+Symptom checkers (Babylon, Ada Health, Your.MD)
+Alexa skill for NHS</p>
+<p>Health assistant
+“Florence”</p>
+<p>Therapeutic
+CBT (Woebot)</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How do NLP models understand words?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How do NLP models understand words?
+
+
+
+**Words are converted into "Word Embeddings"**
+
+<img src="10-19 Public Creation/17 Teaching ML for health/word-embeddngs.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+<aside class="notes"></div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### How do NLP models understand words?
+
+
+**These Word Embeddings enable words to mapped in a multi-dimensional space.**
+
+Similar words are closer, and more different words are further apart.
+
+<img src="10-19 Public Creation/17 Teaching ML for health/embedding_example_2d.jpeg" alt="" style="width: 1200px; object-fit: fill">
+
+
+
+
+<aside class="notes"><img src="10-19 Public Creation/17 Teaching ML for health/embedding_example_3d.png" alt="" style="width: 850px; object-fit: fill">
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Transformers in Healthcare
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Challenges 
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Biomedical and clinical text is different: lots of terms that aren't commonly used outside of that context
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Text can be sensitive: may contain personally identifiable information (PII)
+
+<aside class="notes"><ul>
+<li>there are some clinical datasets like MIMIC-III</li>
+<li>may have PII, even indirectly. e.g. a rare disease + an age -&gt; may effectively identify the individual</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Finetuning on biomedical text
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Finetuning is taking a transformer and training it further for a downstream task.
+
+There are many examples of this:
+- BEHRT is BERT for EHRs
+- BioBERT is pre-trained on PubMed articles to represent biomedical language
+- BlueBERT is pre-trained on PubMed abstracts and clinical note (MIMIC-III)
+- Med-BERT is pretrained using EHR data and ICD codes
+- BioGPT is pre-trained on PubMed by Microsoft
+</div>
+
+
+<aside class="notes"><ul>
+<li>[TODO: consider renamining pre-trained in description to finetuned(?)]</li>
+<li>the way we overcome the first point is to finetune on biomedical text</li>
+<li>(perhaps more detail on what exactly finetuning involves)</li>
+<li>[briefly describe each of the datasets]</li>
+<li>add ClinicalBERT is</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ChatGPT in healthcare?
+
+
+<div class="" style="padding: 100px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ChatGPT is a version of GPT which has been finetuned to give good chat responses.
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ChatGPT in healthcare?
+
+
+<div class="" style="padding: 100px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ChatGPT is a version of GPT which has been finetuned to give good chat responses.
+
+Strengths:
+- Generates human-like responses
+- Remembers past conversation
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ChatGPT in healthcare?
+
+
+<div class="" style="padding: 100px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ChatGPT is a version of GPT which has been finetuned to give good chat responses.
+
+Strengths:
+- Generates human-like responses
+- Remembers past conversation
+
+Weaknesses:
+- Tendency to "hallucinate" / confidently state false information
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ChatGPT in healthcare?
+
+
+<div class="" style="padding: 100px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+ChatGPT is a version of GPT which has been finetuned to give good chat responses.
+
+Strengths:
+- Generates human-like responses
+- Remembers past conversation
+
+Weaknesses:
+- Tendency to "hallucinate" / confidently state false information
+
+It's to-be-seen how this may be used in healthcare. What use cases can you think of? What are potential risks?
+</div>
+
+
+<aside class="notes"><ul>
+<li>finetuned using &quot;Reinforcement Learning with Human Feedback&quot;</li>
+<li>[TODO: add images of e.g. hallucination]</li>
+<li>alt title: &quot;Where does chatGPT fit in?&quot;</li>
+<li>[more of a discussion around potential use -&gt; perhaps add some of my concrete thoughts on this later]<ul>
+<li>chatbots in general have been explored for quite a while.</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Transformers beyond NLP
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Predicting Protein Folding
+
+- AlphaFold by DeepMind
+- ESM by Facebook/Meta
+
+
+<aside class="notes"><ul>
+<li>Transformers aren&#39;t only for text</li>
+<li>[TODO: add more description and images]</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Predicting drug efficacy
+
+- DeepTTA: predicting cancer drug response ([paper](https://academic.oup.com/bib/article-abstract/23/3/bbac100/6554594?login=false))
+- Predicting drug efficacy from gene expression profiles ([paper](https://www.nature.com/articles/s41587-021-00946-z))
+- Predicting synergistic drug combinations ([paper](https://pubmed.ncbi.nlm.nih.gov/35915050/))
+</div>
+
+<aside class="notes"><ul>
+<li>These are just a few examples</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Other
+
+- DNABERT for DNA sequences
+
+
+<aside class="notes"><ul>
+<li></div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<aside class="notes"><p>(possible future slide)</p>
+<h3 id="summary-and-future-trends">Summary and Future Trends</h3>
+<p>[basically... how will NLP change in future?]</p>
+<p>(I think that the majority of NLP gains will be efficiency gains. I don&#39;t think we&#39;ll trust it to fully automate/replace stuff?)</p>
+<p>NLP great for:</p>
+<ul>
+<li>processing large volumes of data quickly</li>
+<li>automating things (like transcription)</li>
+</ul>
+<p>-&gt; efficiency gains</p>
+</div></aside></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

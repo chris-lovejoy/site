@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# An Introduction to Neural Networks
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What are Neural Networks?
+
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Initially inspired by the human brain
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Strength of connections between nodes is *learnt*
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Underpins the area of "Deep Learning"
+
+<aside class="notes"><ul>
+<li>TODO: for all neural network slides, consider recreating in e.g. excalidraw / draw.io, for much-enhanced aesthetics</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What are Neural Networks?
+
+
+- Initially inspired by the human brain
+- Strength of connections between nodes is *learnt*
+- Underpins the area of "Deep Learning"
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2022-10-13 at 17.35.11.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+
+
+<aside class="notes"><ul>
+<li>Initially biological design -&gt; inspired the neural network approach</li>
+<li>Popular in 1980s/1990s, however popularity died down as high computational capacity required to run such algorithms. Computers have caught up so now extremely useful.</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Why Neural Networks?
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Neural networks are powerful because:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->They **can learn complex relationships** from **large amounts of data**.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->They are **"universal approximators"**, which means they can theoretically map any relationship between inputs and outputs. This is enabled by use of a **non-linear "activation" function** (more later).
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->They don't need to be explicitly told *how* - they learn from examples (including *"higher-order" features*). They can learn incrementally, using the learning process outlined in [these slides](https://chrislovejoy.me/slides/how-machine-learns) (called **gradient descent**). 
+- &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Specialised types of neural network excel at certain data types (e.g. **Convolutional Neural Networks** for images and **Recurrent Neural Networks** and **Transformers** for sequential data such as language)
+</div>
+
+<aside class="notes"><ul>
+<li>TODO: consider demonstrating the linear vs non-linear aspect using equations. however, may be adding unnecessary complexity?</li>
+<li>TODO: consider reviewing recording for i. Intro to DL and incorporate into this slide</li>
+<li>(higher order features covered more in the CNN slides)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+A neural network consists of:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**nodes** = unit that receives input, performs calculation, and passes on output
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->**weights** = the strengths of connections between nodes
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**layers** = collections of nodes. divided into input, hidden and output
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.15.57.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>let&#39;s start with a simple worked example</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+In each layer:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->input values are multiplied by weights and added together
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->that value is transformed using a *non-linear* transformation
+</div>
+
+
+<aside class="notes"><ul>
+<li>the non-linear transformation enables it to map much more complex functions</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.15.57.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+<aside class="notes"><ul>
+<li>so if we multiple the values what do we get?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.23.25.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+The *non-linear transformation* involves maps to between 0 and 1 (or in some cases -1 and 1).
+
+The most common is the **sigmoid function**:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/sigmoid_function.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"><ul>
+<li>the bottom is our input (x) and the output is the graph</li>
+<li>(the non-linear function enables it to map to much more complex distributions)</li>
+<li>TODO: consider adding other activation functions - like ReLU, tanh</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.26.31.png" alt="" style="width: 1200px; object-fit: fill">
+</div>
+
+<aside class="notes"><ul>
+<li>so if we apply that to out neural network inputs</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do Neural Networks Work?
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.26.13.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>so what does this output value actually mean? let&#39;s look at this example again with a more tangible example: predicting risk coronary artery disease</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.50.33.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>we have a trained neural network. let&#39;s work through it to predict the risk of disease</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 1**: 80 year old gentleman with cholesterol of 8 and SBP of 160
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.50.33 2.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 1**: 80 year old gentleman with cholesterol of 8 and SBP of 160
+
+We can use the sigmoid function:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/sigmoid_function.png" alt="" style="width: 800px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 1**: 80 year old gentleman with cholesterol of 8 and SBP of 160
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.50.33 3.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 1**: 80 year old gentleman with cholesterol of 8 and SBP of 160
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 12.50.33 4.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+**CONCLUSION:** High-risk for coronary artery disease
+
+
+<aside class="notes"><ul>
+<li>and we can use the threshold of 0.5 to saw whether they are high-risk or not</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What does the output mean?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+The network output can be adapted for different purposes:
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->To predict a **value** (ie. a *regression* task)
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->To predict presence in a **specific category** (such as our example above)
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->To predict **one of many categories** (this is called **multi-class classification**)
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## What does the output mean?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+The network output can be adapted for different purposes:
+- To predict a **value** (ie. a *regression* task)
+- To predict presence in a **specific category** (such as our example above)
+- To predict **one of many categories** (this is called **multi-class classification**)
+
+For multi-class classification, you can have multiple nodes in the **output layer**, which each output the probability of that respective class.
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.07.03.png" alt="" style="width: 800px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>e.g. could have Very low risk vs Low risk vs Medium risk vs High risk</li>
+<li>TODO: consider making multi-class classif it&#39;s own slide</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 2**: 60 year old gentleman with cholesterol of 4 and SBP of 120
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.11.16.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 2**: 60 year old gentleman with cholesterol of 4 and SBP of 120
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.11.16 2.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 2**: 60 year old gentleman with cholesterol of 4 and SBP of 120
+
+We can use the sigmoid function:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/sigmoid_function.png" alt="" style="width: 800px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 2**: 60 year old gentleman with cholesterol of 4 and SBP of 120
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.11.16 3.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Example: Predicting Risk of Coronary Artery Disease
+
+
+**PATIENT 2**: 60 year old gentleman with cholesterol of 4 and SBP of 120
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.11.16 4.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do we train the network?
+
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->It is the **weights** in the network that the network learns. This is referred to as "**training**" the network.
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->We can train the network using **Gradient Descent**. (Explained in [these slides](https://chrislovejoy.me/slides/how-machine-learns).)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do we train the network?
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+This involves:
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Starting with random values for all weights
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Calculating *how wrong* the network is (using labelled training data)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Updating each weight very slightly, in the direction of better performance (ie. the guess being *less wrong*)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="4" -->Repeat that process until training is complete
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do we train the network?
+
+
+For one parameter (in a simple example) this might look like:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.20.13.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## How do we train the network?
+
+
+But in reality, it looks more like this:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Screenshot 2023-03-13 at 13.20.59.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## From Neural Networks to Deep Learning
+
+
+Neural networks become truly useful once they become more complicated.
+
+Adding more layers makes them become **deep neural networks**.
+
+This includes specialised architectures like Convolutional Neural Networks for images ([slides](https://chrislovejoy.me/slides/convolutional)) and Recurrent Neural Networks and Transformers for sequential data ([slides](https://www.chrislovejoy.me/slides/sequential)).
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## From Neural Networks to Deep Learning
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322144628.png" alt="" style="object-fit: scale-down">
+
+
+<img src="10-19 Public Creation/17 Teaching ML for health/transfomer.png" alt="" style="object-fit: scale-down">
+
+
+
+<aside class="notes"></div></aside></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0.2,"controls":true,"progress":true,"slideNumber":true,"transition":"fade","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>

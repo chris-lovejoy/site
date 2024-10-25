@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="../src/dist/reveal.css" />
+    <link rel="stylesheet" href="../src/dist/theme/night-custom.css" id="theme" />
+    <link rel="stylesheet" href="../src/plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="../src/css/layout.css" />
+	<link rel="stylesheet" href="../src/plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="../src/plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="../src/dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-background-image="10-19 Public Creation/17 Teaching ML for health/Tech doctor background.png" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# How to read a Clinical AI Paper
+## Dr Christopher Lovejoy
+
+
+<aside class="notes"><ul>
+<li><strong>One of the most helpful takeaways from this talk could be a systematic structure to follow when reading a clinical Ai paper -&gt; so I want to make this as clear, and low-friction, for them as possible</strong><ul>
+<li>I&#39;m going to share a checklist that I personally use -&gt; want you to have this as a starting point, and to be able to adapt this</li>
+</ul>
+</li>
+<li>Overview is:<ul>
+<li>~30 minutes of theory</li>
+<li>~30 minutes of us reading a paper in a small group</li>
+<li>~30 minutes presentation and discussion</li>
+</ul>
+</li>
+<li>A bit about me:<ul>
+<li>Medical doctor: studied in Cambridge and worked in London</li>
+<li>Still hold an active license, but mostly focussed on ML in the healthtech start-up space. Have worked at a bunch of start-ups, and now in founding team of a company building LLMs for medical admin automation</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+<!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Reading an AI paper is lot like reading any other paper, plus:
+- Some extra terminology and techniques
+- Some extra considerations in interpretation
+</div>
+<aside class="notes"><ul>
+<li>I&#39;m not going to cover why (will assume) -&gt; but I&#39;ll share some links at the end</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# A systematic approach
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->My personal checklist: www.chrislovejoy.me/ml-papers-checklist
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The ExplainThisPaper.com schema: E.g. https://explainthispaper.com/ai-diagnoses-autism/
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->[CONSORT-AI](https://www.nature.com/articles/s41591-020-1034-x) and [SPIRIT-AI](https://www.bmj.com/content/370/bmj.m3210)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## New Guidelines
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230329152204.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230329152207.png" alt="" style="object-fit: scale-down">
+
+
+<aside class="notes"><ul>
+<li>Our BMJ paper was in 2020 - Current State of Affairs with clinical AI - my BMJ paper (Slides)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 1. Clearly stating how the AI will be used
+
+-   What will the model output? 
+-   How will it be used? 
+-   Where will it fit into existing clinical pathways? 
+-   Who will use it? 
+-   What skills will they require?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 2. Monitoring the model
+
+-   What are the different versions of the model? 
+-   Which one will be used in the study? 
+-   How will it be monitored for errors?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## 3. Processing and inclusion of data
+
+-   What type of data is required? 
+-   How will it be selected? 
+-   How will it be used? 
+-   How will poor quality data be dealt with?
+</div></script></section><section  data-markdown><script type="text/template">
+### Reading an AI paper is lot like reading any other paper, plus:
+- Some extra terminology and techniques
+- Some extra considerations in interpretation
+
+</script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Terminology and techniques
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/AI ML DL for slides.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+<aside class="notes"><ul>
+<li>now definitions for DS, AI, ML and DL</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+
+**Machine learning**: Computers learning without being explicitly programmed
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Some definitions:
+
+
+**Data science**: the use of statistics and advanced algorithms to extract insights from data.
+
+**Artificial intelligence**: “the science of making machines do things that would require intelligence if done by men” – Marvin Minksy
+
+**Machine learning**: Computers learning without being explicitly programmed
+
+**Deep Learning**: A method of machine learning which utilises 'artificial neural networks' (loosely inspired by the human brain) trained on large amounts of data.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Different approaches to learning
+
+1. &shy;<!-- .element: class="fragment" data-fragment-index="1" -->**Supervised learning**: Learn the function that best approximates the relationship between input and output observable in the data. Data has corresponding label/output. "Learning with a teacher". (*Majority of healthcare applications are supervised learning*)
+1. &shy;<!-- .element: class="fragment" data-fragment-index="2" -->**Unsupervised learning**: Infer a natural structure within a set of data points. Data has no corresponding label/output. "Learning without a teacher".
+1. &shy;<!-- .element: class="fragment" data-fragment-index="3" -->**Reinforcement learning**: Learn the function for behaviour that maximises a reward (based on a particular environment or set of rules) 
+
+<aside class="notes"><ol>
+<li>&shy;<!-- .element: class="fragment" data-fragment-index="4" --><strong>(Semi-supervised learning)</strong>: Identify patterns in both data with a label/output and data without it, to be able to perform <em>either</em> supervised or unsupervised tasks.</li>
+</ol>
+<ul>
+<li>The majority of applications in healthcare are <strong>supervised learning</strong>.</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Supervised vs unsupervised learning tasks
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172020.png" alt="" style="width: 1000px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>so let&#39;s talking about supervised learning (partly given that this is most common in healthcare)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Regression
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Predict **continuous** variable given input variables.
+
+Medical examples:
+- Life expectancy
+- Length of hospital stay
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172105.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Classification
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Predict **categorical** variable(s) (ie. "classes") given input variables.
+
+Medical examples:
+- Presence vs absence of particular disease
+- Low-risk vs high-risk for developing a particular condition in future
+- Diabetic vs prediabetic vs non-diabetic
+</div>
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172141.png" alt="" style="width: 1000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Step 1: Training
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-02-02 at 17.23.03.png" alt="" style="width: 2000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Step 2: Inference
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2023-02-02 at 17.23.45.png" alt="" style="width: 2000px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Common algorithms
+
+
+
+Common **classification** algorithms:
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Common algorithms
+
+
+
+Common **classification** algorithms:
+- Logistic regression
+- Support vector machines (SVMs)
+- Tree-based models (e.g. Random forest)
+- k-nearest neighbours (kNN)
+- Neural Networks
+
+<aside class="notes"><ul>
+<li>different models have diff strengths and weaknesses - such as complexity, types of data can handle, etc</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Common algorithms
+
+
+
+Common **regression** algorithms:
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Common algorithms
+
+
+
+Common **regression** algorithms:
+- Linear Regression
+- Polynomial Regression
+- Ridge and Lasso Regression
+- Tree-based models (e.g. Random forest)
+- Support vector machines (SVMs)
+- Neural Networks
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Common algorithms
+
+
+
+Common **clustering** algorithms:
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Common algorithms
+
+
+
+Common **clustering** algorithms:
+- K-means clustering
+- Hierarchical clustering (divisive or agglomerative)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Deep Learning
+
+- **Artificial neural networks** initially inspired by the human brain
+- Strength of connections between nodes is *learnt*. Learn complex relationships from large amounts of data
+- Underpins the area of "Deep Learning"
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Screenshot 2022-10-13 at 17.35.11.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+
+<aside class="notes"><ul>
+<li>Initially biological design -&gt; inspired the neural network approach</li>
+<li>Popular in 1980s/1990s, however popularity died down as high computational capacity required to run such algorithms. Computers have caught up so now extremely useful.</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Convolutional Neural Networks are great at analysing images
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230322144628.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Transformers are great at analysing sequences (including text)
+
+<img src="10-19 Public Creation/17 Teaching ML for health/transfomer.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Extra considerations in interpretation
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Performance Metrics
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Performance metrics depend on the type of task 
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230202172020.png" alt="" style="width: 1200px; object-fit: fill">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Performance Measures: Classification
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Classification Tasks: The Confusion Matrix
+
+<div class="has-light-background" style="background-color: white; padding: 20px; box-sizing: border-box" >
+
+<img src="10-19 Public Creation/17 Teaching ML for health/conf_matrix.png" alt="" style="width: 1200px; object-fit: fill">
+
+</div>
+
+
+<aside class="notes"><ul>
+<li>this is for classification tasks</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Classification Tasks: The *EXTENDED* Confusion Matrix
+<img src="10-19 Public Creation/17 Teaching ML for health/extended_conf_matrix.png" alt="" style="width: 1500px; object-fit: fill">
+
+
+<div class="" style="font-size: 20px" align-content="right">
+
+*Source*: https://en.wikipedia.org/wiki/Confusion_matrix
+</div>
+
+
+<aside class="notes"><ul>
+<li>now let&#39;s hone in on a few of them</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Precision
+
+`$$Precision = \frac{\text{True positives}}{\text{# predicted as positive}}$$`
+`$$= \frac{\text{True positives}}{\text{True positives} + \text{False positives}}$$`
+
+E.g. Of all patients where we predicted cancer, what percentage actually had cancer?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Recall
+
+`$$Recall = \frac{\text{True positives}}{\text{# actual positives}}$$`
+`$$= \frac{\text{True positives}}{\text{True positives} + \text{False negatives}}$$`
+
+Eg. Of all the patients that actually have cancer, what percentage did we correctly diagnose as cancer?
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## F1 Score
+
+`$$\text{F1 Score} = 2 \frac{PR}{P + R}$$`
+
+
+<aside class="notes"><ul>
+<li>TODO: consider adding the other F1 score formulation</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Area Under The ROC-Curve (AUC)
+
+
+AUC is a measure of how well the model discriminates, at different thresholds.
+
+Understanding ROC curves: [www.navan.name/roc/](http://www.navan.name/roc/)
+
+<aside class="notes"><ul>
+<li>TODO: improve the AUC description / walkthrough</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Area Under The ROC-Curve (AUC)
+
+
+AUC is a measure of how well the model discriminates, at different thresholds.
+
+<div class="has-light-background" style="background-color: white; padding: 20px; box-sizing: border-box" >
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230303183152.png" alt="" style="width: 500px; object-fit: fill">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Performance Measures: Regression
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Regression metrics
+
+
+First, we calculate the **residuals**:
+
+<img src="10-19 Public Creation/17 Teaching ML for health/06 Imperial Course 2022/Pasted image 20230302171743.png" alt="" style="width: 400px; object-fit: fill">
+
+
+`$$\text{residual} = y_i - \hat{y_i}$$`
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## MSE, RMSE and MAE
+
+
+`$\text{residual} = y_i - \hat{y_i}$`
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+**From residuals, we can calculate:**
+
+- Mean squared error (MSE): `$\text{MSE} = \frac{1}{n} \sum(y_i - \hat{y_i})^2$`
+- Root mean squared error (RMSE): `$\text{RMSE} = \sqrt{\frac{1}{n} \sum(y_i - \hat{y_i})^2}$`
+- Mean absolute error (MAE)): `$\text{MAE} = \frac{1}{n} \sum|y_i - \hat{y_i}|$`
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## R Squared Score (`$R^2$`)
+
+How much variability is explained by the model?
+
+1 = Model perfectly explains it all
+
+0 = Model explains none of it
+
+
+<div class="has-light-background" style="background-color: white" flow="row">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/high_r2_variance_explained.png" alt="" style="width: 300px; object-fit: fill">
+
+<img src="10-19 Public Creation/17 Teaching ML for health/low_r2_variance_explained.png" alt="" style="width: 300px; object-fit: fill">
+
+</div>
+
+(Left shows high `$R^2$` and right shows low `$R^2$`)
+
+
+<aside class="notes"><p>This slide could be improved a bit.</p>
+<p>I&#39;ve decided not to include the technical detail for now:</p>
+<p><code>$R^{2} = \frac{TSS - RSS}{TSS}$</code></p>
+<p><code>$RSS = \sum(y_i - \hat{y_i})^2$</code></p>
+<p><code>$TSS = \sum(y_i - \bar{y})^2$</code></p>
+<p>This overcomes some limitations of error-based measures.</p>
+</div></aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Resources to understand performance metrics
+
+- (BLOG) “[The philosophical reason for using ROC curves](https://lukeoakdenrayner.wordpress.com/2018/01/07/thephilosophical-argument-for-using-roc-curves)” – Luke Oakden-Rayner
+- (VIDEO) “[How to assess machine learning models for healthcare](https://www.youtube.com/watch?v=xlrj1iFCYUk)”
+- (WEBSITE) Interactive AUC diagram: http://www.navan.name/roc/
+- (BLOG) [Regression Metrics](https://towardsdatascience.com/regression-an-explanation-of-regression-metrics-and-what-cango-wrong-a39a9793d914) - Towards Data Science
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Clinical Impact
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Good model performance alone is not enough
+
+- Good model performance does not guarantee a positive clinical outcome. It is necessary, but not sufficient.
+- The model must lead to a real-world benefit and be safe once incorporated into clinical workflows.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Assessing clincial impact
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Assessing clincial impact
+
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+Types of study:
+- prospective
+	- randomised control trial
+	- non-randomised control trial
+- retrospective
+</div>
+
+<aside class="notes"><ul>
+<li>Q: what are these? which is better?</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Randomised control trials (RCTs) are the gold standard evidence in medicine
+
+<img src="10-19 Public Creation/13 Personal website/02-personal-website/assets/images/article-images/colonoscopy_RCT.png" alt="" style="width: 1200px; object-fit: fill">
+
+
+[Effect of a deep-learning computer-aided detection system on adenoma detection during colonoscopy (CADe-DB trial): a double-blind randomised study](https://www.thelancet.com/pdfs/journals/langas/PIIS2468-1253(19)30411-X.pdf)
+
+
+<aside class="notes"><ul>
+<li>(describe what they did in the study)</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prospective studies are stronger evidence than retrospective studies
+
+
+- There is more risk of confounding in retrospective studies
+- Performance often drops when retrospective studies is repeated prospectively
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prospective studies are stronger evidence than retrospective studies
+
+
+“There was no difference in cancer detection rate... For women screened with and without CAD”
+
+<div class="" style="font-size: 20px" >
+
+*[Diagnostic Accuracy of Digital Screening Mammography With and Without Computer-Aided Detection](https://www.ncbi.nlm.nih.gov/pubmed/26414882) – Lehman et al.* 
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Prospective studies are stronger evidence than retrospective studies
+
+
+“CC-Cruiser is an AI platform for diagnosing childhood cataracts… high accuracy was previously validated using specific datasets. [In a randomized control trial] CC-Cruiser exhibited less accurate performance compared to senior consultants in diagnosing childhood cataracts and making treatment decisions”
+
+<div class="" style="font-size: 20px" >
+
+*[Diagnostic Efficacy and Therapeutic Decision-making Capacity of an Artificial Intelligence Platform for Childhood Cataracts in Eye Clinics: A Multicentre Randomized Controlled Trial](https://pubmed.ncbi.nlm.nih.gov/31143882/)*
+</div>
+
+<aside class="notes"><ul>
+<li>and can go onto Current State of Affairs with clinical AI - my BMJ paper (Slides) now if I want</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Other Considerations
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Machine Learning model performance may change over time
+
+<div class="" style="display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->Traditional statistical models don't change once fitted - machine learning models can be re-fitted on new data
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->Changes in how data is collected can change model performance (**data drift**) - e.g. a new CT scanner
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->Therefore, it's important to:
+	- monitor performance of the model over time
+	- use model versioning to track model changes
+	- log errors and exceptions
+</div>
+
+
+<aside class="notes"><ul>
+<li>This has high relevance for regulation</li>
+<li>Other considerations<ul>
+<li>Scalability: Ensuring that the model can scale to handle increasing volumes of data and traffic is important, and may require additional infrastructure or cloud resources.</div></li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## The model is only as good as the data it's trained on
+
+- If the pattern is not in the data, the model won't be able to identify it
+- Therefore, a key question is: **Is the data representative of the population the model will be applied in?**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Deep learning algorithms are not inherently interpretable
+
+- We want to understand how the model makes decisions
+- This can be challenging with deep learning
+- Some approaches have been developed – e.g. saliency maps for CNNs
+
+<img src="10-19 Public Creation/17 Teaching ML for health/Pasted image 20230316161340.png" alt="" style="width: 500px; object-fit: fill">
+
+
+*(see also: [AI models are inherently difficult to interpret](https://chrislovejoy.me/ec8a0c6b2ddf9d2ba9385cb638b92d74998b801d) and [methods for interpreting and explaining AI models](https://chrislovejoy.me/9537beebe3aa370886ec4946e4d68d80db73b2cd))*
+
+<aside class="notes"><ul>
+<li></div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Practical Exercise
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" data-auto-animate="true" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Practical Exercise
+
+- In small groups (2-4), choose a paper to read and analyse
+- Work through questions on the checklist (as appropriate)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Landmark Papers
+
+- First paper using deep learning: [Dermatologist-level classification of skin cancer with deep neural networks](https://pubmed.ncbi.nlm.nih.gov/28117445/) (Jan 2017)
+- Another early deep learning paper: [Diagnosing retinal disease from eye scans](https://pubmed.ncbi.nlm.nih.gov/30104768/) (Sept 2018)
+- First clinical paper using RL: [Recommending treatments for sepsis (using reinforcement learning)](https://pubmed.ncbi.nlm.nih.gov/30349085/) (Nov 2018)
+- Early large scale study using commercial device (apple watch): [Detecting atrial fibrillation using a smart watch](https://www.nejm.org/doi/10.1056/NEJMoa1901183) (Nov 2019)
+- First RCT: [Effect of a deep-learning computer-aided detection system on adenoma detection during colonoscopy (CADe-DB trial): a double-blind randomised study](<https://www.thelancet.com/pdfs/journals/langas/PIIS2468-1253(19)30411-X.pdf>) (April 2020)
+- Early commercial application of deep learning: [Automated detection of intracranial large vessel occlusions using Viz.ai software](https://pubmed.ncbi.nlm.nih.gov/36457286/) (Jan 2023)
+
+
+<aside class="notes"><ul>
+<li>you can find your own papers. I&#39;m happy to help if need be</li>
+</ul>
+<ol start="4">
+<li><a href="https://pubmed.ncbi.nlm.nih.gov/34265844/">Predicting protein structure based on sequence (AlphaFold)</a></li>
+</ol>
+<h3 id="potential-papers">Potential papers</h3>
+<ul>
+<li>I want to give you the opportunity to choose your own papers -&gt; but if you want help, check out:</li>
+</ul>
+<h1 id="other-techniques">Other techniques</h1>
+<ul>
+<li>question-driven approach</li>
+<li>[anything else?]</div></li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## A systematic approach
+
+- &shy;<!-- .element: class="fragment" data-fragment-index="1" -->My personal checklist: www.chrislovejoy.me/ml-papers-checklist
+- &shy;<!-- .element: class="fragment" data-fragment-index="2" -->The ExplainThisPaper.com schema: E.g. https://explainthispaper.com/ai-diagnoses-autism/
+- &shy;<!-- .element: class="fragment" data-fragment-index="3" -->[CONSORT-AI](https://www.nature.com/articles/s41591-020-1034-x) and [SPIRIT-AI](https://www.bmj.com/content/370/bmj.m3210)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Presenting
+
+1. What's the problem it's solving?
+2. What did they do?
+3. Is it helpful? Is it novel?
+4. Any concerns of limitations? How much do you trust the findings?
+5. What's the key take away?
+6. What are the next steps?
+
+**3 minutes presentation, 1-2 minutes questions/discussion**
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 1200px; width: 1920px; min-height: 1200px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Resources
+
+- My checklist for reading AI papers: www.chrislovejoy.me/ml-papers-checklist
+- “[How to Read Articles That Use Machine Learning - Users’ Guides to the Medical Literature](https://jamanetwork.com/journals/jama/article-abstract/2754798)”  – Faes et al., Translational Vision Science & Technology, Feb 2020 
+ “[A Clinician's Guide to Artificial Intelligence: How to Critically Appraise Machine Learning Studies](https://academic.oup.com/ehjdh/article/3/2/125/6567505)” – Liu et al., JAMA, Nov 2019
+- [How Reading Papers Helps You Be a More Effective Data Scientist](https://eugeneyan.com/writing/why-read-papers/) by Eugene Yan
+- [ExplainThisPaper.com](https://explainthispaper.com/)
+</div></script></section></div>
+    </div>
+
+    <script src="../src/dist/reveal.js"></script>
+
+    <script src="../src/plugin/markdown/markdown.js"></script>
+    <script src="../src/plugin/highlight/highlight.js"></script>
+    <script src="../src/plugin/zoom/zoom.js"></script>
+    <!-- <script src="plugin/notes/notes.js"></script> -->
+    <script src="../src/plugin/math/math.js"></script>
+	<script src="../src/plugin/mermaid/mermaid.js"></script>
+	<script src="../src/plugin/chart/chart.min.js"></script>
+	<script src="../src/plugin/chart/plugin.js"></script>
+	<script src="../src/plugin/menu/menu.js"></script>
+	<script src="../src/plugin/customcontrols/plugin.js"></script>
+	<script src="../src/plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+        //   RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+		  RevealMenu,
+	      RevealPointer
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: '../src/plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+				{id: 'toggle-overview',
+				title: 'Toggle overview (O)',
+				icon: '<i class="fa fa-th"></i>',
+				action: 'Reveal.toggleOverview();'
+				},
+			]
+		},
+		menu: {
+			loadIcons: false
+		}
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":1920,"height":1200,"margin":0,"controls":true,"progress":true,"slideNumber":true,"transition":"concave","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
