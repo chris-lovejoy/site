@@ -43,7 +43,7 @@ copyright:
 # meta: Using the :THEME theme for :PLATFORM.
 
 not_found:
-  statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. Sometimes I link to a page that's in draft but I that haven't published yet.
+  statement: Sorry, we've misplaced that URL or it's pointing to something that doesn't exist. (Sometimes I link to a page that's in draft but I that haven't published yet.)
 
 notification:
   update_found: A new version of content is available.
