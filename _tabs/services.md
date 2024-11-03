@@ -30,8 +30,68 @@ I can guide you through the challenges of AI product development in healthcare, 
 
 ... including many others like Vtuls, Pulse Active Stations Network (YC-backed), ProBiometrics Ltd.
 
-<!-- [TODO: add a "request a consultation button" here] -->
+<!-- TODO: tidy up the below -->
+<style>
+.service-btn {
+  background-color: var(--link-color);
+  color: #ffffff !important;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: transform 0.2s ease;  /* Only transition the transform property */
+  display: inline-block;
+  text-decoration: none !important;
+  margin: 1.5rem 0;
+  min-width: 250px;
+  text-align: center;
+}
 
+.service-btn,
+.service-btn:hover,
+.service-btn:visited,
+.service-btn:active,
+.service-btn:focus {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background-color: var(--link-color) !important; /* Force same background color on all states */
+}
+
+.service-btn:hover {
+  transform: translateY(-1px);
+}
+
+.service-btn + .service-btn {
+  margin-left: 1rem;
+}
+
+/* Dark mode support */
+[data-mode="dark"] .service-btn {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 576px) {
+  .service-btn {
+    display: block;
+    width: 100%;
+  }
+  
+  .service-btn + .service-btn {
+    margin-left: 0;
+  }
+}
+</style>
+
+<div>
+  <a href="https://form.typeform.com/to/Supw6G1n" target="_blank" class="service-btn">
+    Request a consultation
+  </a>
+  <!-- <a href="#testimonials" class="service-btn">
+    See testimonials
+  </a> -->
+</div>
 
 ### My background is not like many others
 
