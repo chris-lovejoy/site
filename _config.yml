@@ -74,8 +74,8 @@ analytics:
     id: 305c5fad-6699-48b0-a8e3-8329cc884bf5
     domain: https://eu.umami.is/websites/305c5fad-6699-48b0-a8e3-8329cc884bf5
   matomo:
-    id: # fill in your Matomo ID
-    domain: # fill in your Matomo domain
+    id: 1
+    domain: https://chrislovejoy.matomo.cloud/
   cloudflare:
     id: # fill in your Cloudflare Web Analytics token
   fathom:
