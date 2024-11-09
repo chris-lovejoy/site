@@ -32,8 +32,8 @@ To get started, open the [OpenAI Playground](https://platform.openai.com/playgro
 If you're interested in deep learning, then it's worth building some intuition on what it means to train a model. Learning some maths can be helpful - but learn it from a machine learning lens to avoid going down a maths rabbit-hole.
 
 To get started:
-1. Watch this video: https://youtube.com/watch?v=nrHH8y7cKAc
-2. Take this course by Imperial College London: https://coursera.org/specializations/mathematics-machine-learning
+1. Watch [this video](https://youtube.com/watch?v=nrHH8y7cKAc)
+2. Take [this course by Imperial College London](https://coursera.org/specializations/mathematics-machine-learning)
 
 Together, this gives you a solid base and is probably all you need.
 
