@@ -20,7 +20,7 @@ I find it helpful to segment into the following 3 groups:
 Where to start depends on what you want to learn. You should probably learn to code, but only learn maths if it's necessary (and it's most relevant for deep learning).
 
 
-### Learning generative AI
+### Generative AI
 
 If you're interested in generative AI, unless you're going really deep and creating your own models (which is unlikely), then you should just learn to code and not worry about the maths. Interacting with this models is through text (ie. prompts) and code (to pass the data to the model).
 
@@ -32,6 +32,7 @@ To get started, open the [OpenAI Playground](https://platform.openai.com/playgro
 If you're interested in deep learning, then it's worth building some intuition on what it means to train a model. Learning some maths can be helpful - but learn it from a machine learning lens to avoid going down a maths rabbit-hole.
 
 To get started:
+
 1. Watch [this video](https://youtube.com/watch?v=nrHH8y7cKAc)
 2. Take [this course by Imperial College London](https://coursera.org/specializations/mathematics-machine-learning)
 
