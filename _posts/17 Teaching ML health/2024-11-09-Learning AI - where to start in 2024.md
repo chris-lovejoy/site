@@ -13,6 +13,7 @@ An academic medical doctor recently asked me: "I want to learn about AI - should
 My response was: **It depends what type of ML you want to do**.
 
 I find it helpful to segment into the following 3 groups:
+
 1. **generative AI** - building things using LLMs
 2. **deep learning** - training deep neural networks for e.g. image classification
 3. "**traditional ML**" - algorithms that don't involve training a neural network, such as classifiers like SVMs, random forest, nearest neighbours
