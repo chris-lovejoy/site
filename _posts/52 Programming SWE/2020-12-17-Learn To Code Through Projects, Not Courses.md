@@ -142,10 +142,9 @@ Courses certainly have their place. But you need to get off them as soon as poss
 
 The possibilities for making cool things with code are endless - let’s get started! :)
 
-### 🤩 Enjoy this article?
-
-[Subscribe to my newsletter](https://chrislovejoy.substack.com/) for updates on my projects.
 
 ---
 
 _Many thanks to [Luke Harries](https://twitter.com/LukeHarries_), Abdel Mahmoud and Alok Suresh for feedback on this article._
+
+_Also available on [Medium](https://towardsdatascience.com/6-reasons-you-should-learn-to-code-through-projects-not-courses-a6ffe4438fda)_
