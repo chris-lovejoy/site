@@ -1,7 +1,7 @@
 ---
 image:
 title: 5 ways to reduce the risk and impact of LLM hallucinations
-permalink: hallucinations
+permalink: reduce-hallucinations
 redirect_from:
 public_date: 2024-11-15
 type: article
