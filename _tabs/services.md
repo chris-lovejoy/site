@@ -8,25 +8,25 @@ redirect_from:
 image: 
 ---
 
-If you're a a technical leader at a healthcare startup looking to improve your AI product, I'd love to help. My experience includes:
-- Setting up evaluation systems that enable rapid iteration and improvement of AI performance while ensuring algorithms are safe and reliable
-- Building teams and processes that effectively combine AI and clinical expertise
-- Helping companies utilise the latest cutting edge AI techniques and research to deliver tangible value to patients/customers
+If you're a a technical leader looking to improve your AI product, I'd love to help. My experience includes:
+- Setting up evaluation systems that enable quick AI iteration while maintaining reliability and safety and in mission-critical industries such as healthcare
+- Building teams and processes that combine AI and domain expertise effectively
+- Helping companies utilise the latest cutting edge AI techniques and research to deliver tangible value to customers
 
-I can guide you through the challenges of AI product development in healthcare, ensuring your team is set up to move fast while ensuring safety and responsible development.
+I can guide you through the challenges of AI product development, ensuring your team is set up to move fast, leverage new technology effectively and differentiate you from competitors.
 
 
 ### Some of my clients
 
-| Client                  | Description                                | Contact    |
-| ----------------------- | ------------------------------------------ | ---------- |
-| ZOE                     | Personalised nutrition using blood glucose | CTO        |
-| Cera Care               | Tech-enabled home care provider            | CTO        |
-| Curb AI                 | Behavioural change for addiction           | CPO        |
-| Suvera                  | Virtual patient health monitoring          | CEO        |
-| BiteMedicine            | A medical knowledge platform               | CEO        |
-| Priority Digital Health | Platform for self-management of health     | CTO        |
-| Clinical Metrics        | A medical education patient simulator      | Co-Founder |
+| Client                  | Description                                             | Contact    |
+| ----------------------- | ------------------------------------------------------- | ---------- |
+| ZOE                     | Personalised nutrition using blood glucose              | CTO        |
+| Cera Care               | Tech-enabled home care provider                         | CTO        |
+| Curb AI                 | Digital platform for behaviour change such as addiction | CPO        |
+| Suvera                  | Virtual patient health monitoring                       | CEO        |
+| BiteMedicine            | A medical knowledge platform                            | CEO        |
+| Priority Digital Health | Platform for self-management of health                  | CTO        |
+| Clinical Metrics        | A medical education patient simulator                   | Co-Founder |
 
 ... including many others like Vtuls, Pulse Active Stations Network (YC-backed), ProBiometrics Ltd.
 
@@ -41,7 +41,7 @@ I can guide you through the challenges of AI product development in healthcare, 
   cursor: pointer;
   font-size: 1rem;
   font-weight: 600;
-  transition: transform 0.2s ease;  /* Only transition the transform property */
+  transition: transform 0.2s ease;
   display: inline-block;
   text-decoration: none !important;
   margin: 1.5rem 0;
@@ -56,7 +56,7 @@ I can guide you through the challenges of AI product development in healthcare, 
 .service-btn:focus {
   color: #ffffff !important;
   text-decoration: none !important;
-  background-color: var(--link-color) !important; /* Force same background color on all states */
+  background-color: var(--link-color) !important;
 }
 
 .service-btn:hover {
@@ -95,21 +95,23 @@ I can guide you through the challenges of AI product development in healthcare, 
 
 ### My background is not like many others
 
-I spent 8 years studying medicine and working as a doctor in Cambridge and London - before fully switching to AI in 2019. Since then I've worked across the spectrum, from [cutting-edge research](https://scholar.google.com/citations?user=g3MOrpcAAAAJ) to AI-powered products affecting millions.
+I spent 8 years studying medicine and working as a doctor in Cambridge and London, before moving to AI full-time in 2019. Since then I've worked across the spectrum, from [cutting-edge research](https://scholar.google.com/citations?user=g3MOrpcAAAAJ) to AI-powered products affecting millions.
 
-I've led >20 projects at the cutting edge of AI in healthcare. My mandate has always been: *AI technology has improved - how can we apply this to healthcare in a safe and effective way, which meaningfully improves patients/customers*
+I've used my medical background to figure out how we should be incorporating domain expertise into AI products (initially in healthcare, then beyond). I've built pragmatic evaluation systems, which are essential for mission-critical industries like healthcare.
 
-In the last 2 years AI capability has improved beyond a point that many never thought it would reach.
+I've led >20 projects at the cutting edge of AI in healthcare. My mandate has always been: *AI can now do X - how can we use this to solve a real pain point, while proving and maintaining a strong performance over time*.
+
+In the last 2 years, AI capability has improved beyond a point that many never thought it would reach. As part of the founding team at [Anterior](https://www.anterior.com/news/anterior-raises-series-a), I've been at the forefront of that change. 
 
 I know what it takes to go from theory to real-world impact. Rather than telling you about the latest shiny new models, I'll guide you towards practical solutions:
 - Create simple baselines
 - Focus on simple systems
-- Prioritise business and patient outcomes
+- Prioritise business outcomes
 
 This pragmatic approach has been at the core of the following:
-- Buidling a clinical decision making system used by US healthcare insurers that cover 10s of millions of lives (at [Anterior](https://anterior.com/))
-- Building algorithms to predict clinical need, enabling the safer delivery of home care (at [Cera Care](https://ceracare.co.uk/)) 
-- Building the first model to accurately predict blood glucose from non-invasive measurements (at [ZOE](https://zoe.com/))
+- Building a clinical decision making system used by US healthcare insurers that cover 10s of millions of lives (at [Anterior](https://www.anterior.com/news/anterior-raises-series-a))
+- Building algorithms to predict clinical need, enabling the safer delivery of home care (at [Cera Care](https://sifted.eu/articles/cera-biggest-elderly-care-round)) 
+- Building the first model to accurately predict blood glucose from non-invasive measurements (at [ZOE](https://techcrunch.com/2024/07/30/nutrition-microbiome-zoe/))
 
 
 <!-- ### What people are saying -->
