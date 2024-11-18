@@ -9,8 +9,8 @@ image:
 ---
 
 If you're a a technical leader at a healthcare startup looking to improve your AI product, I'd love to help. My experience includes:
-- Building teams and processes that effectively combine AI and clinical expertise
 - Setting up evaluation systems that enable rapid iteration and improvement of AI performance while ensuring algorithms are safe and reliable
+- Building teams and processes that effectively combine AI and clinical expertise
 - Helping companies utilise the latest cutting edge AI techniques and research to deliver tangible value to patients/customers
 
 I can guide you through the challenges of AI product development in healthcare, ensuring your team is set up to move fast while ensuring safety and responsible development.
