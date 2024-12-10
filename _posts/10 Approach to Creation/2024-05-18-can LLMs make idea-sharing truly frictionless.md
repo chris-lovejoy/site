@@ -33,7 +33,7 @@ I've played around with trying to make sharing ideas easier in the past:
     
     a. **Problem:** it's very easy to end up using this time for other more immediate priorities.
     
-3. **Using LLMs to redraft my articlesa**
+3. **Using LLMs to redraft my articles**
     
     a. **Problem**: Just using LLMs to edit / redraft doesn't get you all the way there - you still need to put in the hard work to synthesise the ideas well.
 
