@@ -88,9 +88,9 @@ I can guide you through the challenges of AI product development, ensuring your 
   <a href="https://form.typeform.com/to/Supw6G1n" target="_blank" class="service-btn">
     Request a consultation
   </a>
-  <!-- <a href="#testimonials" class="service-btn">
+  <a href="#what-people-are-saying" class="service-btn">
     See testimonials
-  </a> -->
+  </a>
 </div>
 
 ### My background is not like many others
@@ -114,8 +114,18 @@ This pragmatic approach has been at the core of the following:
 - Building the first model to accurately predict blood glucose from non-invasive measurements (at [ZOE](https://techcrunch.com/2024/07/30/nutrition-microbiome-zoe/))
 
 
-<!-- ### What people are saying -->
-<!-- [TODO: get testimonials and add them here]  -->
+### What people are saying
+
+#### [Caroline](https://www.linkedin.com/in/caroline-morton-0/), CEO at Clinical Metrics
+
+Chris is a great developer to work with. He listens carefully to the design specifications, and asks questions so he really understands the problem he is trying to solve. He is independent and able to work without much direction, which is essential for a busy founder.
+
+<!-- Chris wrote python programs for us. One amplified a dataset of question and answer pairs which allowed us to expand a training dataset. Another program was more complex and involved implementing sentence embeddings into a chatbot system, with unit tests and various bench marking. -->
+
+
+#### [John](https://www.linkedin.com/in/johndibb/), Co-founder / CTO at Priority Digital Health
+
+Working with Chris was simple and efficient, despite us working on a complicated piece of work. Chris applied an astute understanding of our aspirations for the product, and was able to apply his technical expertise to our needs from a product and commercial perspective.
 
 
 ### How best to work with me
