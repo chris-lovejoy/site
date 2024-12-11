@@ -23,7 +23,7 @@ timezone:
 
 title: Chris Lovejoy
 
-tagline: Medical Doctor, AI Engineer
+tagline:  # Medical Doctor, AI Engineer
 
 description: >- # used by seo meta and the atom feed
   Doctor turned ML engineer
