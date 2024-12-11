@@ -69,7 +69,7 @@ analytics:
   google:
     id: # fill in your Google Analytics ID
   goatcounter:
-    id: # fill in your GoatCounter ID
+    id: chris-lovejoy # fill in your GoatCounter ID
   umami:
     id: 305c5fad-6699-48b0-a8e3-8329cc884bf5
     domain: https://eu.umami.is/websites/305c5fad-6699-48b0-a8e3-8329cc884bf5
