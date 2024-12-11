@@ -14,22 +14,30 @@ Hi! 👋 I'm Chris Lovejoy. My story so far:
 
 ## Short Version
 
-- 2011-2017: Studied Medicine at Cambridge University, dabbling in research, statistics and teaching
-- 2017-2019: Worked as a doctor and at a healthtech start-up (at intersection of healthcare and AI)
-- 2019-2021: Did a master's degree in machine learning and worked in industry as a data scientist
-- 2021-2022: Started my own start-up, raised investment
-- 2023: Left that start-up, now building something new and freelancing ([[Services|building AI models using health data]])
+- 2011 - 2017: Studied Medicine at Cambridge University, dabbling in research, statistics and teaching
+- 2017 - 2019: Worked as a doctor and at a healthtech start-up (at intersection of healthcare and AI)
+- 2019 - 2021: Did a master's degree in machine learning and worked in industry as a data scientist
+- Sep 2021 - Dec 2022: Founded a company (health data infra), raised investment
+- Jan 2023 - Aug 2023: AI consultant and solopreneur / indie hacker
+- Aug 2023 - now: Founding team at [Anterior](http://www.anterior.com), building an AI clinical brain
+
 
 ---
 
 ## Longer Version (reverse chronological)
 
-### Bottom-Up Entrepreneurship *(Jan 2023 - Now)*
-My focus right now is on [[Im now building in public - 2023-01|building things in public]]. I switched my focus from [[Top-down vs bottom-up entrepreneurship|"top-down" to "ground-up" entrepreneurship]]. <!-- TODO: update to more fleshed out article--> I'm dividing my time between [freelancing](./services) and building [[52 startups in 52 weeks|fun projects that I hope can become businesses]].
+### Building a Clinical Brain *(Aug 2023 - Now)*
+In Progress
+
+
+### Consulting and Bottom-Up Entrepreneurship *(Jan 2023 - Aug 2023)*
+I divided my time between [freelancing consulting](./services) and building [[52 startups in 52 weeks|fun projects that could become businesses]]. I built up my savings while hanging out a bunch with my kid, but started to miss working in a team towards a bigger picture objective.
+
+My approach was to [[Im now building in public - 2023-01|build in public]] and to focus on what I call "bottom-up" enterpreneurship rather than a more "top-down" approach I took during my first start-up. <!-- TODO: update to more fleshed out article--> 
 
 
 ### Top-Down Entrepreneurship *(Sept 2021 - Dec 2022)*
-In 2021, I started a company to accelerate the transition towards patient-owned health data, and the benefits that would enable. We received financial investment and support from [Entrepreneur First](https://www.joinef.com), [AAVE](https://aave.com), [Oasis Labs](https://www.oasislabs.com), amongst others. I gave it a good go, learnt a lot but ultimately stopped working on the project in December. One limiting factor was that the current ecosystem for decentralised storage of data is still maturing (and not really ready for the challenges health data storage presents).  <!-- TODO: write article on learnings and update link here -->
+In 2021, I started a company to accelerate the transition towards patient-owned health data, and the benefits that would enable. We received financial investment and support from [Entrepreneur First](https://www.joinef.com), [AAVE](https://aave.com), [Oasis Labs](https://www.oasislabs.com), amongst others. I gave it a good go, learnt a lot but ultimately stopped working on the project in December. The vision was great but the technology for decentralised storage of health data is just not there yet. <!-- One limiting factor was that the current ecosystem for decentralised storage of data is still maturing (and not really ready for the challenges health data storage presents).--> <!-- TODO: write article on learnings and update link here -->
 
 
 ### Deep-dive Machine Learning *(Aug 2019 - Aug 2021)*

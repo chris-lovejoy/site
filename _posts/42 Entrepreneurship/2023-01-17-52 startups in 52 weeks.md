@@ -49,5 +49,3 @@ Pieter [defines a startup](https://levels.io/12-startups-12-months/) quite broad
 **Week 2 (16th - 22nd Jan)**: I launched my personal website (www.chrislovejoy.me). (Stretching the 'startup' idea here.. but I do hope to monetise this site at some point, and I spent 30+ hours on this, so didn't have time to ship much else.)
 
 **Week 3 (23rd Jan - 29th Jan)**: I started to build a chatGPT-derived tweet-thread generator, but decided against it because it's a pretty crowded space (and I'm not that passionate about viral tweet threads).
-
-Progress report continued here: [[Projects Ive Shipped in 2023]]
