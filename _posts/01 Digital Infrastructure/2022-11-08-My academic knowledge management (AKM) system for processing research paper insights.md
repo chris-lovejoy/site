@@ -10,7 +10,9 @@ type: article
 status: complete
 ---
 
-*How I published 15 academic papers in my free time, using Obsidian, Zotero and Overleaf*
+### *How I published 15 academic papers in my free time, using Obsidian, Zotero and Overleaf*
+
+**Download the Obsidian template [here](https://github.com/chris-lovejoy/academic-knowledge-management)**
 
 ---
 
