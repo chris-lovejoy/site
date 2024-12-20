@@ -1,17 +1,19 @@
-## Template › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md#setting-author-url
-# -------------------------------------
-# {author_id}:
-#   name: {full name}
-#   twitter: {twitter_of_author}
-#   url: {homepage_of_author}
-# -------------------------------------
+chris_lovejoy:
+  name: Chris Lovejoy
+  twitter: ChrisLovejoy_
+  url: https://github.com/chris-lovejoy/
 
-cotes:
-  name: Cotes Chung
-  twitter: cotes2020
-  url: https://github.com/cotes2020/
+demian_till:
+  name: Demian Till
+  twitter:
+  url: 
 
-sille_bille:
-  name: Dinesh Prasanth Moluguwan Krishnamoorthy
-  twitter: dinesh_MKD
-  url: https://github.com/SilleBille/
+william_davies:
+  name: William Davies
+  twitter:
+  url: https://github.com/william-davies
+
+louis_prosser:
+  name: Louis Prosser
+  twitter:
+  url: https://github.com/LouisP96
