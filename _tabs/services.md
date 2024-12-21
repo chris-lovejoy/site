@@ -85,8 +85,11 @@ I can guide you through the challenges of AI product development, ensuring your 
 </style>
 
 <div>
-  <a href="https://form.typeform.com/to/Supw6G1n" target="_blank" class="service-btn">
+  <!-- <a href="https://form.typeform.com/to/Supw6G1n" target="_blank" class="service-btn">
     Request a consultation
+  </a> -->
+  <a href="https://cal.com/chris-lovejoy" target="_blank" class="service-btn">
+    Book a call
   </a>
   <a href="#what-people-are-saying" class="service-btn">
     See testimonials
