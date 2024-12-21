@@ -256,6 +256,7 @@ One avenue of future improvements is technical; we see multi-task learning for t
 
 Our work could also be extended to generate longer summaries, perhaps as bullet-points, which may have higher utility than titles alone. Additionally, multimodal approaches could be considered[^41] to incorporate the visual information that videos contain. Such work would be necessary to extend our approach to videos where speech is not the principal modality.
 
+---
 
 ## Appendix
 
@@ -335,6 +336,8 @@ Please see Table 7.
 ![](/assets/images/truth-in-the-title/egs_table.PNG){: w="600" h="400" }
 _Fig 5: Examples where generated titles outperform true titles. U: Useful, S: Succinct, WW: Well-Written, A: Accuracy. Mean scores are reported._
 
+
+---
 
 
 ## Citing this work
