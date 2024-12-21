@@ -8,6 +8,7 @@ tags:
 image: assets/images/article-covers/microphone.jpeg
 type: article
 status: complete
+author: mandeep_singh
 ---
 About 3 years ago, I developed a deep interest in learning to rap well. I emphasize the word ‘developed’ because up until this point, I was waiting to passively discover a passion which would somehow carry me towards expertise.
 
