@@ -11,13 +11,15 @@ status: complete
 authors: [chris_lovejoy, demian_till, william_davies, louis_prosser]
 ---
 
-**_Download a PDF version of this article [here](/assets/pdfs/Truth_is_in_the_title.pdf)_**
-**_Access the dataset generated for this work [here](https://github.com/chris-lovejoy/youtube-titles-and-transcripts)_**
-
 
 ## Abstract
 
 We propose the task of video title generation (VTG) and present the YouTube Titles and Transcripts (YTT) dataset which consists of 17,886 video titles and accompanying transcripts. We approach the problem both as a forward-predictive task and as a summarisation task and explore a number of methods for pre-processing the video transcripts to extract pertinent information. Our human evaluation found that titles generated using a forward predictive approach were more succinct and in some cases more informative than the ground truth titles. Generating video titles could have real-world utility, to support information extraction from video content: both by consumers and by algorithms.
+
+
+**_Download a PDF version of this article [here](/assets/pdfs/Truth_is_in_the_title.pdf)_**.
+
+**_Access the dataset generated for this work [here](https://github.com/chris-lovejoy/youtube-titles-and-transcripts)_**.
 
 
 ## Introduction
