@@ -12,6 +12,7 @@ authors: [chris_lovejoy, demian_till, william_davies, louis_prosser]
 ---
 
 **_Download a PDF version of this article [here](/assets/pdfs/Truth_is_in_the_title.pdf)_**
+**_Access the dataset generated for this work [here](https://github.com/chris-lovejoy/youtube-titles-and-transcripts)_**
 
 
 ## Abstract
