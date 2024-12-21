@@ -1,3 +1,15 @@
+---
+image: 
+title: Pausing this weekly email
+permalink: pausing
+redirect_from: 
+public_date: 2020-12-22
+type: article
+status: 
+tags:
+- weekly-email
+---
+
 
 #### **TL;DR**
 
@@ -13,19 +25,16 @@ This year, I decided to make sharing and learning in public a priority. I’m in
 I reflected on mediums through which to do this at the end of last year, and opted for:
 
 - Weekly writing ✅
-    
 - YouTube videos ✅
-    
 - Podcasts ❌
-    
 - Other ❌
-    
 
-I shared [my rationale for the weekly email](https://buttondown.email/ChrisLovejoy/archive/my-first-weekly-email-newsletter-starting-from/?utm_source=chris-lovejoy&utm_medium=email), which was basically (i) commit to weekly to build the writing habit, (ii) make it public to ensure I put in the effort and (iii) encourage myself to stop and reflect.
+I shared my rationale for the weekly email, which was basically (i) commit to weekly to build the writing habit, (ii) make it public to ensure I put in the effort and (iii) encourage myself to stop and reflect.
 
-A month in I added another condition: [to avoid superficiality](https://buttondown.email/ChrisLovejoy/archive/avoiding-superficiality-the-future-of-this-weekly/?utm_source=chris-lovejoy&utm_medium=email) by writing on larger topics as a series of smaller emails.
+A month in I added another condition: [to avoid superficiality](https://buttondown.email/ChrisLovejoy/archive/avoiding-superficiality-the-future-of-this-weekly/?utm_source=chris-lovejoy&utm_medium=email) by writing on larger topics as a series of smaller emails.
 
 Alongside this, I committed to making one YouTube video a week. I played around with various different ‘types’ of video, including vlogs, educational videos and reflections.
+
 
 #### How it went
 
@@ -43,11 +52,9 @@ I wrote several email series:
 I made a load of Youtube videos too (56 in total). Most of them are (respectfully) pretty bad. The only ones I’d recommend are:
 
 1. [A day in the life of a data scientist (during COVID)](https://www.youtube.com/watch?v=Y69ma9ad4_k&utm_source=chris-lovejoy&utm_medium=email)
-    
 2. [My Machine Learning for Healthcare Series](https://www.youtube.com/watch?v=dj_mF4OlcUY&list=PLZz4IsmMUFBxfuW059IEdqtPuytFG-vae&utm_source=chris-lovejoy&utm_medium=email)
-    
 3. [My Learning to Code for Medicine Series](https://www.youtube.com/watch?v=ve9Mz58p4VA&list=PLZz4IsmMUFBw-1i7MujDwNoWE2mK4Yt53&utm_source=chris-lovejoy&utm_medium=email)
-    
+
 
 With the consistency, I saw a slow-and-steady growth rate that gradually increased. For example, my YouTube went from around 0 -> ~600 subscribers in the first 8 months, but from ~600 -> ~2,000 subscribers in the final 4 months.
 
