@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-info-circle
-order: 7
+order: 8
 title: About Me
 permalink: about-me
 redirect_from: 
