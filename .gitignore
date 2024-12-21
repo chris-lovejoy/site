@@ -3,3 +3,4 @@ node_modules/**
 .DS_Store
 venv/**
 .obsidian/workspace.json
+.obsidian/core-plugins.json
