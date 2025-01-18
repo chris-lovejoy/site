@@ -3,6 +3,7 @@ stats:
   last_updated: "2025-01-18T12:00:00Z"
   goal: 30000
   goal_date: "2026-01-01T12:00:00Z"
+  projection_start: "2025-01-01T12:00:00Z"
   history:
     - date: "2025-01-01T12:00:00Z"
       followers: 1500

@@ -50,92 +50,93 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const historyData = {{ site.data.twitter_stats.stats.history | jsonify }};
-    const goalDate = new Date("{{ site.data.twitter_stats.stats.goal_date }}");
-    const goalFollowers = {{ site.data.twitter_stats.stats.goal }};
-    const currentDate = new Date("{{ site.data.twitter_stats.stats.last_updated }}");
-    
-    // Process historical data
-    const dates = historyData.map(item => new Date(item.date));
-    const followers = historyData.map(item => item.followers);
-    
-    // Calculate projection
-    const timeToGoal = goalDate - currentDate;
-    const daysToGoal = timeToGoal / (1000 * 60 * 60 * 24);
-    const currentFollowers = followers[followers.length - 1];
-    const followersToGain = goalFollowers - currentFollowers;
-    const dailyGrowthNeeded = followersToGain / daysToGoal;
-    
-    // Generate projection points (weekly)
-    const projectionData = [];
-    let projDate = new Date(currentDate);
-    let projFollowers = currentFollowers;
-    
-    while (projDate <= goalDate) {
-      projectionData.push({
-        x: new Date(projDate),
-        y: Math.round(projFollowers)
-      });
-      projDate.setDate(projDate.getDate() + 7);
-      projFollowers += dailyGrowthNeeded * 7;
-    }
-    
-    // Create the chart
-    const ctx = document.getElementById('followerChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        datasets: [{
-          label: 'Historical',
-          data: historyData.map(item => ({
-            x: new Date(item.date),
-            y: item.followers
-          })),
-          borderColor: '#1DA1F2',
-          backgroundColor: '#1DA1F2',
-          pointRadius: 5
-        }, {
-          label: 'Projected Growth',
-          data: projectionData,
-          borderColor: '#AAB8C2',
-          backgroundColor: '#AAB8C2',
-          borderDash: [5, 5],
-          pointRadius: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: {
-            type: 'time',
-            time: {
-              unit: 'week'
+    document.addEventListener('DOMContentLoaded', function() {
+      const historyData = {{ site.data.twitter_stats.stats.history | jsonify }};
+      const goalDate = new Date("{{ site.data.twitter_stats.stats.goal_date }}");
+      const goalFollowers = {{ site.data.twitter_stats.stats.goal }};
+      const projectionStartDate = new Date("{{ site.data.twitter_stats.stats.projection_start }}");
+      
+      // Calculate projection
+      const timeToGoal = goalDate - projectionStartDate;
+      const daysToGoal = timeToGoal / (1000 * 60 * 60 * 24);
+      const startFollowers = historyData[0].followers; // Use first history point
+      const followersToGain = goalFollowers - startFollowers;
+      const dailyGrowthNeeded = followersToGain / daysToGoal;
+      
+      // Generate projection points (weekly)
+      const projectionData = [];
+      let projDate = new Date(projectionStartDate);
+      let projFollowers = startFollowers;
+      
+      while (projDate <= goalDate) {
+        projectionData.push({
+          x: new Date(projDate),
+          y: Math.round(projFollowers)
+        });
+        projDate.setDate(projDate.getDate() + 7);
+        projFollowers += dailyGrowthNeeded * 7;
+      }
+      
+      // Create the chart
+      const ctx = document.getElementById('followerChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          datasets: [{
+            label: 'Historical',
+            data: historyData.map(item => ({
+              x: new Date(item.date),
+              y: item.followers
+            })),
+            borderColor: '#1DA1F2',
+            backgroundColor: '#1DA1F2',
+            pointRadius: 5
+          }, {
+            label: 'Projected Growth',
+            data: projectionData,
+            borderColor: '#AAB8C2',
+            backgroundColor: '#AAB8C2',
+            borderDash: [5, 5],
+            pointRadius: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              type: 'time',
+              time: {
+                unit: 'month',
+                displayFormats: {
+                  month: 'MMM yyyy'
+                }
+              },
+              title: {
+                display: true,
+                text: 'Date'
+              },
+              min: projectionStartDate,
+              max: goalDate
             },
-            title: {
-              display: true,
-              text: 'Date'
+            y: {
+              title: {
+                display: true,
+                text: 'Followers'
+              },
+              min: 0
             }
           },
-          y: {
-            title: {
-              display: true,
-              text: 'Followers'
-            },
-            min: 0
-          }
-        },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return `Followers: ${context.parsed.y.toLocaleString()}`;
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return `Followers: ${context.parsed.y.toLocaleString()}`;
+                }
               }
             }
           }
         }
-      }
+      });
     });
-  });
 </script>
