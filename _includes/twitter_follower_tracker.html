@@ -32,6 +32,7 @@
 <div class="follower-tracker">
   <h2>Tracking Follower Count for <a href="https://www.x.com/ChrisLovejoy_">ChrisLovejoy_</a></h2>
   <p>Current Followers: {{ site.data.twitter_stats.stats.current_followers }}</p>
+  <p>Target Followers: {{ site.data.twitter_stats.stats.goal }} (by {{ site.data.twitter_stats.stats.goal_date | date: "%B %Y" }})</p>
   <p>Last Updated: {{ site.data.twitter_stats.stats.last_updated | date: "%Y-%m-%d %H:%M" }}</p>
   <div class="goal-tracker">
     <div class="progress-bar" 
