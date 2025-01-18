@@ -31,12 +31,10 @@
 <!-- Include Chart.js and required adapters -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
-
 <div class="follower-tracker">
-  <h2>Twitter Follower Growth</h2>
+  <h2>Tracking Follower Count for <a href="https://www.x.com/ChrisLovejoy_">ChrisLovejoy_</a></h2>
   <p>Current Followers: {{ site.data.twitter_stats.stats.current_followers }}</p>
   <p>Last Updated: {{ site.data.twitter_stats.stats.last_updated | date: "%Y-%m-%d %H:%M" }}</p>
-  
   <div class="goal-tracker">
     <div class="progress-bar" 
          style="width: {{ site.data.twitter_stats.stats.current_followers | times: 100.0 | divided_by: site.data.twitter_stats.stats.goal }}%;">
@@ -83,7 +81,7 @@
         type: 'line',
         data: {
           datasets: [{
-            label: 'Historical',
+            label: 'Actual',
             data: historyData.map(item => ({
               x: new Date(item.date),
               y: item.followers
@@ -92,7 +90,7 @@
             backgroundColor: '#1DA1F2',
             pointRadius: 5
           }, {
-            label: 'Projected Growth',
+            label: 'Target Projection',
             data: projectionData,
             borderColor: '#AAB8C2',
             backgroundColor: '#AAB8C2',
