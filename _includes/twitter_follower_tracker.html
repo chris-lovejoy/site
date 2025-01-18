@@ -1,21 +1,76 @@
+<style>
+    .follower-tracker {
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      margin: 1rem 0;
+    }
+    
+    .goal-tracker {
+      background: #eee;
+      height: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+    
+    .progress-bar {
+      background: #1DA1F2;
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      margin: 20px 0;
+    }
+</style>
+
+<!-- Include Chart.js and required adapters -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+
+<div class="follower-tracker">
+  <h2>Twitter Follower Growth</h2>
+  <p>Current Followers: {{ site.data.twitter_stats.stats.current_followers }}</p>
+  <p>Last Updated: {{ site.data.twitter_stats.stats.last_updated | date: "%Y-%m-%d %H:%M" }}</p>
+  
+  <div class="goal-tracker">
+    <div class="progress-bar" 
+         style="width: {{ site.data.twitter_stats.stats.current_followers | times: 100.0 | divided_by: site.data.twitter_stats.stats.goal }}%;">
+    </div>
+    <p>Goal: {{ site.data.twitter_stats.stats.goal | number_with_delimiter }} followers by {{ site.data.twitter_stats.stats.goal_date | date: "%B %Y" }}</p>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="followerChart"></canvas>
+  </div>
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const historyData = {{ site.data.twitter_stats.stats.history | jsonify }};
     const goalDate = new Date("{{ site.data.twitter_stats.stats.goal_date }}");
     const goalFollowers = {{ site.data.twitter_stats.stats.goal }};
-    const projectionStartDate = new Date("{{ site.data.twitter_stats.stats.projection_start }}");
+    const currentDate = new Date("{{ site.data.twitter_stats.stats.last_updated }}");
+    
+    // Process historical data
+    const dates = historyData.map(item => new Date(item.date));
+    const followers = historyData.map(item => item.followers);
     
     // Calculate projection
-    const timeToGoal = goalDate - projectionStartDate;
+    const timeToGoal = goalDate - currentDate;
     const daysToGoal = timeToGoal / (1000 * 60 * 60 * 24);
-    const startFollowers = historyData[0].followers; // Use first history point
-    const followersToGain = goalFollowers - startFollowers;
+    const currentFollowers = followers[followers.length - 1];
+    const followersToGain = goalFollowers - currentFollowers;
     const dailyGrowthNeeded = followersToGain / daysToGoal;
     
     // Generate projection points (weekly)
     const projectionData = [];
-    let projDate = new Date(projectionStartDate);
-    let projFollowers = startFollowers;
+    let projDate = new Date(currentDate);
+    let projFollowers = currentFollowers;
     
     while (projDate <= goalDate) {
       projectionData.push({
@@ -56,17 +111,12 @@
           x: {
             type: 'time',
             time: {
-              unit: 'month',
-              displayFormats: {
-                month: 'MMM yyyy'
-              }
+              unit: 'week'
             },
             title: {
               display: true,
               text: 'Date'
-            },
-            min: projectionStartDate,
-            max: goalDate
+            }
           },
           y: {
             title: {
