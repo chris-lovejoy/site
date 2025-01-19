@@ -1,0 +1,13 @@
+stats:
+  current_followers: 1532
+  last_updated: "2025-01-18T12:00:00Z"
+  goal: 30000
+  goal_date: "2026-01-01T12:00:00Z"
+  projection_start: "2025-01-01T12:00:00Z"
+  history:
+    - date: "2025-01-01T12:00:00Z"
+      followers: 1528
+    - date: "2025-01-08T12:00:00Z"
+      followers: 1529
+    - date: "2025-01-15T12:00:00Z"
+      followers: 1531
