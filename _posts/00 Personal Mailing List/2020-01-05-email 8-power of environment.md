@@ -15,11 +15,7 @@ For Christmas I received a lot of recording-related gifts: a mic stand, studio l
 
 Earlier this week, I finally got around to setting them up, and now feel like I have a semi-legit studio.
 
-[](https://assets.buttondown.email/feb5f11e-ad3e-40fe-bc5e-083f434fb93a_600x338.jpeg?utm_source=chris-lovejoy&utm_medium=email)
-
-[![The studio](https://assets.buttondown.email/feb5f11e-ad3e-40fe-bc5e-083f434fb93a_600x338.jpeg "The studio")
-
-](https://assets.buttondown.email/feb5f11e-ad3e-40fe-bc5e-083f434fb93a_600x338.jpeg?utm_source=chris-lovejoy&utm_medium=email)
+![The studio](https://assets.buttondown.email/feb5f11e-ad3e-40fe-bc5e-083f434fb93a_600x338.jpeg "The studio")
 
 ### The studio
 
