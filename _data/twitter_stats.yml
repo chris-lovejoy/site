@@ -6,8 +6,8 @@ stats:
   projection_start: "2025-01-01T12:00:00Z"
   history:
     - date: "2025-01-01T12:00:00Z"
-      followers: 1500
+      followers: 1528
     - date: "2025-01-08T12:00:00Z"
-      followers: 1515
+      followers: 1529
     - date: "2025-01-15T12:00:00Z"
-      followers: 1532
+      followers: 1531
