@@ -3,8 +3,8 @@ title: "The Academic Knowledge Management (AKM) system that 10x'd my research pr
 permalink: akm
 public_date: 2022-11-08
 tags:
-  - academia
-  - productivity
+  - Academia
+  - Productivity
 image: assets/images/article-covers/akm.jpg
 type: article
 status: complete
