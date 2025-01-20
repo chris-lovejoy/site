@@ -7,7 +7,7 @@ public_date: 2020-10-11
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 One of the most common questions I get is from medics interested in machine learning, wondering how to get started.

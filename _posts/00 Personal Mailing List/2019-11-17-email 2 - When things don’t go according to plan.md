@@ -7,7 +7,7 @@ public_date: 2019-11-17
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I started this week very optimistically. I had everything planned out; I’d scheduled when I was going to do each work assignment, when I’d spend time with friends and I’d even written a rough outline of this week’s email newsletter.

@@ -7,7 +7,7 @@ public_date: 2019-12-08
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I have been thinking a lot recently about the decisions I make, and the process I take for making them: Decisions about how I spend my time, who I spend time with and about what I want to do with my life.

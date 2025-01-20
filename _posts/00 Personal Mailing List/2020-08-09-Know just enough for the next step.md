@@ -7,7 +7,7 @@ public_date: 2020-08-09
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 Our education system encourages us to “learn lots about X” before actually doing anything with the knowledge. We’ll spend a term in math’s class learning about differential equations. Then, maybe, we’ll study a subject (such as machine learning) where we see some real-world applications of that theory.

@@ -7,7 +7,7 @@ public_date: 2020-09-27
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 For the past couple of years, my rough modus operandi has been something along the lines of… “to build deep technical skills and understanding in machine learning (and computer programming more broadly)”.
@@ -27,7 +27,7 @@ After a quick, rough brainstorm, the following areas have made it onto my initia
 - Facilitating incorporation of machine learning into healthcare (perhaps predictable if you’d followed this newsletter for a while.. 😉)
 - Biological information processing (bioinformatics, drug discovery)
 - Intelligent knowledge management (extracting information from research, personal knowledge management)
-    
+
 
 I have various ideas within each of this, which you can see [here](https://chrislovejoy.me/career-focus/?utm_source=chris-lovejoy&utm_medium=email) if interested. I’ve also thought about some tentative next steps in each area.
 

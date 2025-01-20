@@ -7,7 +7,7 @@ public_date: 2022-01-09
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I'm currently trying to build a healthtech start-up. We'll announce the exact idea in due time, but what I can say is:

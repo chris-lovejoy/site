@@ -7,7 +7,7 @@ public_date: 2020-01-19
 type: article
 status: 
 tags:
-  - weekly-email
+  - Weekly email
 ---
 
 One thing I’ve noticed when I sit down to write is that sometimes the ideas flow and I can write for hours, while at other times things can feel forced and I can spend hours without really getting anywhere.

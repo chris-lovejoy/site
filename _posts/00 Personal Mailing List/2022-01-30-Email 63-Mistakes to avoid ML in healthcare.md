@@ -7,7 +7,7 @@ public_date: 2022-01-30
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 

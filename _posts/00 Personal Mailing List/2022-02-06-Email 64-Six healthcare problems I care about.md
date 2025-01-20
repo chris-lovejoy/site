@@ -7,7 +7,7 @@ public_date: 2022-02-06
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 **_"Start with the problem, not the solution"_** is common advice - whether it's about building a company, doing research or solving a personal problem.

@@ -7,7 +7,7 @@ public_date: 2020-11-24
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 My approach to ‘content creation’ so far has been to just make and write about things that interest me, and share them with others.

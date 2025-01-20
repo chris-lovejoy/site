@@ -7,7 +7,7 @@ public_date: 2019-11-24
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I’m currently studying a lot of machine learning, and have noticed some analogies between the methods computers use to learn and the approaches we take to life.

@@ -7,7 +7,7 @@ public_date: 2019-11-10
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I’ve thought about starting an email newsletter for some time.

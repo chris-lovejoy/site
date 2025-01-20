@@ -7,7 +7,7 @@ public_date: 2020-07-26
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I've often had goals - sometimes in my head, at other times written down - but until now I've had no central place that I've stored them. Inspired by Thomas Frank's ["Impossible List"](https://collegeinfogeek.com/about/meet-the-author/my-impossible-list/?utm_source=chris-lovejoy&utm_medium=email), I've decided to change that.

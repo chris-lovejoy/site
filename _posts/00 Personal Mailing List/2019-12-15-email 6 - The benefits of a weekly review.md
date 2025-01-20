@@ -7,7 +7,7 @@ public_date: 2019-12-15
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I’ve experimented with various productivity life-hacks over the past many years, and one of the most helpful ones has been a weekly review.

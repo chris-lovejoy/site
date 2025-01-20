@@ -7,7 +7,7 @@ public_date: 2020-05-10
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 

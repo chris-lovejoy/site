@@ -7,7 +7,7 @@ public_date: 2022-01-16
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 I've heard that finding a cofounder to start a company is a lot like finding a romantic partner.

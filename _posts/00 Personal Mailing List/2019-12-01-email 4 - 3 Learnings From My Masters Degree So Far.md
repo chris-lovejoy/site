@@ -7,7 +7,7 @@ public_date: 2019-12-01
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 This coming week is the last full week of the first term in my machine learning master’s degree.

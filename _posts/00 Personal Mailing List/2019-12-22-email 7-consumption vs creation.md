@@ -7,7 +7,7 @@ public_date: 2019-12-22
 type: article
 status: 
 tags:
-- weekly-email
+- Weekly email
 ---
 
 Last week I finished the first term of my Master’s degree. Since then, I’ve been enjoying much more flexibility with how I use my time.
