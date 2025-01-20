@@ -1,9 +1,9 @@
 ---
 image: 
-title: On Freedom, Purpose and Investors
-permalink: freedom-and-investors
+title: On Finding the Right Partner (Business and Romantic)
+permalink: right-partner
 redirect_from:
-public_date: 2022-01-09
+public_date: 2022-01-16
 type: article
 status: 
 tags:
