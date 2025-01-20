@@ -5,7 +5,7 @@ redirect_from:
 public_date: 2023-01-13 00:12:00
 tags:
   - Spanish
-  - Language-learning
+  - Language learning
 image: assets/images/article-covers/madrid.jpg
 type: article
 status: complete

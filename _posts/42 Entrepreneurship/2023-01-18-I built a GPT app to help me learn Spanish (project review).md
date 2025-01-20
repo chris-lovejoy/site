@@ -4,8 +4,8 @@ permalink: check-my-writing
 redirect_from: bip-1
 public_date: 2023-01-18 00:00:00
 tags:
-  - Language-learning
-  - Artificial-intelligence
+  - Artificial intelligence
+  - Language learning
 image: assets/images/article-covers/world-map.jpg
 type: article
 status: complete
