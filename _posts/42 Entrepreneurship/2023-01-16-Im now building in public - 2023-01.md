@@ -11,6 +11,7 @@ image: assets/images/article-covers/indoor-construction.jpg
 type: article
 status: complete
 ---
+
 I spent the last 12 months [trying to build a healthtech start-up](https://chrislovejoy.substack.com/p/60-learning-to-build-a-healthtech) with a cofounder I met on the Entrepreneur First accelerator. We iterated through a bunch of ideas, but ultimately it didn't work out.
 
 We spent much of this time as a "stealth" start-up. We didn't openly share our ideas, for fear that somebody might copy them.

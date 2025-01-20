@@ -6,7 +6,7 @@ redirect_from:
 public_date: 2023-03-25
 type: article
 tags:
-- weekly-email
+- Weekly email
 ---
 
 At the end of 2022, I was earning around 10% of my overall income from freelancing projects - now it’s closer to 90%.
