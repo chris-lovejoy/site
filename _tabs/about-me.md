@@ -68,4 +68,6 @@ I studied Medicine at the University of Cambridge (UK) from 2011 until 2017. I e
 
 ---
 
+## Say hi 👋
+
 **Reach out at [hi@chrislovejoy.me](mailto:hi@chrislovejoy.me). If you're ever in London, we can grab a coffee.**

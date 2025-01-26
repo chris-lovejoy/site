@@ -180,6 +180,8 @@ collections:
     sort_by: order
   pages:
     output: true
+  notes:
+    output: true
 
 defaults:
   - scope:
