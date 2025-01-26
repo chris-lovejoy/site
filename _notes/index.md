@@ -1,0 +1,15 @@
+---
+layout: page
+icon: 
+title: Chris' Notes
+permalink: notes
+redirect_from: 
+image:
+---
+
+This is a place where I share some of my notes. If you find an error, please [submit a pull request](https://github.com/chris-lovejoy/site/tree/main/_notes). You can also get in touch with me [here](http://localhost:4000/about-me#say-hi-).
+
+*Inspired by [Hamel's Notes](https://hamel.dev/notes/) and various [[Examples of Public Digital Gardens|digital gardens]].*
+
+<!-- TODO: add notes and list them here. Initially manual then set up automatic indexing when it makes sense. -->
+
