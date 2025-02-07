@@ -44,7 +44,7 @@ Which led me to ask myself: what if I *make* my own AI coach. I'd seen [Peter Le
 
 I built my AI performance coach to work as follows:
 
-![](/assets/images/article-images/AI Performance Coach Diagram.png)
+![](/assets/images/article-images/AI-Performance-Coach-Diagram.png)
 
 
 For the system prompt, I use a "Life Context" prompt. This is a condensed description of my life situation (job, relationships, finances), my current goals, how I want to get there, current strategies etc. To start with, I wrote a version of this out myself - and then it gets updated after every conversation using a python script which calls an LLM.
