@@ -7,7 +7,7 @@ tags:
   - Projects
   - Prototypes
   - Careers
-image: assets/images/article-covers/blurred-ballet.jpg
+image:
 type: article
 status: complete
 ---
