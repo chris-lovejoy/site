@@ -2,7 +2,7 @@
 title: "I built a personal AI coach that's better than my human one - a step-by-step setup guide"
 permalink: personal-ai-coach
 redirect_from: 
-public_date: 2025-01-27 00:00:00
+public_date: 2025-02-09 00:00:00
 tags:
   - Projects
   - Prototypes
