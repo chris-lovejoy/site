@@ -1,11 +1,12 @@
 ---
 title: I built an AI coach to replace my human one
 permalink: personal-ai-coach
-redirect_from:
+redirect_from: 
 public_date: 2025-01-27 00:00:00
 tags:
   - Projects
   - Prototypes
+  - Careers
 image: 
 type: article
 status: complete
@@ -79,7 +80,7 @@ You can do this by clicking 'Download ZIP':
 
 ![](/assets/images/article-images/dl-ai-coach-github.png)
 
-Or if you have git set up, you can do it via the command line, eg:
+Or if you have the git CLI set up, you can do it via the command line, eg:
 
 ```sh
 git clone https://github.com/chris-lovejoy/personal-ai-coach.git
@@ -108,7 +109,7 @@ You can use whatever heading structure you want, and it will automatically be ha
 
 See the setup video linked above (ie. this [video](https://www.loom.com/share/77084c5106304dd88630e09c28342bfe)) for a walkthrough of the BMO plug-in setup
 
-NOTE: this works as of Jan 2025, using version 2.3.3 of the BMO Plug-in. If things change and this doesn't work, it may be worth downloading that specific version
+NOTE: this works as of Feb 2025, using version 2.3.3 of the BMO Plug-in. If things change and this doesn't work, it may be worth downloading that specific version
 
 #### 5. (Optional) Set up local models with ollama
 Download Ollama [here](https://ollama.com/) then run ollama with your selected models, eg.:
@@ -173,8 +174,7 @@ Ultimately, I found that my set up worked pretty well, so decided not to add any
 
 ## Closing thoughts
 
-I was pleasantly surprised by how helpful this AI coach has ended up being (and for a tiny fraction of what I was paying a human coach). And what's more, I can clearly see how this coach will just keep getting better with time (both as the underlying models improve, and by me continually updating and improving the coach mode prompts that I use).
-
+I was pleasantly surprised by how helpful this AI coach has ended up being (and for a tiny fraction of what I was paying a human coach). And what's more I can clearly see how, as underlying models improve and as I update and improve the prompts, this coach will just keep getting better with time.
 
 ---
 
