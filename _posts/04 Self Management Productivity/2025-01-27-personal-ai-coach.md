@@ -18,7 +18,7 @@ To build it, I made a Life Context prompt, different Coach Mode prompts and a py
 Since then, I've had a conversation with it around once a week. Anywhere between 3 and 30 minutes. More often than not, it gives me tangible new perspectives or action items. I ask it about anything from defining my strategy for the next month to planning out my anniversary to responding to a professional opportunity.
 
 
-> NOTE: **The accompanying code to set this up for yourself is available [here](https://github.com/chris-lovejoy/personal-ai-coach)**.
+> _**NOTE: The accompanying code to set this up for yourself is available [here](https://github.com/chris-lovejoy/personal-ai-coach)**_.
 {: .prompt-info }
 
 
@@ -174,3 +174,8 @@ Ultimately, I found that my set up worked pretty well, so decided not to add any
 ## Closing thoughts
 
 I was pleasantly surprised by how helpful this AI coach has ended up being (and for a tiny fraction of what I was paying a human coach). And what's more, I can clearly see how this coach will just keep getting better with time (both as the underlying models improve, and by me continually updating and improving the coach mode prompts that I use).
+
+
+---
+
+*Thank you to [Caroline Morton](https://www.carolinemorton.co.uk/about/) and [Mustafa Sultan](https://www.musty.io/) for reviewing this article.*
