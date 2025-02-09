@@ -17,10 +17,6 @@ To build it, I made a Life Context prompt, different Coach Mode prompts and a py
 
 Since then, I've had a conversation with it around once a week. Anywhere between 3 and 30 minutes. More often than not, it gives me tangible new perspectives or action items. I ask it about anything from defining my strategy for the next month to planning out my anniversary to responding to a professional opportunity.
 
-Here's an excerpt from a conversation my friend James had with his version of the coach:
-
-{% include embed/video.html src="assets/media/Example-AI-Coach-Usage.mp4" %}
-
 
 ---
 
@@ -58,11 +54,14 @@ Everything is stored as markdown files which I can view through [Obsidian](https
 
 Doing this through Obsidian also enables me to use plug-ins, rather than needing to make the interface with the chatbot myself. After reviewing the available LLM plug-ins (and considering building my own), the [BMO chatbot](https://github.com/longy2k/obsidian-bmo-chatbot) appeared to be the best at the time, so I went with that. It made it easy to toggle between models (open source like LLAMA as well as closed like Anthropic and OpenAI) as well as between different prompts.
 
+Here's an example of what it can look like:
+
+{% include embed/video.html src="assets/media/Example-AI-Coach-Usage.mp4" %}
 
 ## Set up your personal AI coach: a step-by-step guide
 If you want to set this up the same way I did (Obsidian + BMO Plug-in), here are the steps to follow:
 
-https://www.loom.com/share/77084c5106304dd88630e09c28342bfe
+{% include embed/loom.html id="77084c5106304dd88630e09c28342bfe" %}
 
 
 > NOTE: This is only one way to implement the paradigm described above. If you do it in a different way, I'd love to hear about it - you can drop a comment below 
@@ -103,11 +102,9 @@ You can use whatever heading structure you want, and it will automatically be ha
 
 #### 4. Install and configure the BMO plug-in within Obsidian
 
-See the video [here](https://www.loom.com/share/77084c5106304dd88630e09c28342bfe?t=127&sid=5f064b16-81bb-4dbe-ac02-c730cdf9b3bb) for a walkthrough of the BMO plug-in setup
+See the setup video linked above (ie. this [video](https://www.loom.com/share/77084c5106304dd88630e09c28342bfe)) for a walkthrough of the BMO plug-in setup
 
-https://www.loom.com/share/77084c5106304dd88630e09c28342bfe?t=127&sid=5f064b16-81bb-4dbe-ac02-c730cdf9b3bb
-
-NOTE: this works as of Jan 2025, using version 2.3.3 of the BMO Plug-in. If things change and thise doesn't work, it may be worth downloading that specific version
+NOTE: this works as of Jan 2025, using version 2.3.3 of the BMO Plug-in. If things change and this doesn't work, it may be worth downloading that specific version
 
 #### 5. (Optional) Set up local models with ollama
 Download Ollama [here](https://ollama.com/) then run ollama with your selected models, eg.:
