@@ -25,6 +25,10 @@ So I set out on a mission: **Can I write code that will automatically find me va
 Here’s how it went.
 
 
+> _**See the Hacker News discussion [here](https://news.ycombinator.com/item?id=25187702)**_.
+{: .prompt-info }
+
+
 # 🗺️ **The best laid plans**
 
 I started by visualising what I wanted the tool to do. I wanted something that would **(i) rank videos** based on likely relevance for me and **(ii) automatically send me suggested videos**, which I could select from.
