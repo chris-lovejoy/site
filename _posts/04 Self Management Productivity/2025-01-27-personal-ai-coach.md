@@ -18,6 +18,10 @@ To build it, I made a Life Context prompt, different Coach Mode prompts and a py
 Since then, I've had a conversation with it around once a week. Anywhere between 3 and 30 minutes. More often than not, it gives me tangible new perspectives or action items. I ask it about anything from defining my strategy for the next month to planning out my anniversary to responding to a professional opportunity.
 
 
+> NOTE: **The accompanying code to set this up for yourself is available [here](https://github.com/chris-lovejoy/personal-ai-coach)**.
+{: .prompt-info }
+
+
 ---
 
 ## Why a coach?
@@ -151,7 +155,8 @@ python scripts/update_life_context.py
 ```
 
 But you could also set up a cron job to do it automatically like this (which is what I'd recommend):
-[TODO: LOOM 1]
+
+{% include embed/loom.html id="f500cdd1119b4b5eb5be83635c1f5f01" %}
 
 
 ## Giving the coach *more* life context
