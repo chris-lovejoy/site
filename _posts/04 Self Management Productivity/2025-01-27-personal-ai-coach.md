@@ -17,11 +17,14 @@ To build it, I made a Life Context prompt, different Coach Mode prompts and a py
 
 Since then, I've had a conversation with it around once a week. Anywhere between 3 and 30 minutes. More often than not, it gives me tangible new perspectives or action items. I ask it about anything from defining my strategy for the next month to planning out my anniversary to responding to a professional opportunity.
 
-[TODO: use my screen recording and make a vertical strip scroll down here]
+Here's an excerpt from a conversation my friend James had with his version of the coach:
+
+{% include embed/video.html src="assets/media/Example-AI-Coach-Usage.mp4" %}
+
 
 ---
 
-### Why a coach?
+## Why a coach?
 
 Last year, I found myself making a bunch of "big picture" life and business decisions. I wanted somebody to bounce ideas with: to be a sounding board for my thoughts and to suggest alternative angles. Friends can be great for this, but sometimes you want somebody whose *job* is to help with this.
 
@@ -40,7 +43,7 @@ Which led me to ask myself: what if I *make* my own AI coach. I'd seen [Peter Le
 - doesn't leave my local computer -> so everything I write stays private
 
 
-### Enter: my AI performance coach
+## Enter: my AI performance coach
 
 I built my AI performance coach to work as follows:
 
@@ -56,7 +59,7 @@ Everything is stored as markdown files which I can view through [Obsidian](https
 Doing this through Obsidian also enables me to use plug-ins, rather than needing to make the interface with the chatbot myself. After reviewing the available LLM plug-ins (and considering building my own), the [BMO chatbot](https://github.com/longy2k/obsidian-bmo-chatbot) appeared to be the best at the time, so I went with that. It made it easy to toggle between models (open source like LLAMA as well as closed like Anthropic and OpenAI) as well as between different prompts.
 
 
-### Set up your personal AI coach: a step-by-step guide
+## Set up your personal AI coach: a step-by-step guide
 If you want to set this up the same way I did (Obsidian + BMO Plug-in), here are the steps to follow:
 
 https://www.loom.com/share/77084c5106304dd88630e09c28342bfe
@@ -115,7 +118,7 @@ ollama run llama3.2
 This will download the respective model and the BMO plug-in will automatically pick up on it
 
 
-### Talking to your coach
+## Talking to your coach
 Once you've done the steps above, you can chat with your coach by opening the BMO plug-in (defaults to command + 0 on mac).
 
 Then the helpful commands are:
@@ -139,7 +142,7 @@ I'll typically start a conversation with my high level concern. Something like:
 
 > I've been thinking a lot this week about an opportunity that came up. The opportunity is X. I'm debating what my approach to it should be, and how that fits into my strategy for the year.
 
-### Updating your Life Context for the coach
+## Updating your Life Context for the coach
 The lowest tech option is to manually tweak your Life Context prompt from time to time.
 
 However, the purpose of the update_life_context script is to save you needing to do so.
@@ -154,7 +157,7 @@ But you could also set up a cron job to do it automatically like this (which is 
 [TODO: LOOM 1]
 
 
-### Giving the coach *more* life context
+## Giving the coach *more* life context
 
 One potential improvement is increasing the bandwidth for providing more life context. With the setup described, that context is limited by the number of tokens you can fit into the system prompt for the model you're using.
 
@@ -166,6 +169,6 @@ I opted not to take this approach because:
 
 Ultimately, I found that my set up worked pretty well, so decided not to add any more complexity.
 
-### Closing thoughts
+## Closing thoughts
 
 I was pleasantly surprised by how helpful this AI coach has ended up being (and for a tiny fraction of what I was paying a human coach). And what's more, I can clearly see how this coach will just keep getting better with time (both as the underlying models improve, and by me continually updating and improving the coach mode prompts that I use).
