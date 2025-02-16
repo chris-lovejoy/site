@@ -1,5 +1,5 @@
 ---
-title: "I built a personal AI coach that's better than my human one - a step-by-step setup guide"
+title: "I fired my personal coach and built one with AI - it knows me better, gives great advice, and saves me $200/month"
 permalink: personal-ai-coach
 redirect_from: 
 public_date: 2025-02-09 00:00:00
