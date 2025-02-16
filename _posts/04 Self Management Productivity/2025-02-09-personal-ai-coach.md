@@ -1,5 +1,5 @@
 ---
-title: "I fired my personal coach and built one with AI - it knows me better, gives great advice, and saves me $200/month"
+title: "I fired my personal coach, built one with AI and it's better in so many ways"
 permalink: personal-ai-coach
 redirect_from: 
 public_date: 2025-02-09 00:00:00
@@ -12,7 +12,7 @@ type: article
 status: complete
 ---
 
-Last year, I tested out building an AI performance coach to replace my human one. It's much better so I cancelled my human one altogether. It knows me better, improves itself over time, is private, non-judgemental and way cheaper.
+Last year, I tested out building an AI performance coach to replace my human one. It's much better so I cancelled my human one altogether. It knows me better, gives great advice and improves itself over time - all while being private, non-judgemental and saving me $200/month.
 
 Since then, I've had a conversation with it around once a week. Anywhere between 3 and 30 minutes. More often than not, it gives me tangible new perspectives or action items. I ask it about anything from defining my strategy for the next month to planning out my anniversary to responding to a professional opportunity.
 
