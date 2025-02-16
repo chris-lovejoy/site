@@ -1,8 +1,8 @@
 ---
-image:
-title: "Relying only on offline evals is playing with fire: why you must evaluate on live production data"
+image: 
+title: "Relying Only on Offline Evals is Playing With Fire: Why You Must Evaluate on Live Production Data"
 permalink: offline-evals-only
-redirect_from:
+redirect_from: 
 public_date: 2025-02-16
 type: article
 tags:
