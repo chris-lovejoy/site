@@ -178,4 +178,4 @@ I was pleasantly surprised by how helpful this AI coach has ended up being (and 
 
 ---
 
-*Thank you to [Caroline Morton](https://www.carolinemorton.co.uk/about/) and [Mustafa Sultan](https://www.musty.io/) for reviewing this article.*
+*Thank you to [Caroline Morton](https://www.carolinemorton.co.uk/about/), [Jason Liu](https://x.com/jxnlco) and [Mustafa Sultan](https://www.musty.io/) for feedback on this article.*
