@@ -40,7 +40,7 @@ A third option is **automated online evals**, which assess performance real-time
 
 ![](/assets/images/article-images/llm-as-judge-pipeline.png)
 
-Using an LLM to assess your LLM output naturally begs the question: how do you [validate your LLM validator](https://arxiv.org/abs/2404.12272)? At [Anterior](https://anterior.com/) we built a sophisticated human-in-the-loop system to do so, which I describe in detail [[2025-02-07-mission-critical-evals|here]].
+Using an LLM to assess your LLM output naturally begs the question: how do you [validate your LLM validator](https://arxiv.org/abs/2404.12272)? At [Anterior](https://anterior.com/) we built a sophisticated human-in-the-loop system to do so, which I describe in detail [[Mission-Critical Evals at Scale: Learnings from 100,000 medical decisions|here]].
 
 
 ## In conclusion
