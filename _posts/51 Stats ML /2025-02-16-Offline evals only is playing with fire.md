@@ -12,7 +12,7 @@ So you've followed the rule book: **you've created your labelled datasets, used 
 
 **But then you go live and reality hits hard.** Endless customer complaints about failure cases. (How come these never showed up before?) Customer confidence tanks. You scramble to identify and fix the problems - but each time you fix one, another problem pops up. You're playing whack-a-mole with LLM failure cases. By the time you get on top of the problems, it's too late - **your customers are gone**.
 
-***What did you do wrong?*** 
+**What did you do wrong?**
 
 
 ## The False Comfort of Offline Evaluations
