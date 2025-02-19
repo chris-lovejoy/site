@@ -4,7 +4,7 @@ permalink: hype
 redirect_from:
 public_date: 2019-06-25 09:50:00
 tags:
-  - Machine learning
+  - Machine Learning
 image: assets/images/article-covers/digital-brain.png
 type: article
 status: complete

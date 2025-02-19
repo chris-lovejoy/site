@@ -4,7 +4,7 @@ permalink: career
 redirect_from:
 public_date: 2019-08-16 11:57:00
 tags:
-  - Machine learning
+  - Machine Learning
 image: assets/images/article-covers/signpost.jpeg
 type: article
 status: complete

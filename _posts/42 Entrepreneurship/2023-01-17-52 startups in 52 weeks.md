@@ -6,7 +6,7 @@ redirect_form:
 public_date: 2023-01-17
 tags:
   - startups
-  - building-in-public
+  - Building-in-public
 note-to-self: I think that problem - solution - challenges - detials/similar is a great way to structure this
 type: article
 status: complete
