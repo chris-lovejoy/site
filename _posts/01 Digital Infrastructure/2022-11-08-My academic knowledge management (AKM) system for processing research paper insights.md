@@ -58,7 +58,7 @@ Having a single home base for all your papers and notes leads to some cool **eme
 - **You can see links between subjects**. Everything is related. Information doesn't exist in discrete buckets. Having different topics stored in the same place enables these relations to become apparent more easily.
 - **You can iteratively improve your understanding over time**, because you can revisit and previous notes within the same system.
 
-This week, my AKM connected a literature review on time series forecasting I did a few years ago to a freelance project I'm doing on sleep stage prediction - giving me expert insight, immediately.
+This week, my AKM connected a literature review on time series forecasting I did a few years ago to a independent consulting project I'm doing on sleep stage prediction - giving me expert insight, immediately.
 
 I use the following digital tools to enable this:
 - [Zotero](https://www.zotero.org) for storing and indexing papers

@@ -31,7 +31,7 @@ In Progress
 
 
 ### Consulting and Bottom-Up Entrepreneurship *(Jan 2023 - Aug 2023)*
-I divided my time between [freelancing consulting](./services) and building [[52 startups in 52 weeks|fun projects that could become businesses]]. I built up my savings while hanging out a bunch with my kid, but started to miss working in a team towards a bigger picture objective.
+I divided my time between [independent consulting](./services) and building [[52 startups in 52 weeks|fun projects that could become businesses]]. I built up my savings while hanging out a bunch with my kid, but started to miss working in a team towards a bigger picture objective.
 
 My approach was to [[Im now building in public - 2023-01|build in public]] and to focus on what I call "bottom-up" enterpreneurship rather than a more "top-down" approach I took during my first start-up. <!-- TODO: update to more fleshed out article--> 
 
