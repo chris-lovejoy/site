@@ -11,7 +11,7 @@ type: article
 status: complete
 ---
 
-Here's a talk I gave for the [AI Engineer Summit](https://www.ai.engineer/summit/2025).
+Here's a talk I gave for the [AI Engineer Summit](https://www.ai.engineer/summit/2025) (22nd Feb 2025).
 
 ### Recording
 {% include embed/youtube.html id="cZ5ZJy19KMo" %}
