@@ -2,7 +2,7 @@
 layout: page
 icon: fas fa-briefcase
 order: 5
-title: Consulting Services
+title: Independent Consulting
 permalink: services
 redirect_from: 
 image: 
