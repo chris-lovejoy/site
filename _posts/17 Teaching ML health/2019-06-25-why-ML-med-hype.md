@@ -35,8 +35,3 @@ There are other ways in which ML might 'augment' the work of doctors, by providi
 We will cover each of these areas in much greater depth in upcoming posts. Discussion about the complete replacement of doctors by AI is speculative and, in my opinion, very unlikely. 
 
 In summary, there's a lot of hype, some of which is warranted. To critically assess this, it's necessary to develop a more nuanced understanding of ML and its application in medicine. Read on to find out more...
-
-
-
-
-
