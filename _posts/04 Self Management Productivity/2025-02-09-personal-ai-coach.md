@@ -1,5 +1,5 @@
 ---
-title: "I fired my personal coach and built one with AI - it knows me better, gives great advice and saves me $200/month"
+title: "I fired my personal coach and built one with AI - it knows me better, gives great advice and saves me $$$ every month"
 permalink: personal-ai-coach
 redirect_from: 
 public_date: 2025-02-09 00:00:00
