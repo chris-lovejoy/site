@@ -9,7 +9,7 @@ type: article
 ---
 
 
-Okay, so you've [[medicine|learnt or are learning medicine]]. Now you're not sure whether you want to be a full-time doctor for ever. What should you do?
+Okay, so you've [[Learning medicine|learnt or are learning medicine]]. Now you're not sure whether you want to be a full-time doctor for ever. What should you do?
 
 It depends which category you fall into:
 1. **Practicing clinical medicine and content** -- but curious about what's out there and what skills could be helpful within your medical career -> read [this](/leaving-medicine#should-i-be-thinking-about-leaving-medicine)
@@ -19,6 +19,7 @@ It depends which category you fall into:
 
 <!-- {% include embed/tweet.html user="ChrisLovejoy_" id="1869435197080449118" %} -->
 
+<!-- TODO: if write the below articles, consider making them into a mail sequence  -->
 
 ---
 
