@@ -48,61 +48,54 @@ articles to write:
 
 ## Discovering what exists outside of clinical medicine
 
+there's really a ton of different stuff you can do. In my case, I followed a [windy, unplanned path - article].
+
+
 articles to write:
-- 
-- 
-- 
+- frameworks for deciding what career you want to do
+    - resources you can use, eg. 80,000 hours
+    - about meta approach of trying to figure out a career that matches your skills and wants. (but also that sometimes should just focus on skills and see what happens)
+    - talk to people 3-5 years ahead of you
+- common and uncommon paths to combine with (or do instead of) medicine [(with examples of people who've done each?)]
+    - common
+        - research, management consulting, (public health?)
+    - uncommon
+        - SWE, data scientist, start-ups
 
 
-
-- resources you can use, eg. 80,000 hours
-- different career paths and some of the profiles
-
-
-[research, start-ups, etc. etc - some kinds of profiles]
-
-[more edgy things too.. like being a rapper?]
-
-
-
-- article: my winding, unplanned path to AI startups
-
-
+I took the ML route - if that's interesting for you:
 - article: How might you use machine learning in a medical career?
 - article: Why machine learning? Why medicine? Why the hype?
 
 
-
 ---
+
 
 ## How to carve your path (out of full-time medicine)
 
-A pathway / timeline / approach to getting out / figuring out what's out there
 
-- taking little bets
-- learning valuable skills
-- get at least *some* credibility
-
-
-
-- (avoiding too much talk about it?)
-
-
-building meta-skills:
-- fast learning / self-education
-- communication (article: commanding clearer communiation)
-- writing ()
-- thinking (article: scientific approach to research)
-- 
-- 
-
-
-
-- article: How to understand the business world (and why I did MBA)
+articles:
+- how to grow career capital and escape a job you don't like
+    - build skillset that are generally valuable
+    - make a portfolio online
+- the most important meta skills and how to learn them
+    - self-education: [my fast learning articles from MMSM]
+    - communication: [from article: commanding clearer communiation]
+    - writing: [articles I've written about that?]
+    - thinking (article: scientific approach to research)
+    - business: [article: How to understand the business world (and why I did MBA)]
+- (create a timeline for leaving medicine)
+    - (bear in mind it can take time. don't expect it to happen overnight. you probably don't actually have that many skills that the market cares about if you've just been doing medicine)
+    - an important step is landing first job outside of medicine -> that's a big threshold. so identify what that could be and work backwards(?)   
+- meta approaches for leaving medicine
+    - taking little bits (to discover what you like AND build skills)
+    - grow your career capital
 
 
 
 ### Getting into AI, programming, tech, start-ups
+
+
 [more on this because it's the path that I took]
 
 (perhaps just links away to other stuff)
