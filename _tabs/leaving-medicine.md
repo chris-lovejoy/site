@@ -12,10 +12,10 @@ type: article
 Okay, so you've [[medicine|learnt or are learning medicine]]. Now you're not sure whether you want to be a full-time doctor for ever. What should you do?
 
 Well, it depends which category you fall into:
-1. Practicing clinical medicine and content (but curious about what's out there and what skills could be helpful within your medical career) -> read [this](/leaving-medicine#should-i-be-thinking-about-leaving-medicine)
-2. Practicing clinical medicine and disgruntled -- interesting in leaving but not too sure what that would look like or how -> read [this](/leaving-medicine#discovering-what-exists-outside-of-clinical-medicine)
-3. Working towards leaving clinical medicine -- have an initial plan but haven't yet "taken the leap" -> read [this](/leaving-medicine#how-to-carve-your-path-out-of-full-time-medicine)
-4. Have a clear vision of what you want to do and have taken concrete steps towards it -> read [this](/leaving-medicine#how-to-carve-your-path-out-of-full-time-medicine)
+1. **Practicing clinical medicine and content** -- but curious about what's out there and what skills could be helpful within your medical career -> read [this](/leaving-medicine#should-i-be-thinking-about-leaving-medicine)
+2. **Practicing clinical medicine and disgruntled** -- interesting in leaving but not too sure what that would look like or how -> read [this](/leaving-medicine#discovering-what-exists-outside-of-clinical-medicine)
+3. **Working towards leaving clinical medicine** -- have an initial plan but haven't yet "taken the leap" -> read [this](/leaving-medicine#how-to-carve-your-path-out-of-full-time-medicine)
+4. **Have a clear vision of what you want to do** and have taken concrete steps towards it -> read [this](/leaving-medicine#how-to-carve-your-path-out-of-full-time-medicine)
 
 <!-- {% include embed/tweet.html user="ChrisLovejoy_" id="1869435197080449118" %} -->
 
