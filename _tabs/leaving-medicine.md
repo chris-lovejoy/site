@@ -25,7 +25,7 @@ It depends which category you fall into:
 
 ## Should I be thinking about "leaving medicine"?
 
-articles to write:
+potential articles to write:
 - does "leaving medicine" mean leaving medicine? -> why exploring other options may solidify your medical standing
     - doesn't need to be either-or -- you may be able to combine stuff
     - just exploring stuff can be helpful - even if you stay in medicine
@@ -51,7 +51,7 @@ articles to write:
 there's really a ton of different stuff you can do. In my case, I followed a [windy, unplanned path - article].
 
 
-articles to write:
+potential articles to write:
 - frameworks for deciding what career you want to do
     - resources you can use, eg. 80,000 hours
     - about meta approach of trying to figure out a career that matches your skills and wants. (but also that sometimes should just focus on skills and see what happens)
@@ -74,7 +74,7 @@ I took the ML route - if that's interesting for you:
 ## How to carve your path (out of full-time medicine)
 
 
-articles to write:
+potential articles to write:
 - how to grow career capital and escape a job you don't like
     - build skillset that are generally valuable
     - make a portfolio online
