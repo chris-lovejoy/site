@@ -26,7 +26,7 @@ It depends which category you fall into:
 ## Should I be thinking about "leaving medicine"?
 
 potential articles to write:
-- does "leaving medicine" mean leaving medicine? -> why exploring other options may solidify your medical standing
+- does "leaving medicine" mean leaving medicine? -> why exploring other options may solidify your medical standing (ie. give you valuable skills to combine with medicine)
     - doesn't need to be either-or -- you may be able to combine stuff
     - just exploring stuff can be helpful - even if you stay in medicine
     - (if you just want to stay in medicine, it's completely cool! actually, even beter for having explored stuff)
