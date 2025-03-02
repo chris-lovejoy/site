@@ -27,7 +27,7 @@ It depends which category you fall into:
 
 articles to write:
 - does "leaving medicine" mean leaving medicine? -> why exploring other options may solidify your medical standing
-    - doesn't need to be either / or. you may be able to combine stuff
+    - doesn't need to be either-or -- you may be able to combine stuff
     - just exploring stuff can be helpful - even if you stay in medicine
     - (if you just want to stay in medicine, it's completely cool! actually, even beter for having explored stuff)
 - all jobs suck a bit - there is no nirvana
@@ -74,7 +74,7 @@ I took the ML route - if that's interesting for you:
 ## How to carve your path (out of full-time medicine)
 
 
-articles:
+articles to write:
 - how to grow career capital and escape a job you don't like
     - build skillset that are generally valuable
     - make a portfolio online
@@ -105,11 +105,12 @@ If you're specifically interested in the tech start-ups, programming and AI (whi
 - [also linking to my ML for healthcare content]
 
 
+---
+
+
 ## I'm out of medicine.. now what?
 
-- "so... am I still a doctor?"
-- [building a fulfilling career / charting your own path]
+You probably know your next steps better than I do! Best of luck :)
 
-- [existential / bigger picture questions?]
-
-
+possible article:
+- "so... am I still a doctor?" [something reflective about identity and change]
