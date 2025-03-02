@@ -94,20 +94,15 @@ articles:
 
 
 ### Getting into AI, programming, tech, start-ups
+If you're specifically interested in the tech start-ups, programming and AI (which is the path I took), here are some relevant articles I've written:
 
-
-[more on this because it's the path that I took]
-
-(perhaps just links away to other stuff)
-
+[perhaps just linking to a relevant tag or combination of tags, which includes all the below]
 - article: Resources for building the foundational understanding of machine learning
 - article: Beginner to data scientist in 25 months: every project and what I learnt
 - article: learn to code through projects
 - article: the busy person's guide to building technical data science skills
 - article: learning AI - where to start in 2024
-
-
-(and linking to my ML for healthcare content)
+- [also linking to my ML for healthcare content]
 
 
 ## I'm out of medicine.. now what?
