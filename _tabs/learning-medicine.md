@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-user-md
-order: 3
+order: 6
 title: Learning Medicine
 permalink: medicine
 redirect_from: 

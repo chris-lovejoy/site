@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-list
-order: 7
+order: 9
 title: Lists
 permalink: lists
 redirect_from:
