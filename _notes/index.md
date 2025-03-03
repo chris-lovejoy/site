@@ -11,5 +11,9 @@ This is a place where I share some of my notes. If you find an error, please [su
 
 *Inspired by [Hamel's Notes](https://hamel.dev/notes/) and various [[Examples of Public Digital Gardens|digital gardens]].*
 
+
+### Notes
+- [[LLM Inference Tooling]]
+
 <!-- TODO: add notes within this dir and list them here. Initially manual then set up automatic indexing when it makes sense. -->
 <!-- When I do, add Notes as a tab -->
