@@ -50,7 +50,7 @@ I decided to share my learnings as I went along, which ended up as [[Machine Lea
 <!-- TODO: I could mention ETP here --> 
 
 ### Doctoring and Beyond *(Aug 2017 - Aug 2019)*
-I worked as a doctor in London from 2017 and gained full registration and license to practice. I wasn't fully satisfied with medicine, so did some [[Career paths I considered when leaving medicine|high-speed career sampling]]. During this period, I also:
+I worked as a doctor in London from 2017 and gained full registration and license to practice. I wasn't fully satisfied with medicine, so did some [[My winding, unplanned path from Doctor to AI Startups (and all the steps in between)|high-speed career sampling]]. During this period, I also:
 - led a small team at Cera Care and built a predictive AI model (for clinical deterioration), which helped us raise [£54 million](https://www.homecareinsight.co.uk/cera-care-raises-54m-to-fund-expansion-and-smartcare-roll-out/).
 - completed an MBA with the [Quantic School of Business and Technology](https://quantic.edu/mba/)
 - wrote and published a book for sharing experiences, reflections and advice for learning medicine ([Gumroad](https://chrislovejoy.gumroad.com/l/medstudentmanual), [Amazon](https://amzn.to/2HFGoQY), [Waterstones](https://www.waterstones.com/book/the-ultimate-guide-to-being-a-medical-student/chris-lovejoy//9781912557417))
