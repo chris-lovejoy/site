@@ -26,17 +26,16 @@ icon: fas fa-project-diagram
         
         .container {
             display: flex;
-            flex-direction: column;
             gap: 40px;
             padding: 20px;
         }
         
         .profile-section {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid #eee;
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 20px;
+            align-self: flex-start;
         }
         
         .profile-image {
@@ -44,6 +43,7 @@ icon: fas fa-project-diagram
             height: 130px;
             border-radius: 50%;
             object-fit: cover;
+            margin-bottom: 20px;
         }
         
         .profile-details {
@@ -53,7 +53,7 @@ icon: fas fa-project-diagram
         }
         
         .profile-name {
-            font-size: 36px;
+            font-size: 28px;
             font-weight: 600;
             color: #333;
         }
@@ -71,7 +71,6 @@ icon: fas fa-project-diagram
         }
         
         .profile-bio {
-            max-width: 600px;
             color: #555;
             font-size: 16px;
             line-height: 1.6;
@@ -81,7 +80,7 @@ icon: fas fa-project-diagram
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
         
         .social-link {
@@ -101,9 +100,20 @@ icon: fas fa-project-diagram
             background-color: #e0e0e0;
         }
         
+        .content-section {
+            flex: 1;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
         
@@ -196,9 +206,14 @@ icon: fas fa-project-diagram
         .seeyafuture-icon { background-color: #FFA000; }
         
         @media (max-width: 768px) {
-            .profile-section {
+            .container {
                 flex-direction: column;
-                gap: 20px;
+            }
+            
+            .profile-section {
+                width: 100%;
+                position: static;
+                margin-bottom: 30px;
             }
             
             .products-grid {
@@ -209,6 +224,7 @@ icon: fas fa-project-diagram
 </head>
 <body>
     <div class="container">
+        <!-- Left column: Profile information -->
         <div class="profile-section">
             <img src="/api/placeholder/130/130" alt="Damon Chen" class="profile-image">
             <div class="profile-details">
@@ -227,83 +243,87 @@ icon: fas fa-project-diagram
             </div>
         </div>
         
-        <div class="products-grid">
-            <!-- PDF -->
-            <div class="product-card">
-                <div class="product-icon pdf-icon">📄</div>
-                <div class="product-info">
-                    <div class="product-title">PDF</div>
-                    <div class="product-description">Chat with PDF using AI</div>
+        <!-- Right column: Projects grid -->
+        <div class="content-section">
+            <h2 class="section-title">Projects</h2>
+            <div class="products-grid">
+                <!-- PDF -->
+                <div class="product-card">
+                    <div class="product-icon pdf-icon">📄</div>
+                    <div class="product-info">
+                        <div class="product-title">PDF</div>
+                        <div class="product-description">Chat with PDF using AI</div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial -->
+                <div class="product-card">
+                    <div class="product-icon testimonial-icon">💬</div>
+                    <div class="product-info">
+                        <div class="product-title">Testimonial</div>
+                        <div class="product-description">Collect and manage testimonials all in one</div>
+                    </div>
+                </div>
+                
+                <!-- PDFgen -->
+                <div class="product-card">
+                    <div class="product-icon pdfgen-icon">📑</div>
+                    <div class="product-info">
+                        <div class="product-title">Pdfgen</div>
+                        <div class="product-description">Generate PDF with AI</div>
+                    </div>
+                </div>
+                
+                <!-- VividShare -->
+                <div class="product-card">
+                    <div class="product-icon vividshare-icon">🌟</div>
+                    <div class="product-info">
+                        <div class="product-title">Vividshare</div>
+                        <div class="product-description">VividShare helps create stunning marketing assets for your social media sharing</div>
+                    </div>
+                </div>
+                
+                <!-- QuickyAI -->
+                <div class="product-card">
+                    <div class="product-icon quickai-icon">🚀</div>
+                    <div class="product-info">
+                        <div class="product-title">QuickyAI</div>
+                        <div class="product-description">QuickyAI is a browser extension that allows you to seamlessly engage with any website using ChatGPT</div>
+                    </div>
+                </div>
+                
+                <!-- Docsium -->
+                <div class="product-card">
+                    <div class="product-icon docsium-icon">📝</div>
+                    <div class="product-info">
+                        <div class="product-title">Docsium</div>
+                        <div class="product-description">ChatGPT directly in Google Sheets, Google Slides and Google Docs</div>
+                    </div>
+                </div>
+                
+                <!-- Supportman -->
+                <div class="product-card">
+                    <div class="product-icon supportman-icon">👨‍💼</div>
+                    <div class="product-info">
+                        <div class="product-title">Supportman <span class="acquired-badge">Acquired</span></div>
+                        <div class="product-description">Send Intercom Rating to Your Slack Instantly</div>
+                    </div>
+                </div>
+                
+                <!-- Seeyafuture -->
+                <div class="product-card">
+                    <div class="product-icon seeyafuture-icon">👋</div>
+                    <div class="product-info">
+                        <div class="product-title">Seeyafuture</div>
+                        <div class="product-description">Send a video to your future self</div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Testimonial -->
-            <div class="product-card">
-                <div class="product-icon testimonial-icon">💬</div>
-                <div class="product-info">
-                    <div class="product-title">Testimonial</div>
-                    <div class="product-description">Collect and manage testimonials all in one</div>
-                </div>
-            </div>
-            
-            <!-- PDFgen -->
-            <div class="product-card">
-                <div class="product-icon pdfgen-icon">📑</div>
-                <div class="product-info">
-                    <div class="product-title">Pdfgen</div>
-                    <div class="product-description">Generate PDF with AI</div>
-                </div>
-            </div>
-            
-            <!-- VividShare -->
-            <div class="product-card">
-                <div class="product-icon vividshare-icon">🌟</div>
-                <div class="product-info">
-                    <div class="product-title">Vividshare</div>
-                    <div class="product-description">VividShare helps create stunning marketing assets for your social media sharing</div>
-                </div>
-            </div>
-            
-            <!-- QuickyAI -->
-            <div class="product-card">
-                <div class="product-icon quickai-icon">🚀</div>
-                <div class="product-info">
-                    <div class="product-title">QuickyAI</div>
-                    <div class="product-description">QuickyAI is a browser extension that allows you to seamlessly engage with any website using ChatGPT</div>
-                </div>
-            </div>
-            
-            <!-- Docsium -->
-            <div class="product-card">
-                <div class="product-icon docsium-icon">📝</div>
-                <div class="product-info">
-                    <div class="product-title">Docsium</div>
-                    <div class="product-description">ChatGPT directly in Google Sheets, Google Slides and Google Docs</div>
-                </div>
-            </div>
-            
-            <!-- Supportman -->
-            <div class="product-card">
-                <div class="product-icon supportman-icon">👨‍💼</div>
-                <div class="product-info">
-                    <div class="product-title">Supportman <span class="acquired-badge">Acquired</span></div>
-                    <div class="product-description">Send Intercom Rating to Your Slack Instantly</div>
-                </div>
-            </div>
-            
-            <!-- Seeyafuture -->
-            <div class="product-card">
-                <div class="product-icon seeyafuture-icon">👋</div>
-                <div class="product-info">
-                    <div class="product-title">Seeyafuture</div>
-                    <div class="product-description">Send a video to your future self</div>
-                </div>
-            </div>
+            <button class="build-button">
+                <span>🏗️</span>
+                Build your Indie Page
+            </button>
         </div>
-        
-        <button class="build-button">
-            <span>🏗️</span>
-            Build your Indie Page
-        </button>
     </div>
 </body>
