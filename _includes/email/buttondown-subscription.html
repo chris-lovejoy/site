@@ -48,6 +48,33 @@
     onBlur="this.style.borderColor='#dee2e6'; this.style.boxShadow='none'"
   />
   
+  {% if include.tags %}
+    {% assign has_medicine = false %}
+    {% assign has_careers = false %}
+    {% assign has_llm_product = false %}
+    
+    {% for tag in include.tags %}
+      {% if tag == "Medicine" %}
+        {% assign has_medicine = true %}
+      {% endif %}
+      {% if tag == "Careers" %}
+        {% assign has_careers = true %}
+      {% endif %}
+      {% if tag == "LLM product" %}
+        {% assign has_llm_product = true %}
+      {% endif %}
+      <input type="hidden" name="tag" value="{{ tag }}" />
+    {% endfor %}
+    
+    {% if has_medicine and has_careers %}
+      <input type="hidden" name="tag" value="Medical-Careers" />
+    {% endif %}
+    
+    {% if has_llm_product %}
+      <input type="hidden" name="tag" value="LLM-Product" />
+    {% endif %}
+  {% endif %}
+
   <input 
     type="submit" 
     value="Subscribe"
