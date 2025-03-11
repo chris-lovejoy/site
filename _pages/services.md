@@ -1,11 +1,15 @@
 ---
 layout: page
 icon: fas fa-briefcase
-order: 5
+# order: 5
 title: Independent Consulting
 permalink: services
 redirect_from: 
 image: 
+---
+
+### _**NOTE: The booking link below remains active, but I am not currently accepting work proposals.**_
+
 ---
 
 If you're a a technical leader looking to improve your AI product, I'd love to help. My experience includes:
