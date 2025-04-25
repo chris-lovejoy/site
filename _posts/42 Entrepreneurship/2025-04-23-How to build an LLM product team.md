@@ -61,7 +61,7 @@ In our case at Anterior, this was me (excuse the self-reference here). For our i
 
 This only works for as long as you can find people with this skillset. Which typically means that as the team grows, you'll need to start formalising what this individual does into a 'process' that can be followed by cross-functional teams of domain experts and programmers. Your coding domain expert is perfectly positioned to do this and you should empower them to do so.
 
-I initially set up and defined this process at Anterior and we then passed it over a few months later to somebody else (with management expertise, but not domain expertise) to _manage_ the process. Looking back, I think we did so too soon and it affected the speed at which the process and associated tooling evolved. One takeaway for me is that you should keep your technical domain expert as close to this work as possible, for as long as possible.
+I initially set up and defined this process at Anterior and we then passed it over a few months later to somebody else (with management expertise, but not domain expertise) to _manage_ the process. Looking back, I think we did so too soon and it affected the speed at which the process and associated tooling evolved. One takeaway for me is that you should keep your technical domain expert(s) as close to this work as possible, for as long as possible.
 
 
 ## Conclusion
