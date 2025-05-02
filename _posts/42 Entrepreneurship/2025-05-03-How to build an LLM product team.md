@@ -2,7 +2,7 @@
 title: Who to hire first for your LLM product team? 3 principles for building LLM product teams
 permalink: llm-product-team
 redirect_from: 
-public_date: 2025-04-30
+public_date: 2025-05-03 00:00:00
 tags:
   - Machine
   - Learning
