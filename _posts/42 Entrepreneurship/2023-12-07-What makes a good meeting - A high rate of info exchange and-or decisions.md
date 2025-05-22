@@ -9,7 +9,7 @@ tags:
 - 
 ---
 
-In the [Art and Business of Online Writing](https://www.amazon.co.uk/Art-Business-Online-Writing-Capturing/dp/0998203491), Alexander Cole describes the "rate of revelation" as a key metric for how engaging written work is: **the rate at which the reader discovers new information**.
+In the [Art and Business of Online Writing](https://www.amazon.co.uk/Art-Business-Online-Writing-Capturing/dp/0998203491), Nicolas Cole describes the "rate of revelation" as a key metric for how engaging written work is: **the rate at which the reader discovers new information**.
 
 What's a metric for defining the utility of a meeting? I propose the following:
 - **rate of information exchange**: how much new and relevant information does each member of that meeting acquire?
