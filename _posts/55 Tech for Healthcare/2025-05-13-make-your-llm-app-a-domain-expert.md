@@ -1,5 +1,5 @@
 ---
-title: "Make your LLM app a Domain Expert: How to Build an LLM-Native Expert System"
+title: "Own your vertical: A playbook for building a domain-native LLM application"
 permalink: llm-native-expert-system
 redirect_from:
 public_date: 2025-05-13 00:00:00
@@ -11,10 +11,14 @@ type: article
 status: complete
 ---
 
-A talk I've been invited to give at the [AI Engineer Summit](https://www.ai.engineer/) on June 3rd 2025 - I'll update the content here shortly.
+Here's a talk I gave for the [AI Engineer World Fair](https://www.ai.engineer/) (4th June 2025).
+
+### Recording
+To be released
+
+<!-- ### Summary -->
 
 
-
-
-
+### Slides
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/slides/q3stZoL0yVmqq5lGAfo2qB/Make-your-LLM-app-a-Domain-Expert?node-id=5-178&embed-host=share" allowfullscreen></iframe>
 
