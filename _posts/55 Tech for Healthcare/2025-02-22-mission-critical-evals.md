@@ -20,4 +20,4 @@ Here's a talk I gave for the [AI Engineer Summit](https://www.ai.engineer/summit
 {% include embed/tweet.html user="ChrisLovejoy_" id="1894740845133275231" %}
 
 ### Slides
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/slides/dFYpf9IlKNoaEO0VA8ZrhN/Mission-critical-evals-at-scale?node-id=5-178&embed-host=share" allowfullscreen></iframe>
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/slides/C35rHs5p3eMUz6qyPYz4vi/Mission-critical-evals-at-scale?node-id=2021-1204&embed-host=share" allowfullscreen></iframe>
