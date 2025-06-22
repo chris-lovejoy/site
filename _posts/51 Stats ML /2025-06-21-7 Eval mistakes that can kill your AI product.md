@@ -12,7 +12,7 @@ When done right, evals can be the backbone of product development, enabling team
 
 Increasingly, evals are becoming the differentiators between LLM products. In a world where anybody can grab powerful off-the-shelf models, you win by your ability to move fast. This is enabled by effective evals.
 
-Having seen many examples of both good and bad approaches to evals (including internally at [Anterior](https://anterior.com/), my Sequoia-backed healthcare LLM start-up), here are the 7 most common mistakes I've seen - and how you can avoid them.
+Having seen many examples of both good and bad approaches to evals (including internally at [Anterior](https://anterior.com/), our Sequoia-backed healthcare LLM start-up), here are the 7 most common mistakes I've seen - and how you can avoid them.
 
 
 ## Starting with off-the-shelf eval metrics
