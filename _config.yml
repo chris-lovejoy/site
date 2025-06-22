@@ -184,6 +184,7 @@ collections:
     output: true
   notes:
     output: true
+    permalink: /notes/:title/
 
 defaults:
   - scope:
@@ -206,6 +207,13 @@ defaults:
     values:
       layout: page
       permalink: /:title/
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: page
+      comments: false
+      toc: true
 
 sass:
   style: compressed
