@@ -1,7 +1,7 @@
 ---
 image: 
 title: "7 eval mistakes that can kill your AI product (and how to avoid them)"
-permalink: how-not-to-do-evals
+permalink: eval-mistakes
 redirect_from: 
 public_date: 2025-06-21
 type: article
