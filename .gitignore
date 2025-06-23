@@ -4,4 +4,7 @@ node_modules/**
 venv/**
 .obsidian/workspace.json
 .obsidian/core-plugins.json
+.obsidian/community-plugins.json
+.obsidian/graph.json
+.obsidian/plugins/
 
