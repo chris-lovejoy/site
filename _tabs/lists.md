@@ -8,4 +8,5 @@ redirect_from:
 image: 
 ---
 
+- [[Podcasts|My podcast appearances]]
 - [[My favourite newsletters]]
