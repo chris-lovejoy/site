@@ -1,6 +1,6 @@
 _site/**
 node_modules/**
-.DS_Store
+**.DS_Store
 venv/**
 .obsidian/workspace.json
 .obsidian/core-plugins.json
