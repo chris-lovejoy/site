@@ -27,7 +27,7 @@ Hi! 👋 I'm Chris Lovejoy. My story so far:
 ## Longer Version (reverse chronological)
 
 ### Building a Clinical Brain *(Aug 2023 - Now)*
-In Progress
+Joined as first technical hire after the Founders raised a seed round led by Sequoia. Built first version of product (with new LLM methodology I devised) which took us to $250k ARR. Devised and implemented system for measuring and improving clinical performance of AI, powered by team of clinicians and AI engineers (shared details [[Mission-Critical Evals at Scale: Learnings from 100,000 medical decisions|here]] and [[Own your vertical: A playbook for building a domain-native LLM application|here]]).
 
 
 ### Consulting and Bottom-Up Entrepreneurship *(Jan 2023 - Aug 2023)*
