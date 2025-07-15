@@ -213,7 +213,7 @@ The route to get here is ultimately to gain more experience, and to learn from s
 
 **I'd say you hit this point broadly after somewhere between 3 and 10 "serious" projects** (of at least a month). So you're looking at atleast three-to-six months of work.
 
-This is the point at which you can start to function as a broadly-standalone data scientist and work autonomously on projects in academia or in industry. There's an option to start directly monetising your skills. <!-- (see my [[A guide to monetising data science skills|guide to monetising data science skills]] if that's part of your plan). -->
+This is the point at which you can start to function as a broadly-standalone data scientist and work autonomously on projects in academia or in industry. There's an option to start directly monetising your skills. <!-- (see my [A guide to monetising data science skills|guide to monetising data science skills] if that's part of your plan). -->
 
 This is also the point at which you can really start to have fun - by e.g. finding data on the internet, playing around with it, and sharing your findings. (At some point, it's probably worth learning SQL to help you query data from certain databases.)
 
