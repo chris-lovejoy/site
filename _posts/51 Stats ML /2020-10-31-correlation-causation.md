@@ -1,7 +1,6 @@
 ---
-title: "From Correlation to Causation in Machine Learning: Why and How our AI needs to understand causality"
+title: "From Correlation to Causation in Machine Learning: Why and How our AI needs to understand causality"
 permalink: correlation-causation
-redirect_from:
 public_date: 2020-10-31 00:00:00
 tags:
   - Machine Learning
@@ -9,7 +8,7 @@ image: assets/images/article-covers/mesh.jpeg
 type: article
 status: complete
 ---
-## What’s wrong with correlation?
+## What's wrong with correlation?
 
 In May 2016, the COMPAS algorithm was flagged as being racially biased [1]. This algorithm was used by the US to guide criminal sentencing by predicting likelihood of reoffending. It estimated a black person was more likely to re-offend than a white person with the same other background factors.
 
@@ -19,7 +18,7 @@ This can be a problem in medicine as well. Consider the following:
 
 100 patients are admitted to hospital with pneumonia, of which 15 also have asthma. The doctors know asthma puts them at higher risk of getting more sick, so give them a more aggressive treatment. Because of this, the patients with asthma actually recover more quickly.
 
-If we use this data to train a model, and aren’t careful, the model may conclude that asthma actually improves recovery. As a result, it may recommend treating less aggressively. Of course, we can see this is wrong – but to an AI model it’s not so obvious.
+If we use this data to train a model, and aren't careful, the model may conclude that asthma actually improves recovery. As a result, it may recommend treating less aggressively. Of course, we can see this is wrong – but to an AI model it's not so obvious.
 
 ### From statistics to machine learning
 
@@ -60,9 +59,9 @@ Here, we divide our sample population into two, completely randomly. One half ge
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
 | Source: [What is the role of AI in healthcare? What the current evidence shows](https://www.youtube.com/watch?v=NdL6RW7Aa30) — Chris Lovejoy. [Original paper](https://www.thelancet.com/pdfs/journals/langas/PIIS2468-1253%2819%2930411-X.pdf). |
 
-But sometimes we can’t do an RCT. Maybe we’ve already collected the data. Or maybe we’re investigating a variable we can’t change (like the impact of genetics, or the weather). What can we do?
+But sometimes we can't do an RCT. Maybe we've already collected the data. Or maybe we're investigating a variable we can't change (like the impact of genetics, or the weather). What can we do?
 
-There’s a neat mathematical approach here, called **‘stratifying on the confounders’**. I won’t go into the detail here, but essentially it removes the confounders by summing up every possible combination of their values. (If interested, Judea Pearl is a pioneer in this field, and outlines the methodology [here](http://bayes.cs.ucla.edu/PRIMER/primer-ch3.pdf). A shorter, simpler description is shared by Ferenc Huszár [here](https://www.inference.vc/untitled/)).
+There's a neat mathematical approach here, called **'stratifying on the confounders'**. I won't go into the detail here, but essentially it removes the confounders by summing up every possible combination of their values. (If interested, Judea Pearl is a pioneer in this field, and outlines the methodology [here](http://bayes.cs.ucla.edu/PRIMER/primer-ch3.pdf). A shorter, simpler description is shared by Ferenc Huszár [here](https://www.inference.vc/untitled/)).
 
 
 ### **Causality: the future of machine learning?**
@@ -75,7 +74,7 @@ The exact approach depends on the question we are trying to answer and the type 
 
 A recent example is [this paper by Babylon Health](https://www.nature.com/articles/s41467-020-17419-7). They used a causal machine learning model to rank likely diseases based on the symptoms, risk factors and demographics of a patient.
 
-They trained the model to ask “if I treat this disease, which symptoms would go away?” and “if I don’t treat this disease, which symptoms would remain?”. They encoded these questions as two mathematical formulae. Using these questions brings in causality: if treating a disease causes symptoms to go away, then it’s a causal relationship.
+They trained the model to ask "if I treat this disease, which symptoms would go away?" and "if I don't treat this disease, which symptoms would remain?" They encoded these questions as two mathematical formulae. Using these questions brings in causality: if treating a disease causes symptoms to go away, then it's a causal relationship.
 
 They compared their causal model with a model that only looked at correlations and found that it performed better — particularly for rarer diseases and more complex cases.
 
@@ -106,11 +105,11 @@ This a key step towards utilising the power of machine learning for real-world b
 #### **Other articles on correlation vs causation:**
 
 -   [Correlation vs Causation in Data Science](https://medium.com/@sundaskhalid/correlation-vs-causation-in-data-science-66b6cfa702f0)
--   [If Correlation Doesn’t Imply Causation, Then What Does?](https://medium.com/causal-data-science/if-correlation-doesnt-imply-causation-then-what-does-c74f20d26438)
+-   [If Correlation Doesn't Imply Causation, Then What Does?](https://medium.com/causal-data-science/if-correlation-doesnt-imply-causation-then-what-does-c74f20d26438)
 
 ---
 
-### **Appendix: The causal inference hierarchy (Judea Pearl’s Ladder of Causation)**
+### **Appendix: The causal inference hierarchy (Judea Pearl's Ladder of Causation)**
 
 Judea Pearl describes a ladder of causal inference.
 
@@ -118,9 +117,9 @@ Judea Pearl describes a ladder of causal inference.
 
 When moving beyond associational inference, he considers two main types: **interventional causal inference** and **counterfactual causal inference.**
 
-**_Interventional causal inference_** asks “what would happen to B if I set A at value X?” If setting the value of A higher leads to a higher value of B (without confounders), we say the relationship is causal.
+**_Interventional causal inference_** asks "what would happen to B if I set A at value X?" If setting the value of A higher leads to a higher value of B (without confounders), we say the relationship is causal.
 
-**_Counterfactual causal inference_** is a little trickier. We ask “Given that A was value X and this led B to equal Y, what would have happened if it A had actually been a higher value?” (ie. it asks this _after_ the event has already happened). If A having been different would have led to a different value of B, we say the relationship is causal.
+**_Counterfactual causal inference_** is a little trickier. We ask "Given that A was value X and this led B to equal Y, what would have happened if it A had actually been a higher value?" (ie. it asks this _after_ the event has already happened). If A having been different would have led to a different value of B, we say the relationship is causal.
 
 If interested in understanding these distinctions, check out the following resources:
 
