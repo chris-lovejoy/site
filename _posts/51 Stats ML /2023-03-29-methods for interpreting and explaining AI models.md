@@ -12,7 +12,7 @@ status: No status
 ---
 
 
-[[AI models are inherently difficult to interpret]] so methods have been developed to support interpretability and explainability. Interpretability can be defined as **being able to understand what caused a decision or being able to predict/explain the result**.
+AI models are inherently difficult to interpret so methods have been developed to support interpretability and explainability. Interpretability can be defined as **being able to understand what caused a decision or being able to predict/explain the result**.
 
 These methods can be broadly divided into:
 1. **inherent explainability**: using 'interpretable' models where we can directly look at understand the parameters
@@ -22,7 +22,7 @@ These methods can be broadly divided into:
 ### Inherent explainability
 Models which are inherently interpretable include:
 1. linear regression - we can look at coefficients
-2. decision trees (we can look at branch points
+2. decision trees (we can look at branch points)
 3. generalised linear models - again, we can look at coefficients
 4. naive bayes - we can look at the conditional probabilities
 5. nearest neighbours - we can look at each of the nearest neighbours

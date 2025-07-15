@@ -213,7 +213,7 @@ The route to get here is ultimately to gain more experience, and to learn from s
 
 **I'd say you hit this point broadly after somewhere between 3 and 10 "serious" projects** (of at least a month). So you're looking at atleast three-to-six months of work.
 
-This is the point at which you can start to function as a broadly-standalone data scientist and work autonomously on projects in academia or in industry. There's an option to start directly monetising your skills (see my [[A guide to monetising data science skills|guide to monetising data science skills]] if that's part of your plan).
+This is the point at which you can start to function as a broadly-standalone data scientist and work autonomously on projects in academia or in industry. There's an option to start directly monetising your skills. <!-- (see my [[A guide to monetising data science skills|guide to monetising data science skills]] if that's part of your plan). -->
 
 This is also the point at which you can really start to have fun - by e.g. finding data on the internet, playing around with it, and sharing your findings. (At some point, it's probably worth learning SQL to help you query data from certain databases.)
 
@@ -241,7 +241,7 @@ Data science and machine learning is hard. It may feel intimidating to learn it 
 It becomes less intimidating, though, when you focus the scope. Rather than "I want to learn machine learning", you could say "I want to be able to run a data science pipeline, with supervision" (ie. Stage 4). I hope this article provides the framework for doing so.
 
 ### (2) Understand your *why*
-It's important to have a clear *why*. On the days when you get home from work and feel tired, you'll need a reason to keep going. Perhaps you're not enjoying your current job and have an alternative path in mind. Perhaps you want to build skills that help in your current job. In my case, I knew I wanted the self-sufficiency to build cool products and analyse interesting data based on whatever ideas came to my mind. If you're medical too, I strongly believe [[More clinicians should learn to code and do data science|more clinicians should learn to code and do data science]].
+It's important to have a clear *why*. On the days when you get home from work and feel tired, you'll need a reason to keep going. Perhaps you're not enjoying your current job and have an alternative path in mind. Perhaps you want to build skills that help in your current job. In my case, I knew I wanted the self-sufficiency to build cool products and analyse interesting data based on whatever ideas came to my mind. If you're medical too, I strongly believe more clinicians should learn to code and do data science. <!-- Was previously a link to article, no longer exists -->
 
 ### (3) Consider making more time - and take Little Bets
 Ultimately, it's true that you can make faster progress when you're devoting more time. So if you're *serious* about building your skills, you could consider how to change your current job or lifestyle to *create* more time. (In my case, I took some time out of medical training to do data science full-time.)
