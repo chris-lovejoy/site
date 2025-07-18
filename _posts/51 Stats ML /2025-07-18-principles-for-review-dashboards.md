@@ -4,6 +4,7 @@ title: "Why custom AI review dashboards transform AI products - and how to build
 permalink: review-dashboard
 redirect_from: 
 public_date: 2025-07-18
+social_preview_image: /assets/images/article-images/Scalpel.jpeg
 type: article
 tags:
 ---
