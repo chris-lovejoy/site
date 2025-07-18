@@ -1,6 +1,6 @@
 ---
 image: 
-title: "Why custom AI review dashboards transform AI products - and how to build them"
+title: "Why custom AI review dashboards transform AI products - and how to build one"
 permalink: review-dashboard
 redirect_from: 
 public_date: 2025-07-18
