@@ -12,7 +12,7 @@ status: complete
 ---
 
 
-It's a common scenario: you've got an entrpreneurial itch, an idea you're really excited to build... it's just, you don't really know how to build it.
+It's a common scenario: you've got an entrepreneurial itch, an idea you're really excited to build... it's just, you don't really know how to build it.
 
 Perhaps you've worked around products but on the commercial side. Or maybe your CTO / tech lead doesn't have the right experience or just left. Or perhaps you're pretty new to this and still trying to figure things out.
 
