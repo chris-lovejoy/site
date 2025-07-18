@@ -15,8 +15,8 @@
 
   <!-- Setup Open Graph image -->
 
-  {% if page.image %}
-    {% assign src = page.image.path | default: page.image %}
+  {% if page.image or page.social_preview_image %}
+    {% assign src = page.image.path | default: page.image | default: page.social_preview_image %}
 
     {% unless src contains '://' %}
       {%- capture img_url -%}
@@ -27,7 +27,17 @@
       {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
       {% assign seo_tags = seo_tags | replace: old_url, new_url %}
+    {% else %}
+      {% assign img_url = src | absolute_url %}
     {% endunless %}
+
+    {%- capture twitter_image -%}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content="{{ img_url }}" />
+    {%- endcapture -%}
+
+    {% assign old_meta_clip = '<meta name="twitter:card" content="summary" />' %}
+    {% assign seo_tags = seo_tags | replace: old_meta_clip, twitter_image %}
 
   {% elsif site.social_preview_image %}
     {%- capture img_url -%}
@@ -49,6 +59,10 @@
   {% endif %}
 
   {{ seo_tags }}
+
+  <!-- Additional Twitter Card meta tags -->
+  <meta name="twitter:site" content="@{{ site.twitter.username }}" />
+  <meta name="twitter:creator" content="@{{ site.twitter.username }}" />
 
   <title>
     {%- unless page.layout == 'home' -%}
