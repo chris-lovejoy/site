@@ -14,7 +14,7 @@ status: complete
 Here's a talk I gave for the [AI Engineer World Fair](https://www.ai.engineer/) (4th June 2025).
 
 ### Recording
-To be released
+{% include embed/youtube.html id="MRM7oA3JsFs" %}
 
 <!-- ### Summary -->
 
