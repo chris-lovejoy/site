@@ -8,10 +8,6 @@ redirect_from:
 image: 
 ---
 
-### _**NOTE: The booking link below remains active, but I am not currently accepting work proposals.**_
-
----
-
 If you're a a technical leader looking to improve your AI product, I'd love to help. My experience includes:
 - Setting up evaluation systems that enable quick AI iteration while maintaining reliability and safety and in mission-critical industries such as healthcare
 - Building teams and processes that combine AI and domain expertise effectively
