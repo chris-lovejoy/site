@@ -1,5 +1,5 @@
 ---
-title: "AI Evals in Vertical Industries"
+title: "AI Evals in Vertical Industries (Guest Talk)"
 permalink: ai-evals-in-vertical-industries
 redirect_from:
 public_date: 2025-08-03 00:00:00
