@@ -11,7 +11,7 @@ type: article
 status: complete
 ---
 
-Here's a guest lecture I'm delivering as part of the [AI Evals For Engineers & PMs](https://maven.com/parlance-labs/evals) online course. (7th August 2025).
+Here's a guest lecture I'm delivering as part of the [AI Evals For Engineers & PMs](https://maven.com/parlance-labs/evals) online course (7th August 2025).
 
 ### Recording
 To be uploaded later
