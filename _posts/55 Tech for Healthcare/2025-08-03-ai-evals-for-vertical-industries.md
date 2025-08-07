@@ -24,5 +24,6 @@ This is a a guest lecture as part of the [AI Evals For Engineers & PMs](https://
 <!-- {% include embed/tweet.html user="ChrisLovejoy_" id="1950537356345303070" %} -->
 
 ### Slides
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/slides/boeKOPHaHvIRKDtC9YaTdz/AI-Evals-in-Vertical-Industries?node-id=2-228&embed-host=share" allowfullscreen></iframe>
+
+**_Downloadable as a PDF [here](/assets/pdfs/AI Evals in Vertical Industries.pdf)_**.
 
