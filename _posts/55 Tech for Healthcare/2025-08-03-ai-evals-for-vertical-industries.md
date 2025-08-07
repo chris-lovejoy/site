@@ -14,12 +14,12 @@ status: complete
 Here's a guest lecture I'm delivering as part of the [AI Evals For Engineers & PMs](https://maven.com/parlance-labs/evals) online course (7th August 2025).
 
 ### Recording
-To be uploaded later
+(Will be uploaded later)
 
 <!-- {% include embed/youtube.html id="MRM7oA3JsFs" %} -->
 
-### Summary
-To be shared
+<!-- ### Summary -->
+<!-- I will share later -->
 
 <!-- {% include embed/tweet.html user="ChrisLovejoy_" id="1950537356345303070" %} -->
 
