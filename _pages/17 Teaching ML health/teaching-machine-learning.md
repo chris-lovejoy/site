@@ -24,6 +24,8 @@ image:
 - [[Deep Learning - CNNs and Image Analysis (Article)|Analysing image data in healthcare with deep learning]]
 - [[Deep Learning - RNNs (or Natural Language Processing) (Article)|Analysing sequential health data including natural language with deep learning]]
 
+<!-- See all articles here: [TODO: add link to appropriate tag page] -->
+
 **[PRACTICAL EXERCISES](https://github.com/chris-lovejoy/CodingForMedicine)**
 
 <!-- TODO: add links for all of these modular content pieces - to both my YouTube and my articles
