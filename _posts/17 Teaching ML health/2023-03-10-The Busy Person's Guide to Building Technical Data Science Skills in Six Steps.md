@@ -129,7 +129,7 @@ In general, I think you should [[Learn To Code Through Projects, Not Courses]], 
 - And [here's an exercise](https://github.com/chris-lovejoy/CodingForMedicine/blob/main/exercises/Coding_Medical_Calculator.ipynb) applying those principles to making a medical calculator
 
 
-### Stage 2: Learning to loading and analyse data
+### Stage 2: Learning to load and analyse data
 
 Once you understand the core principles, the next step is to be able to apply them to some real-world data.
 
