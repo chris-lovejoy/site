@@ -1,12 +1,17 @@
 ---
 layout: page
-title: Subscribe to my personal mailing list
+icon: fas fa-inbox
+order: 5
+title: Email
 permalink: email
 redirect_from: 
 image: 
 ---
 
-Subscribe to my personal mailing list to receive updates when I release resources, share projects and announce events.
+
+## Subscribe to my personal mailing list to receive updates when I release resources, share projects and announce events.
+
+<!-- Subscribe to my personal mailing list to receive updates when I release resources, share projects and announce events. -->
 
 On average, I send 1 email every ~2 weeks.
 
