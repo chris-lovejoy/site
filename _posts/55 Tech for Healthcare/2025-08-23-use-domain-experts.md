@@ -10,7 +10,7 @@ tags:
 status: complete
 ---
 
-A popular maxim when building LLM products is to **"look at your data"**: one of the best ways to understand and improve AI performance is to review your AI outputs.
+**A popular maxim when building LLM products is to "look at your data"**: one of the best ways to understand and improve AI performance is to review your AI outputs.
 
 But what if you can't understand your data?
 
@@ -50,11 +50,11 @@ There are several mechanisms for improving your application, from tweaking promp
 
 As you grow, you may need to build out your team of domain experts performing reviews. As you hire different reviewers, you'll need a system for quality-assuring your reviewers by assessing inter-rater agreement.
 
-As your user base grows and your AI system generates more outputs, you'll need a way to prioritise *which* of the the AI outputs to review. 
+As your user base grows and your AI system generates more outputs, you'll need a way to prioritise *which* of the AI outputs to review. 
 
 All these decisions benefit from domain expert steering.
 
-Given your domain expert(s) should do so much more than just review AI outputs, what other skills should they have?
+**Given your domain expert(s) should do so much more than just review AI outputs, what other skills should they have?**
 
 
 ## Hiring the right domain expert(s)
