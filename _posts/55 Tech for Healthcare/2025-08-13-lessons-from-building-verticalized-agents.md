@@ -13,7 +13,7 @@ status: complete
 This is [a lightning lesson](https://maven.com/p/504453/lessons-from-building-verticalized-ai-agents) with [Jason Liu](https://jxnl.co/) delivered on 13th August 2025.
 
 ### Recording
-(Will be uploaded later)
+(Will be uploaded later - sign up below to be notified.)
 
 <!-- {% include embed/youtube.html id="MRM7oA3JsFs" %} -->
 
@@ -23,7 +23,5 @@ This is [a lightning lesson](https://maven.com/p/504453/lessons-from-building-ve
 <!-- {% include embed/tweet.html user="ChrisLovejoy_" id="1950537356345303070" %} -->
 
 ### Slides
-(Will be uploaded later)
-
-<!-- **_Downloadable as a PDF [here](/assets/pdfs/AI Evals in Vertical Industries.pdf)_**. -->
+**_Downloadable as a PDF [here](/assets/pdfs/Lessons from building verticalized AI agents.pdf)_**.
 
