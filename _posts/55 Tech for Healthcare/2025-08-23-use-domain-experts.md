@@ -71,9 +71,14 @@ It's worth calling out: you're unlikely to find somebody with all the above attr
 The approach I'd recommend is to find someone with *as many of these traits as possible*, then team them up with others (eg. data scientists, subject-matter experts with industry connections) to complement the gaps.
 
 
+| ![more-than-domain-expert](../assets/images/article-images/more-than-just-domain-expert.png) | 
+|:--:| 
+| *Hire more than "just" a domain expert* |
+
+
 ## Consider hiring a "principal domain expert"
 
-There are many advantages to giving a single individual ultimate responsibility for AI performance, and defining what is good / correct. This person is the "principal domain expert".
+There are many advantages to giving a single individual ultimate responsibility for AI performance and defining what is good / correct. This person is the "principal domain expert".
 
 This doesn't mean you should *only* have this person reviewing AI outputs, but rather it's their role to take into account input from customers and from other reviewers and make "the final call" on key decisions.
 
