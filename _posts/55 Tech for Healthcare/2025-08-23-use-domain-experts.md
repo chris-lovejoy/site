@@ -2,7 +2,7 @@
 image: 
 title: "How to use domain experts when building domain-specific vertical AI" 
 permalink: domain-experts-ai
-redirect_from: 
+redirect_from: domain-expert-vertical-ai
 public_date: 2025-08-23
 type: article
 tags:
