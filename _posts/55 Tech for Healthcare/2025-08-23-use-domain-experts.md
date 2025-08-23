@@ -77,9 +77,9 @@ There are many advantages to giving a single individual ultimate responsibility 
 
 This doesn't mean you should *only* have this person reviewing AI outputs, but rather it's their role to take into account input from customers and from other reviewers and make "the final call" on key decisions.
 
-This helps your to move faster. When uncertainty arises, e.g. around whether a certain output is better or more correct, having this directly-responsible individual (DRI) avoids slow 'consensus by committee'.
+This helps you to move faster. When uncertainty arises, e.g. around whether a certain output is better or more correct, having this directly-responsible individual (DRI) avoids slow 'consensus by committee'.
 
 The typical evolution of this role is that they begin by reviewing AI outputs and steering product development - then as things grow, they can build out the team and design the wider system described earlier.
 
-My advice would be: bring this individual into the project as early as possible and give them ownership so that they stick around. A failure mode I've seen is hiring people just to do reviews. This can solve your immediate problem (of getting insight into your AI performance) but makes it harder to design and build the wider system you need to build a differentiated application.
+My advice would be to bring this individual into the project as early as possible and give them ownership so that they stick around. A failure mode I've seen is hiring people just to do reviews. This can solve your immediate problem (of getting insight into your AI performance) but makes it harder to design and build the wider system you need to build a differentiated application.
 
