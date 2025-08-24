@@ -1,6 +1,6 @@
 ---
 image: 
-title: "How to use domain experts when building domain-specific vertical AI" 
+title: "How to leverage domain experts for building domain-specific vertical AI" 
 permalink: domain-experts-ai
 redirect_from: domain-expert-vertical-ai
 public_date: 2025-08-23
