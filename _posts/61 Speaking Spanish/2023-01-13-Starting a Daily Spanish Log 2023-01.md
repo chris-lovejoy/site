@@ -78,7 +78,6 @@ The 6 topics will be:
 17. [[Escribiendo como un metodo para consolidar mis aprendizajes (Día 17)]]
 18. [[Hay un método óptimo para aprender lenguas (Día 18)]]
 19. [[La alegria del desafío (Día 19)]]
-20. [[Si yo fuera eso (Día 20)]]
 
 
 
