@@ -206,7 +206,7 @@ This was a fairly hefty project, and the programming was only a fraction of the 
 
 #### Main learnings and reflections:
 
--   **Data structure is really, really important.** A machine learning model is only as good as the data it’s trained on. For companies that utilise data science, their value is largely determined by the quality the data they have. A huge part of this project was to improve the structure structure — only a very small part was training the actual model.
+-   **Data structure is really, really important.** A machine learning model is only as good as the data it’s trained on. For companies that utilise data science, their value is largely determined by the quality the data they have. A huge part of this project was to improve the structure a very small part was training the actual model.
 
 ---
 
