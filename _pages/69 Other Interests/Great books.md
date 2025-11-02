@@ -37,6 +37,8 @@ layout: page
 - How to Live on 24 Hours a Day by Arnold Bennett
 - Useful Not True by Derek Sivers
 - Deep Medicine by Eric Topol
+- Lifespan by David Sinclair
+- Becoming Myself by Irvin Yalom
 
 
 ### Narrative Non-Fiction
@@ -44,4 +46,6 @@ layout: page
 - Bad Blood by John Carreyrou
 - The Angina Monologues by Samer Nashef
 - American Kingpin by Nick Bilton
+- Empire of Pain by Patrick Radden Keefe
+- The Tattooist of Auschwitz by Heather Morris
 
