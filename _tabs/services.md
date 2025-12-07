@@ -1,14 +1,14 @@
 ---
 layout: page
 icon: fas fa-briefcase
-order: 5
+order: 4
 title: Independent Consulting
 permalink: services
 redirect_from: 
 image: 
 ---
 
-<!-- TODO: tidy up the below -->
+<!-- TODO: tidy up the this CSS -->
 <style>
 .service-btn {
   background-color: var(--link-color);
