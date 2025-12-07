@@ -64,7 +64,7 @@ image:
 
 
 If you're an organization leader seeking to generate real-world value with AI, particularly in healthcare, I'd love to help. My experience includes:
-- 9 years training as a doctor, 7 years building AI products - I've navigated the shift from traditional ML approaches to LLM-powered systems and helped build the playbook for healthcare.
+- 9 years training as a doctor, 7 years building AI products. I've navigated the shift from traditional ML approaches to LLM-powered systems and helped build the playbook for healthcare.
 - building evaluation systems that unlock reliable and safe AI, supporting AI's use in mission-critical industries like healthcare and enabling companies to prove performance for regulatory compliance
 - setting up teams, tools and processes to incorporate domain expertise into AI systems
 
