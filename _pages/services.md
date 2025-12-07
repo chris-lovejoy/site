@@ -8,28 +8,6 @@ redirect_from:
 image: 
 ---
 
-If you're an organization leader seeking to generate real-world value with AI, particularly in healthcare, I'd love to help. My experience includes:
-- 9 years training as a doctor then 7 years building AI powered products. I've seen the evolution from traditional ML approaches to LLM-powered paradigms and helped build the playbook for doing so in healthcare.
-- building evaluation systems that unlock reliable and safe AI, supporting AI's use in mission-critical industries like healthcare and enabling companies to prove performance for regulatory compliance
-- setting up teams, tools and processes to bake domain expertise into AI systems
-
-I can guide you through the challenges of AI product development, ensuring your team is set up to move fast, leverage new technology effectively and differentiate you from competitors.
-
-
-<!-- ### Some of my clients
-
-| Client                  | Description                                             | Contact    |
-| ----------------------- | ------------------------------------------------------- | ---------- |
-| ZOE                     | Personalised nutrition using blood glucose              | CTO        |
-| Cera Care               | Tech-enabled home care provider                         | CTO        |
-| Curb AI                 | Digital platform for behaviour change such as addiction | CPO        |
-| Suvera                  | Virtual patient health monitoring                       | CEO        |
-| BiteMedicine            | A medical knowledge platform                            | CEO        |
-| Priority Digital Health | Platform for self-management of health                  | CTO        |
-| Clinical Metrics        | A medical education patient simulator                   | Co-Founder |
-
-... including many others like Vtuls, Pulse Active Stations Network (YC-backed), ProBiometrics Ltd. -->
-
 <!-- TODO: tidy up the below -->
 <style>
 .service-btn {
@@ -84,6 +62,29 @@ I can guide you through the challenges of AI product development, ensuring your 
 }
 </style>
 
+
+If you're an organization leader seeking to generate real-world value with AI, particularly in healthcare, I'd love to help. My experience includes:
+- 9 years training as a doctor, 7 years building AI products - I've navigated the shift from traditional ML approaches to LLM-powered systems and helped build the playbook for healthcare.
+- building evaluation systems that unlock reliable and safe AI, supporting AI's use in mission-critical industries like healthcare and enabling companies to prove performance for regulatory compliance
+- setting up teams, tools and processes to incorporate domain expertise into AI systems
+
+I can guide you through the challenges of AI product development, ensuring your team is set up to move fast, leverage new technology effectively and differentiate you from competitors. I see three critical challenges holding healthcare AI teams back - and I've helped companies solve each one.
+
+
+<!-- ### Some of my clients
+
+| Client                  | Description                                             | Contact    |
+| ----------------------- | ------------------------------------------------------- | ---------- |
+| ZOE                     | Personalised nutrition using blood glucose              | CTO        |
+| Cera Care               | Tech-enabled home care provider                         | CTO        |
+| Curb AI                 | Digital platform for behaviour change such as addiction | CPO        |
+| Suvera                  | Virtual patient health monitoring                       | CEO        |
+| BiteMedicine            | A medical knowledge platform                            | CEO        |
+| Priority Digital Health | Platform for self-management of health                  | CTO        |
+| Clinical Metrics        | A medical education patient simulator                   | Co-Founder |
+
+... including many others like Vtuls, Pulse Active Stations Network (YC-backed), ProBiometrics Ltd. -->
+
 <!-- <div> -->
   <!-- <a href="https://form.typeform.com/to/Supw6G1n" target="_blank" class="service-btn">
     Request a consultation
@@ -97,24 +98,24 @@ I can guide you through the challenges of AI product development, ensuring your 
 </div> -->
 
 
-## Building AI products in 2026 requires a fundamentally different approach
+## Building AI products today requires a fundamentally different approach
 
-The arrival of LLMs has created unprecedented opportunities in healthcare AI - but also new challenges that many teams are struggling to fully capitalise upon.
+The arrival of LLMs has created unprecedented opportunities in healthcare AI - but also new challenges that many teams are struggling to fully capitalize upon.
 
-I see three critical challenges holding teams back:
+The three critical challenges I see holding teams back are:
 
 #### 1. **The MVP-to-production chasm**
 
 We've seen how easy it is to make an impressive demo - and how hard it is to deploy something that provides real-world value. In mission-critical industries like healthcare, the bar needs to be high.
 
-I help teams design pragmatic evaluations, tailored to their stage of product development, to enable targetted iteration, achieve safe and effective performance and then maintain it through robust post-deployment monitoring. I've built systems that [have achieved state-of-the-art performance and delighted healthcare users](https://www.youtube.com/watch?v=cZ5ZJy19KMo).
+I help teams design pragmatic evaluations, tailored to their stage of product development, to enable targeted iteration, achieve safe and effective performance and then maintain it through robust post-deployment monitoring. I've built systems that [have achieved state-of-the-art performance and delighted healthcare users](https://www.youtube.com/watch?v=cZ5ZJy19KMo).
 
 
 #### 2. **Domain expertise matters more than ever**
 
 With LLMs, words are the new code. Your prompts, instructions, and evaluation criteria are now core parts of your system - and you need a way to systematically bake in the insights from those who deeply understand the domain.
 
-Domain experts and engineers often speak different langauges - and traditional software development workflows weren't designed for this new collaborative paradigm.
+Domain experts and engineers often speak different languages - and traditional software development workflows weren't designed for this new collaborative paradigm.
 
 I help teams bridge this gap. As a doctor by background who's spent years building AI systems, I understand both worlds. I've designed workflows, tools and processes [to convert domain expertise into domain expert LLM applications](https://www.youtube.com/watch?v=MRM7oA3JsFs). 
 
@@ -125,7 +126,7 @@ The approach that made sense in the "pre-LLM" era doesn't work any more. Yet tha
 
 LLM-powered products require new skillsets and new approaches: context engineering, workflow decomposition and evaluation systems - rather than feature engineering, model architecture design and optimizing for model accuracy. 
 
-Those best placed to execute the new playbook are those who've lived through its evolution. I operated in this 'pre-LLM' world; I built state-of-the-art deep learning algorithms and published [the first study to compare AI and doctors](https://www.bmj.com/content/368/bmj.m689.abstract). I then spent 2 years building LLM-powered products for healthcare admin at a [Sequoia-backed start-up](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare).
+I've lived through this evolution. I operated in this 'pre-LLM' world; I built state-of-the-art deep learning algorithms and published [the first study to compare AI and doctors](https://www.bmj.com/content/368/bmj.m689.abstract). I then spent 2 years building LLM-powered products for healthcare admin at a [Sequoia-backed start-up](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare).
 
 I help teams build in an LLM-native way; in how they architect their applications and write code, in how they hire and train their staff and in their operational proceses.
 
@@ -166,7 +167,7 @@ Chris is a great developer to work with. He listens carefully to the design spec
 Working with Chris was simple and efficient, despite us working on a complicated piece of work. Chris applied an astute understanding of our aspirations for the product, and was able to apply his technical expertise to our needs from a product and commercial perspective. -->
 
 
-## Let's Talk
+## Let's discuss your AI challenges
 
 If you'd like to explore working together, book a discovery call below:
 
