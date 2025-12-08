@@ -128,7 +128,7 @@ LLM-powered products require new skillsets and new approaches: context engineeri
 
 I've lived through this evolution. I operated in this 'pre-LLM' world; I built state-of-the-art deep learning algorithms and published [the first study to compare AI and doctors](https://www.bmj.com/content/368/bmj.m689.abstract). I then spent 2 years building LLM-powered products for healthcare admin at a [Sequoia-backed start-up](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare).
 
-I help teams build in an LLM-native way; in how they architect their applications and write code, in how they hire and train their staff and in their operational proceses.
+I help teams build in an LLM-native way; in how they architect their applications and write code, in how they hire and train their staff and in their operational processes.
 
 
 <!-- ### My background is not like many others
