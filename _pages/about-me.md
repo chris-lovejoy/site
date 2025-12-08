@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-info-circle
-order: 9
+# order: 9
 title: About Me
 permalink: about-me
 redirect_from: 
@@ -15,9 +15,9 @@ Hi! 👋 I'm Chris Lovejoy. My story so far:
 ## Short Version
 
 - Aug 2023 - now: Founding team at [Anterior](http://www.anterior.com), building an AI clinical brain
-- Jan 2023 - Aug 2023: AI consultant and solopreneur / indie hacker
+- Jan 2023 - Aug 2023: Applied AI consultant and solopreneur / indie hacker
 - Sep 2021 - Dec 2022: Founded a company (health data infra), raised investment
-- 2019 - 2021: Did a master's degree in machine learning and worked in industry as a data scientist
+- 2019 - 2021: Did a master's degree in machine learning and worked in industry as a data scientist then ML engineer
 - 2017 - 2019: Worked as a doctor and at a healthtech start-up (at intersection of healthcare and AI)
 - 2011 - 2017: Studied Medicine at Cambridge University, dabbling in research, statistics and teaching
 
