@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-inbox
-order: 5
+order: 8
 title: Email
 permalink: email
 redirect_from: 

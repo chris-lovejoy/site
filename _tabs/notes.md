@@ -1,7 +1,7 @@
 ---
 layout: external
 icon: fas fa-file-text
-order: 8
+order: 6
 url: /notes/
 ---
 
