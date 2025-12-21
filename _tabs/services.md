@@ -63,12 +63,12 @@ image:
 </style>
 
 
-If you're an organization leader seeking to generate real-world value with AI, particularly in healthcare, I'd love to help. My experience includes:
-- 9 years training as a doctor, 7 years building AI products. I've navigated the shift from traditional ML approaches to LLM-powered systems and helped build the playbook for healthcare.
-- building evaluation systems that unlock reliable and safe AI, supporting AI's use in mission-critical industries like healthcare and enabling companies to prove performance for regulatory compliance
-- setting up teams, tools and processes to incorporate domain expertise into AI systems
+I help organization leaders generate ROI from their AI investments, particularly in healthcare and life sciences, by building systems to incorporate domain expertise, leveraging pragmatic evaluations, and using LLM-native best practices. My experience:
+- 9 years practicing and training as a doctor, 7 years building AI products. My healthcare AI research has 1700+ citations (including the [first review paper comparing AI to clinicians](https://www.bmj.com/content/368/bmj.m689.abstract)). I trained ML algorithms pre-LLMs and then helped write the playbook for LLM-powered applications in healthcare.
+- Head of Clinical AI at Sequoia-backed startup [Anterior](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare) (seed -> series B), founding AI lead at Cera (seed -> series B) and founder of an EF-backed healthcare startup.
+- Built healthcare AI systems processing millions of patients with 99%+ accuracy, pioneering novel LLM architectures and human-in-the-loop review processes that scaled from solo development to production teams of 20+.
 
-I can guide you through the challenges of AI product development, ensuring your team is set up to move fast, leverage new technology effectively and differentiate you from competitors. I see three critical challenges holding healthcare AI teams back - and I've helped companies solve each one.
+I love working with frontier healthtech and life science startups (Series A and beyond) to build production-ready AI systems from the ground up, and with healthcare enterprises - including providers, payers, pharma, and medtech companies - to turn AI pilots into deployed products that deliver measurable value.
 
 
 <!-- ### Some of my clients
@@ -100,35 +100,34 @@ I can guide you through the challenges of AI product development, ensuring your 
 
 ## Building AI products today requires a fundamentally different approach
 
-The arrival of LLMs has created unprecedented opportunities in healthcare AI - but also new challenges that many teams are struggling to fully capitalize upon.
+95% of generative AI pilots [deliver zero return
+](https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf). I see three critical challenges holding teams back:
 
-The three critical challenges I see holding teams back are:
 
 #### 1. **The MVP-to-production chasm**
 
-We've seen how easy it is to make an impressive demo - and how hard it is to deploy something that provides real-world value. In mission-critical industries like healthcare, the bar needs to be high.
+Demos are easy—production ROI is hard. You need to solve the *last mile problem*: AI systems work well in general but fail on your specific workflows without deep domain expertise and operational context baked in. The bar for performance in mission-critical industries is high and not easy to achieve.
 
-I help teams design pragmatic evaluations, tailored to their stage of product development, to enable targeted iteration, achieve safe and effective performance and then maintain it through robust post-deployment monitoring. I've built systems that [have achieved state-of-the-art performance and delighted healthcare users](https://www.youtube.com/watch?v=cZ5ZJy19KMo).
+I help teams design pragmatic evaluations, tailored to their stage of product development, to enable targeted iteration, achieve safe and effective performance and then maintain it through robust post-deployment monitoring. At Anterior, I built AI systems that achieved [99.24% accuracy and 92% clinician satisfaction](https://www.healthhelp.com/wp-content/uploads/Points-of-Light-2025-Case-Study-25-Final.pdf) across millions of patients. I made this possible by designing human-AI hybrid review systems, [enabling a small team of clinicians to review cases from millions of patients](https://www.youtube.com/watch?v=cZ5ZJy19KMo).
+
 
 
 #### 2. **Domain expertise matters more than ever**
 
-With LLMs, words are the new code. Your prompts, instructions, and evaluation criteria are now core parts of your system - and you need a way to systematically bake in the insights from those who deeply understand the domain.
+The vertical AI imperative is here. Vertical AI captured $3.5 billion in 2025, [nearly tripling year-over-year](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/), while horizontal AI solutions struggle to access the [domain-specific data and regulatory knowledge that create defensibility](https://www.bvp.com/atlas/part-i-the-future-of-ai-is-vertical). The market has spoken: domain-specific AI wins, generic AI doesn't ship.
 
-Domain experts and engineers often speak different languages - and traditional software development workflows weren't designed for this new collaborative paradigm.
+The problem: domain experts and engineers speak different languages. Traditional software workflows weren't designed for this. You can't succeed when your clinicians can't review pull requests and your engineers don't know which edge cases matter
 
-I help teams bridge this gap. As a doctor by background who's spent years building AI systems, I understand both worlds. I've designed workflows, tools and processes [to convert domain expertise into domain expert LLM applications](https://www.youtube.com/watch?v=MRM7oA3JsFs). 
+I bridge this gap. As a doctor who's built AI systems for 7 years, I understand both worlds. I can help tech leaders architect LLM-native systems, clinical teams prove performance for regulatory and safety requirements, and business leaders demonstrate measurable ROI from AI investments.
+
+ I've [designed workflows, tools and processes that convert domain expertise into production-ready LLM applications](https://www.youtube.com/watch?v=MRM7oA3JsFs) - turning institutional knowledge into prompts, evaluation methods, and system architecture that performs.
 
 
 #### 3. **Companies are building with yesterday's playbook**
 
-The approach that made sense in the "pre-LLM" era doesn't work any more. Yet that was only 3 years ago and many companies haven't caught up.
+The “pre-LLM” era approach doesn’t work in today’s LLM world, yet most companies haven’t caught up. Building LLM-powered products requires new skill sets and approaches: context engineering, workflow decomposition and evaluation systems - rather than feature engineering, model architecture design and model accuracy optimization.
 
-LLM-powered products require new skillsets and new approaches: context engineering, workflow decomposition and evaluation systems - rather than feature engineering, model architecture design and optimizing for model accuracy. 
-
-I've lived through this evolution. I operated in this 'pre-LLM' world; I built state-of-the-art deep learning algorithms and published [the first study to compare AI and doctors](https://www.bmj.com/content/368/bmj.m689.abstract). I then spent 2 years building LLM-powered products for healthcare admin at a [Sequoia-backed start-up](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare).
-
-I help teams build in an LLM-native way; in how they architect their applications and write code, in how they hire and train their staff and in their operational processes.
+I've lived through this evolution. I operated in this 'pre-LLM' world; I built state-of-the-art deep learning algorithms and published [the first study to compare AI and doctors](https://www.bmj.com/content/368/bmj.m689.abstract). I then spent 2 years building LLM-powered products for healthcare admin at a [Sequoia-backed start-up](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare). I help teams build in an LLM-native way; in how they architect their applications and write code, in how they hire and train their staff and in their operational processes.
 
 
 <!-- ### My background is not like many others
@@ -169,10 +168,11 @@ Working with Chris was simple and efficient, despite us working on a complicated
 
 ## Let's discuss your AI challenges
 
-If you'd like to explore working together, book a discovery call below:
+I’m currently accepting a limited number of new consulting engagements. If you’d like to explore whether we’re a good fit for each other, book a call below:
+
 
 <div style="text-align: center;">
-  <a href="https://cal.com/chris-lovejoy/discovery-call" target="_blank" class="service-btn">
+  <a href="https://cal.com/chris-lovejoy/intro-call" target="_blank" class="service-btn">
     Book a call
   </a>
 </div>
