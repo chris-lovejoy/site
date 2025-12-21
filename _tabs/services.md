@@ -63,7 +63,7 @@ image:
 </style>
 
 
-I help organization leaders generate ROI from their AI investments, particularly in healthcare and life sciences, by building systems to incorporate domain expertise, leveraging pragmatic evaluations, and using LLM-native best practices. My experience:
+I help organizational leaders generate ROI from their AI investments, particularly in healthcare and life sciences, by building systems to incorporate domain expertise, leveraging pragmatic evaluations, and using LLM-native best practices. My experience:
 - 9 years practicing and training as a doctor, 7 years building AI products. My healthcare AI research has 1700+ citations (including the [first review paper comparing AI to clinicians](https://www.bmj.com/content/368/bmj.m689.abstract)). I trained ML algorithms pre-LLMs and then helped write the playbook for LLM-powered applications in healthcare.
 - Head of Clinical AI at Sequoia-backed startup [Anterior](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare) (seed -> series B), founding AI lead at Cera (seed -> series B) and founder of an EF-backed healthcare startup.
 - Built healthcare AI systems processing millions of patients with 99%+ accuracy, pioneering novel LLM architectures and human-in-the-loop review processes that scaled from solo development to production teams of 20+.
@@ -100,8 +100,7 @@ I love working with frontier healthtech and life science startups (Series A and 
 
 ## Building AI products today requires a fundamentally different approach
 
-95% of generative AI pilots [deliver zero return
-](https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf). I see three critical challenges holding teams back:
+95% of generative AI pilots [deliver zero return](https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf). I see three critical challenges holding teams back:
 
 
 #### 1. **The MVP-to-production chasm**
