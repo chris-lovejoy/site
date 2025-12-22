@@ -105,7 +105,7 @@ I love working with frontier healthtech and life science startups (Series A and 
 
 #### 1. **The MVP-to-production chasm**
 
-Demos are easy—production ROI is hard. You need to solve the *last mile problem*: AI systems work well in general but fail on your specific workflows without deep domain expertise and operational context baked in. The bar for performance in mission-critical industries is high and not easy to achieve.
+Demos are easy - production ROI is hard. You need to solve the *last mile problem*: AI systems work well in general but fail on your specific workflows without deep domain expertise and operational context baked in. The bar for performance in mission-critical industries is high and not easy to achieve.
 
 I help teams design pragmatic evaluations, tailored to their stage of product development, to enable targeted iteration, achieve safe and effective performance and then maintain it through robust post-deployment monitoring. At Anterior, I built AI systems that achieved [99.24% accuracy and 92% clinician satisfaction](https://www.healthhelp.com/wp-content/uploads/Points-of-Light-2025-Case-Study-25-Final.pdf) across millions of patients. I made this possible by designing human-AI hybrid review systems, [enabling a small team of clinicians to review cases from millions of patients](https://www.youtube.com/watch?v=cZ5ZJy19KMo).
 
@@ -115,7 +115,7 @@ I help teams design pragmatic evaluations, tailored to their stage of product de
 
 The vertical AI imperative is here. Vertical AI captured $3.5 billion in 2025, [nearly tripling year-over-year](https://menlovc.com/perspective/2025-the-state-of-generative-ai-in-the-enterprise/), while horizontal AI solutions struggle to access the [domain-specific data and regulatory knowledge that create defensibility](https://www.bvp.com/atlas/part-i-the-future-of-ai-is-vertical). The market has spoken: domain-specific AI wins, generic AI doesn't ship.
 
-The problem: domain experts and engineers speak different languages. Traditional software workflows weren't designed for this. You can't succeed when your clinicians can't review pull requests and your engineers don't know which edge cases matter
+The problem: domain experts and engineers speak different languages. Clinical teams can articulate what "good" looks like but can't translate it into system requirements. Engineering teams can build sophisticated systems but don't know which clinical nuances actually matter. Traditional software workflows weren't designed for this. 
 
 I bridge this gap. As a doctor who's built AI systems for 7 years, I understand both worlds. I can help tech leaders architect LLM-native systems, clinical teams prove performance for regulatory and safety requirements, and business leaders demonstrate measurable ROI from AI investments.
 
