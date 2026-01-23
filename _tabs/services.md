@@ -66,7 +66,7 @@ image:
 I help organizational leaders generate ROI from their AI investments, particularly in healthcare and life sciences, by building systems to incorporate domain expertise, leveraging pragmatic evaluations, and embedding LLM-native best practices. My experience:
 - 9 years practicing and training as a doctor then 7 years building AI products. My healthcare AI research has 1700+ citations (including the [first review paper comparing AI to clinicians](https://www.bmj.com/content/368/bmj.m689.abstract)). I trained ML algorithms pre-LLMs and then helped write the playbook for LLM-powered applications in healthcare.
 - Head of Clinical AI at Sequoia-backed startup [Anterior](https://www.anterior.com/insights/company-news/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare) (seed -> series B), founding AI lead at Cera (seed -> series B) and founder of an EF-backed healthcare startup.
-- Built healthcare AI systems processing millions of patients with 99%+ accuracy, pioneering novel LLM architectures and human-in-the-loop review processes that scaled from solo development to production teams of 20+.
+- Built healthcare AI systems processing millions of patients with 99%+ accuracy, [pioneering novel LLM architectures and human-in-the-loop review processes](https://www.youtube.com/watch?v=MRM7oA3JsFs) that scaled from solo development to production teams of 20+.
 
 I love working with frontier healthtech and life science startups (Series A and beyond) to build production-ready AI systems from the ground up, and with healthcare enterprises - including providers, payers, pharma, and medtech companies - to turn AI pilots into deployed products that deliver measurable value.
 
