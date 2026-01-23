@@ -12,7 +12,7 @@ image:
 
 - [Python for Data Science and Machine Learning in Healthcare](/imperial) (module at Imperial College London)
 - [Machine Learning for Healthcare](/ml-health) (9-part video series)
-- [Machine Learning in Healthcare](https://www.ucl.ac.uk/health-informatics/machine-learning-healthcare) (UCL short course)
+- [Machine Learning in Healthcare](https://www.ucl.ac.uk/health-informatics/machine-learning-healthcare) (University College London short course)
 
 
 ## CONTENT
