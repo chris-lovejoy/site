@@ -13,9 +13,7 @@ status: complete
 This is [a lightning lesson](https://maven.com/p/504453/lessons-from-building-verticalized-ai-agents) with [Jason Liu](https://jxnl.co/) delivered on 13th August 2025.
 
 ### Recording
-(Will be uploaded later - sign up below to be notified.)
-
-<!-- {% include embed/youtube.html id="MRM7oA3JsFs" %} -->
+{% include embed/youtube.html id="9CHktrroCDU" %}
 
 <!-- ### Summary -->
 <!-- I will share later -->
