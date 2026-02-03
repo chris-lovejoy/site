@@ -1,5 +1,6 @@
 ---
 title: "Own your vertical: A playbook for building a domain-native LLM application"
+popular: true
 permalink: llm-native-expert-system
 redirect_from:
 public_date: 2025-05-13 00:00:00

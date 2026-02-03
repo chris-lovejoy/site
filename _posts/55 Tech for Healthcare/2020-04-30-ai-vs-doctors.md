@@ -1,5 +1,6 @@
 ---
 title: "Artificial intelligence versus clinicians: systematic review of design, reporting standards, and claims of deep learning studies"
+popular: true
 permalink: ai-vs-doctors
 redirect_from:
 public_date: 2020-04-30 00:00:00
