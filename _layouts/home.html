@@ -96,9 +96,12 @@ refactor: true
 </div>
 <!-- #post-list -->
 
-<h2>Recent</h2>
+<h2><a href="/writing">Recent</a></h2>
 
-{% assign recent_posts = site.posts | where_exp: 'item', 'item.hidden != true' | limit: 5 %}
+{% assign recent_posts = paginator.posts | where_exp: 'item', 'item.hidden != true' %}
+{% if paginator.page == 1 %}
+  {% assign recent_posts = recent_posts | limit: 5 %}
+{% endif %}
 
 <div id="post-list" class="flex-grow-1 px-xl-1">
   {% for post in recent_posts %}
@@ -169,3 +172,7 @@ refactor: true
   {% endfor %}
 </div>
 <!-- #post-list -->
+
+{% if paginator.total_pages > 1 %}
+  {% include post-paginator.html %}
+{% endif %}
