@@ -1,6 +1,7 @@
 ---
 image: 
 title: "Lessons from building verticalized agents (with Jason Liu)" 
+featured: true
 permalink: lessons-verticalized-agents
 redirect_from: 
 public_date: 2025-08-13
