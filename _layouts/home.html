@@ -76,7 +76,12 @@ refactor: true
 
 <h2><a href="/writing" class="heading-link">Recent</a></h2>
 
-{% assign recent_posts = paginator.posts | where_exp: 'item', 'item.hidden != true' %}
+{% assign featured_post_urls = '' | split: '' %}
+{% for post in featured_posts %}
+  {% assign featured_post_urls = featured_post_urls | push: post.url %}
+{% endfor %}
+
+{% assign recent_posts = paginator.posts | where_exp: 'item', 'item.hidden != true and item.featured != true' %}
 {% if paginator.page == 1 %}
   {% assign recent_posts = recent_posts | limit: 5 %}
 {% endif %}
