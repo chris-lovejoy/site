@@ -1,6 +1,6 @@
 ---
 title: I created my own YouTube algorithm (to stop me wasting time)
-popular: true
+featured: true
 permalink: youtube-algorithm
 redirect_from:
 public_date: 2021-10-23 00:00:00
