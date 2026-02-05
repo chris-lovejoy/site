@@ -1,0 +1,28 @@
+{% assign pdf_src = include.src | strip %}
+{% assign title = include.title | strip %}
+{% assign width = include.width | default: "100%" %}
+{% assign height = include.height | default: "600px" %}
+
+{% unless pdf_src contains '://' %}
+  {%- capture pdf_src -%}
+    {% include media-url.html src=pdf_src subpath=page.media_subpath %}
+  {%- endcapture -%}
+{% endunless %}
+
+<p>
+  <iframe
+    class="embed-pdf"
+    loading="lazy"
+    src="{{ pdf_src | strip }}"
+    width="{{ width }}"
+    height="{{ height }}"
+    type="application/pdf"
+    style="border: 1px solid rgba(0, 0, 0, 0.1);"
+    allowfullscreen>
+    Your browser does not support PDF embedding. Here is a
+    <a href="{{ pdf_src | strip }}">link to the PDF file</a> instead.
+  </iframe>
+  {% if title %}
+    <em>{{ title }}</em>
+  {% endif %}
+</p> 
