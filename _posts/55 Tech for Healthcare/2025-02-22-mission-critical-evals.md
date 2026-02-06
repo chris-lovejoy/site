@@ -1,5 +1,6 @@
 ---
 title: "Mission-Critical Evals at Scale: Learnings from 100,000 medical decisions"
+featured: true
 permalink: mission-critical-evals
 redirect_from:
 public_date: 2025-02-22 00:00:00

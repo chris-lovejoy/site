@@ -1,5 +1,6 @@
 ---
 title: "The Truth Is In The Title? Video Title Generation as a novel training objective for video summarisation"
+featured: true
 permalink: video-title-prediction
 redirect_from:
 public_date: 2021-06-20 00:00:00
