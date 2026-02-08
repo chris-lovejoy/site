@@ -12,7 +12,7 @@ These are notes I made from [this maven course](https://maven.com/applied-llms/r
 # Notes
 
 RAG is basically a recommender system wrapped in LLMs at either end:
-![RAG system diagram](../Captura de pantalla 2026-02-08 a la(s) 11.09.45.png)
+![RAG system diagram](../assets/images/article-images/Captura de pantalla 2026-02-08 a la(s) 11.09.45.png)
 
 
 A high-level pathway is:
@@ -38,7 +38,7 @@ A high-level pathway is:
 - Even 100 data points can be a good starting point for improving performance. 1000+ even better.
 - **The same data that you synthetically generated for testing can be used to finetune embedding and reranker models**.
 - You can finetune with question/answer pairs, but ideal is 'triplets' of question, positive example and negative example. This is a type of contrastive learning. The aim is to move positive examples closer and negative examples further away from your anchor/query ([source](https://engineering.ramp.com/post/transaction-embeddings)):
-	- ![Contrastive learning triplet diagram](../image3-chart-B9GMe2yU.png)
+	- ![Contrastive learning triplet diagram](../assets/images/article-images/image3-chart-B9GMe2yU.png)
  - You ideally want to bake collection of these examples into your UX, so that users are automatically labelling data for you. Could be thumbs up / down, swipe left / right, select one option and not another option.
  - Rerankers very often improve performance, although can introduce modest latency increase.
  - You don't need task-specific models, and there may even be performance improvement from using the same embedding/reranker models across different tasks / indices. E.g., if you have three indices of summaries, chunks, and table/image summaries.
@@ -50,7 +50,7 @@ A high-level pathway is:
 - Segmenting data gives great insight on how yours users use your product and where performance can be improved
 - One way to segment is perform clustering of the embeddings.
 - Once you identify segments, you can take the following actions. (Top left is where you should focus your efforts.)
-	- ![Segment prioritization matrix](../Captura de pantalla 2026-02-08 a la(s) 11.43.40.png)
+	- ![Segment prioritization matrix](../assets/images/article-images/Captura de pantalla 2026-02-08 a la(s) 11.43.40.png)
 - You can prioritise work to improve segments using the following equation:
 	- $\text{Expected Value} = \text{Impact} \times \text{Percentage of queries} \times P(Success)$
 - All segments where issues in performance can be divided into due to 'lack of inventory' or 'lack of capabilities' 
