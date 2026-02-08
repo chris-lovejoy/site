@@ -22,6 +22,10 @@ image:
 
 ---
 
+{% include embed/youtube.html id="9CHktrroCDU" %}
+
+---
+
 ### The Healthtech Podcast #159: Medicine, Data Science and YouTube, with Dr Chris Lovejoy ▶️
 
 <iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="https://share.transistor.fm/e/739dc630"></iframe>
