@@ -18,3 +18,4 @@ layout: page
 - [Maggie Appleton](https://maggieappleton.com/garden)
 - [Aadam](https://notes.aadam.dev)
 - [Chase's Digital Garden](https://chaselittlepaws.com)
+- [Hamel's Notes](https://hamel.dev/notes/)

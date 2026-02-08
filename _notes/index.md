@@ -10,6 +10,8 @@ This is a place where I share some of my notes. If you find an error, please [su
 
 ### Notes
 - [[AI Evals For Engineers and Technical PMs]]
+- [[Systematically Improving RAG Applications]]
+
 <!-- TODO: add notes within this dir and list them here. Initially manual then set up automatic indexing when it makes sense. -->
 
 _NOTE: these are my personal notes and I will sometimes include inference that goes beyond purely what's in the original source material._

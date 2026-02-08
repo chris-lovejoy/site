@@ -6,7 +6,6 @@ layout: page
 permalink: notes/ai-evals-for-engineers-and-technical-pms
 ---
 
-
 This is both a [Maven online course](https://maven.com/parlance-labs/evals?promoCode=MAVEN100) as well as an accompanying textbook (which you receive if you enrol in the course.)
 
 I attended the first cohort and [gave a guest lecture](https://chrislovejoy.me/ai-evals-in-vertical-industries) on the second cohort.
