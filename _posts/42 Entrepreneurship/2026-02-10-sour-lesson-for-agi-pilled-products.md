@@ -135,7 +135,7 @@ Just because something *might* become redundant doesn't mean you shouldn't do it
 #### A Sour Lesson-Pilled Organization
 There are also approaches you can take at an organizational level to make yourself more 'Sour Lesson pilled'.
 
-I've seen companies be explicit about the proportion of time and resource they want to allocate to optimizing the current product vs. testing new approaches. I advocated for a 70%:30% split at Anterior which felt about right - but depending on the nature of your product and risk tolerance you could spend more time on experimentation.
+I've seen companies **be explicit about the proportion of time and resource they want to allocate to optimizing the current product vs. testing new approaches**. I advocated for a 70%:30% split at Anterior which felt about right - but depending on the nature of your product and risk tolerance you could spend more time on experimentation.
 
 There are two ways to enact this in practice; at the level of engineers (asking some engineers to work on optimization and others to purely do experimentation) or at the level of workflow (all engineers do a mix of both). I'd advocate for the latter, as you don't want your 'experimental' engineers to have some anchoring in today's state-of-play.
 
