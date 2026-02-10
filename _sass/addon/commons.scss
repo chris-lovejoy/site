@@ -319,6 +319,15 @@ sup {
       }
     } /* tbody */
   } /* table */
+
+  /* Allow text to wrap in tables with class table-wrap */
+  > table.table-wrap {
+    th,
+    td {
+      white-space: normal;
+      word-wrap: break-word;
+    }
+  }
 }
 
 /* --- post --- */
