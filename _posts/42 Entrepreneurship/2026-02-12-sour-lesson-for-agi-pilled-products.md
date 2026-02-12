@@ -16,7 +16,7 @@ With the current rate of AI progress, every AI product builder must confront an 
 
 You need to serve customers today so you have to ship something using current capabilities - but those capabilities will change. Build too specifically around those limitations and you create technical debt. Build too generally for tomorrow, and you can't ship anything useful.
 
-**I've seen this play out repeatedly over the last three years building LLM-powered products at the frontier**, at [Anterior](https://www.anterior.com/insights/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare) (automating healthcare administration) and elsewhere. Some approaches stand the test of time, while others don't.
+**I've seen this play out repeatedly over the last 3+ years building LLM-powered products at the frontier**, at [Anterior](https://www.anterior.com/insights/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare) (automating healthcare administration) and elsewhere. Some approaches stand the test of time, while others don't.
 
 ## The "Sour Lesson" of Building AI Products
 **[Richard Sutton's Bitter Lesson](https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf) points out that in machine learning, methods that simply scale data and computation for learning and search have consistently won out in the long run** against approaches that have tried to bake-in human expertise (even if the latter *initially* performs better).
@@ -32,7 +32,7 @@ _(And approaches that specifically work around current model limitations will ag
 
 In this essay, I'll share:
 1. Real examples from the last 3 years showing which approaches aged well and which went sour (and why)
-2. The Sour Lesson Scorecard - a framework for deciding which product bets will compound with AI progress
+2. **The Sour Lesson Scorecard** - a framework for deciding which product bets will compound with AI progress
 3. How to build a Sour Lesson-Pilled organization
 
 
@@ -81,8 +81,8 @@ It's now clear that prompting techniques should be the first point-of-call for i
 
 **What We Did:** I proposed building a scalable library of clinical knowledge which is dynamically injected at inference time based on the context the model is operating within.
 
-| ![](/assets/images/article-images/domain_knowledge_injection.png) |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|          ![](/assets/images/article-images/domain_knowledge_injection.png)           |
+| :----------------------------------------------------------------------------------: |
 | _Source: [Lessons from building verticalized agents](/lessons-verticalized-agents)._ |
 
 **How it played out:** This approach is still in production 2+ years later, and it's a key mechanism by which we solve the "last mile problem" on a customer-specific basis (which I spoke more about [here](https://www.youtube.com/watch?v=MRM7oA3JsFs)).
