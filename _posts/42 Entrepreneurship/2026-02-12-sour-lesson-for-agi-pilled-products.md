@@ -75,7 +75,7 @@ It's now clear that prompting techniques should be the first point-of-call for i
 
 **Not everything became obsolete. Some ideas I had 2+ years ago are still in production.** What made the difference?
 
-#### Domain Knowledge Injection (aka "Clinical Tips")
+#### Domain Knowledge Injection
 
 **The Context:** I noticed our product was often not appreciating context-specific nuance. When deploying in enterprise, there's a lot of tacit knowledge within each company that the models won't appreciate. There's also variation in how terms can be interpreted. For example, the term "conservative therapy" means something different in a surgical context vs a medical context.
 
