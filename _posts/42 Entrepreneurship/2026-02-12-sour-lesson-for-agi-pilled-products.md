@@ -33,7 +33,7 @@ _(And approaches that specifically work around current model limitations will ag
 In this essay, I'll share:
 1. Real examples from the last 3 years showing which approaches aged well and which went sour (and why)
 2. The Sour Lesson Scorecard - a framework for deciding which product bets will compound with AI progress
-3. How to build a Sour Lesson-pilled organization
+3. How to build a Sour Lesson-Pilled organization
 
 
 ## When Solutions Went Sour
