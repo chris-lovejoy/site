@@ -16,7 +16,7 @@ With the current rate of AI progress, every AI product builder must confront an 
 
 You need to serve customers today so you have to ship something using current capabilities - but those capabilities will change. Build too specifically around those limitations and you create technical debt. Build too generally for tomorrow, and you can't ship anything useful.
 
-**I've seen this play out repeatedly over the last 3+ years building LLM-powered products at the frontier**, at [Anterior](https://www.anterior.com/insights/anterior-secures-usd20-million-series-a-to-unlock-administrative-efficiencies-for-healthcare) (automating healthcare administration) and elsewhere. Some approaches stand the test of time, while others don't.
+**I've seen this play out repeatedly over the last 3+ years building LLM-powered products at the frontier**, at [Anterior](https://www.anterior.com/insights/anterior-raises-40m-series) (automating healthcare administration) and elsewhere. Some approaches stand the test of time, while others don't.
 
 ## The "Sour Lesson" of Building AI Products
 **[Richard Sutton's Bitter Lesson](https://www.cs.utexas.edu/~eunsol/courses/data/bitter_lesson.pdf) points out that in machine learning, methods that simply scale data and computation for learning and search have consistently won out in the long run** against approaches that have tried to bake-in human expertise (even if the latter *initially* performs better).
