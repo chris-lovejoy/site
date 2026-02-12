@@ -1,13 +1,13 @@
 ---
 title: "The Sour Lesson: A Guide to Building AGI-Pilled Products"
 permalink: sour-lesson
-redirect_from: 
+redirect_from:
 public_date: 2026-02-12
 tags:
   - Machine Learning
   - Entrepreneurship
   - Product
-image: 
+image: assets/images/article-covers/sour-lesson.png
 type: article
 status: complete
 ---
