@@ -1,6 +1,6 @@
 ---
-title: "Why LLM-native approaches beat traditional deep learning approaches in healthcare"
-permalink: llm-native-vs-deep-learning
+title: "Why LLM-native approaches beat traditional ML in verticals like healthcare"
+permalink: llm-native-vs-traditional-ml
 redirect_from:
 public_date: 2025-10-30
 tags:
