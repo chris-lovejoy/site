@@ -1,5 +1,5 @@
 ---
-title: "Why LLM-native approaches beat traditional ML in verticals like healthcare"
+title: "The new AI playbook: why LLM-native beats traditional ML in verticals"
 permalink: llm-native-vs-traditional-ml
 redirect_from:
 public_date: 2025-10-30
@@ -12,7 +12,7 @@ type: article
 status: complete
 ---
 
-The emergence of large language models like chatGPT and Claude has fundamentally changed how value can be created in healthcare using AI. But with this technology comes a new rulebook.
+The emergence of large language models like chatGPT and Claude has fundamentally changed how value can be created in vertical industries using AI. But with this technology comes a new rulebook.
 
 Previous AI approaches were characterized by using datasets to train models for specific use cases and then deploying them within existing workflows. With LLM-native approaches, the focus is on stitching together sequential LLM actions, with minimal need for the initial datasets.
 
