@@ -14,26 +14,25 @@ layout: page
 - How to Read a Book by Mortimer Adler
 - Ego is the Enemy by Ryan Holiday
 - War of Art by Steven Pressfield
-- So Good they can't ignore you by Cal Newport
+- So Good They Can't Ignore You by Cal Newport
 - Deep Work by Cal Newport
 - The Way of the Superior Man by David Deida
 - Man's Search for Meaning by Viktor Frankl
 - Models by Mark Manson
 - The Mom Test by Rob Fitzpatrick
 - Write Useful Books by Rob Fitzpatrick
-- Man's Search for Meaning by Viktor Frankl
-- Power of Now by Eckhart Tolle
+- The Power of Now by Eckhart Tolle
 - The Art of Learning by Josh Waitzkin
 - On Writing Well by William Zinsser
 - The Psychology of Money by Morgan Housel
-- Die with Zero by Bull Perkins
+- Die With Zero by Bill Perkins
 - Playful Parenting by Lawrence Cohen
 - Atomic Habits by James Clear
 - The Subtle Art of Not Giving a F\*ck by Mark Manson
 - Antifragile by Nassim Nicholas Taleb
 - How to Live by Derek Sivers
 - Influence by Robert Cialdini
-- MAKE by Pieter Levels
+- MAKE: The Indie Maker Blueprint by Pieter Levels
 - How to Live on 24 Hours a Day by Arnold Bennett
 - Useful Not True by Derek Sivers
 - Deep Medicine by Eric Topol
