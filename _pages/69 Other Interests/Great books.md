@@ -32,6 +32,7 @@ layout: page
 - Antifragile by Nassim Nicholas Taleb
 - How to Live by Derek Sivers
 - Influence by Robert Cialdini
+- Never Split the Difference by Chris Voss
 - MAKE: The Indie Maker Blueprint by Pieter Levels
 - How to Live on 24 Hours a Day by Arnold Bennett
 - Useful Not True by Derek Sivers
