@@ -9,9 +9,9 @@ type: article
 tags:
 ---
 
-Without human reviews of AI outputs from your product, you're flying blind. You don't truly know how your app is performing nor how you could improve it. Performance could drop and you won't know until your customers have already started leaving, by which point it's too late.
+Without metrics on performance of your AI product, you're flying bind. You don't truly know how your app is doing nor how you could improve it. Performance could drop and you won't know until your customers have already started leaving, by which point it's too late.
 
-The best way to know how you're doing and how to improve your AI product is to empower fast and effective human reviews through a custom review dashboard. This provides the raw data and insights that drive product development. This is doubly important for vertical AI applications where domain experts act as "translators" between product usage and AI performance.
+One of the most effective ways to assess AI performance is through human reviews of AI outputs and one of the best ways to empower fast and effective human reviews through a custom review dashboard. This provides the raw data and insights that drive product development. This is doubly important for vertical AI applications where domain experts act as "translators" between product usage and AI performance.
 
 A review dashboard should **optimise for three things** by following three principles:
 1. **High quality reviews** -> *Principle 1: Optimise surfacing all required context, as clearly as possible*
