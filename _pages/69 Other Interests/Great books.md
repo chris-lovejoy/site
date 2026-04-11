@@ -48,7 +48,7 @@ layout: page
 - American Kingpin by Nick Bilton
 - Empire of Pain by Patrick Radden Keefe
 - The Tattooist of Auschwitz by Heather Morris
-
+- The Diving Bell and the Butterfly by Jean-Dominique Bauby
 
 
 ### Fiction
