@@ -14,7 +14,7 @@ status: complete
 I'm giving a talk at the first [AI Engineer Europe conference](https://www.ai.engineer/europe) (10th April 2026).
 
 ### Recording
-(I'll update this once the recording is live.)
+{% include embed/youtube.html id="kfSDc2eVLo4" %}
 
 <!-- ### Summary
 {% include embed/tweet.html user="ChrisLovejoy_" id="1950537356345303070" %} -->
