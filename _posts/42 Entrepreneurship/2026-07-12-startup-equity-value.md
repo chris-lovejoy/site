@@ -14,9 +14,9 @@ math: true
 
 Okay, so you've been offered equity: 80 thousand options, with a pre-money valuation of \$6M, a double trigger clause, a strike price of \$0.60 and a 90-day post-termination exercise window. **So... Is that good?**
 
-With salary, its value is immediate and obvious: you can benchmark the amount against peers and ultimately see it land in your bank account every month.
+**With salary, its value is immediate and obvious**: you can benchmark the amount against peers and ultimately see it land in your bank account every month.
 
-Equity is murkier: What needs to happen for it to have real-world value? What are the different scenarios? How much is it ultimately worth? When would I actually receive the money?
+**Equity is murkier**: What needs to happen for it to have real-world value? What are the different scenarios? How much is it ultimately worth? When would I actually receive the money?
 
 I've spent the past seven and a half years around startups. I've received equity, issued it, watched people approach it with everything from indifference to obsession, and seen how things have actually played out. 
 
