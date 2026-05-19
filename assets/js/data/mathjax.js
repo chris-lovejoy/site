@@ -11,7 +11,6 @@ MathJax = {
   tex: {
     {%- comment -%} start/end delimiter pairs for in-line math {%- endcomment -%}
     inlineMath: [
-      ['$', '$'],
       ['\\(', '\\)']
     ],
     {%- comment -%} start/end delimiter pairs for display math {%- endcomment -%}
