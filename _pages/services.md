@@ -1,7 +1,7 @@
 ---
 layout: page
 icon: fas fa-briefcase
-order: 4
+# order: 4
 title: Independent Consulting
 permalink: services
 redirect_from: 
