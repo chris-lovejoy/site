@@ -165,7 +165,7 @@ Chris is a great developer to work with. He listens carefully to the design spec
 Working with Chris was simple and efficient, despite us working on a complicated piece of work. Chris applied an astute understanding of our aspirations for the product, and was able to apply his technical expertise to our needs from a product and commercial perspective. -->
 
 
-## Let's discuss your AI challenges
+<!-- ## Let's discuss your AI challenges
 
 I’m currently accepting a limited number of new consulting engagements. If you’d like to explore whether we’re a good fit for each other, book a call below:
 
@@ -174,7 +174,7 @@ I’m currently accepting a limited number of new consulting engagements. If you
   <a href="https://cal.com/chris-lovejoy/intro-call" target="_blank" class="service-btn">
     Book a call
   </a>
-</div>
+</div> -->
 
 
 <!-- ### How best to work with me
