@@ -14,7 +14,7 @@ layout: page
 * [Tom Critchlow](https://tomcritchlow.com/)
 * [Joel Hooks](https://joelhooks.com/)
 * [Anthony Amar](https://anthonyamar.fr/Welcome+in+my+mind+%F0%9F%A7%A0)
-- [Aquiles Carattino](https://www.aquiles.me/digital_garden/) (although broken link - may have moved)
+- [Aquiles Carattino](https://notes.aquiles.me/) 
 - [Maggie Appleton](https://maggieappleton.com/garden)
 - [Aadam](https://notes.aadam.dev)
 - [Chase's Digital Garden](https://chaselittlepaws.com)
