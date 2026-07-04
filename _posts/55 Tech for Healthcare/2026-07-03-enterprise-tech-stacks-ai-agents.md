@@ -14,6 +14,8 @@ status: complete
 I gave this talk at the 2026 [AI Engineer World's Fair](https://www.ai.engineer/worldsfair) in San Francisco on 2nd July 2026. (Last year, I spoke at the same conference about [building a domain-native LLM application](/llm-native-expert-system).)
 
 ### Recording
+_I will add link once available._
+
 <!-- TODO: add YouTube ID when available -->
 <!-- {% include embed/youtube.html id="" %} -->
 
