@@ -11,7 +11,7 @@ type: article
 status: complete
 ---
 
-I'm giving a talk at the first [AI Engineer Europe conference](https://www.ai.engineer/europe) (10th April 2026).
+I gave a talk at the first [European AI Engineer conference](https://www.ai.engineer/europe) on 10th April 2026.
 
 ### Recording
 {% include embed/youtube.html id="kfSDc2eVLo4" %}
