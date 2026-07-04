@@ -2,7 +2,7 @@
 title: "Why your startup equity offer is worth less than you think - and what to do about it"
 permalink: startup-equity
 redirect_from:
-public_date: 2026-07-12
+public_date: 2026-07-01
 tags:
   - Entrepreneurship
 image:
@@ -18,9 +18,9 @@ Okay, so you've been offered equity: 80 thousand options, with a pre-money valua
 
 **Equity is murkier**: What needs to happen for it to have real-world value? What are the different scenarios? How much is it ultimately worth? When would I actually receive the money?
 
-I've spent the past seven and a half years around startups. I've received equity, issued it, watched people approach it with everything from indifference to obsession, and seen how things have actually played out. 
+I've spent the past seven and a half years around startups. I've received equity, issued it, watched people approach it with everything from indifference to intensity, and seen how things have ultimately played out. 
 
-To help you appraise an equity offer, in this article I'll help you answer:
+To help you appraise an equity offer, I'll help you answer:
 1. [how much are my shares really worth?](#how-much-are-my-shares-actually-worth)
 2. [what's a reasonable amount to expect?](#how-much-equity-should-i-expect)
 3. [how can I get what I deserve?](#how-can-i-get-what-i-deserve)
@@ -29,7 +29,7 @@ And at the end, I'll share a [personal story](#how-things-can-still-go-wrong---a
 
 Before I start, it's worth calling out: equity and compensation is obviously only one reason you might join a start-up. There are many others (such as impact, enjoyment, learning) which are probably even more important - but which are outside the scope of this article.
 
-The core idea behind equity is incentive alignment: a startup can't always compete on base salary, so it offers you a stake in what you're building together. Equity is usually granted as stock options or shares, and **the value is only realised at a liquidity event — most commonly an acquisition or IPO** — which means until that happens, your shares are worth nothing you can spend.
+The core idea behind equity is incentive alignment: a startup can't always compete on base salary, so it offers you a stake in what you're building together. Equity is usually granted as stock options or shares, and **the value is only realised at a liquidity event - most commonly an acquisition or IPO** - which means until that happens, your shares are worth nothing you can spend.
 
 
 ## How much are my shares actually worth?
@@ -48,7 +48,7 @@ For example, if you have 80,000 shares and each share was valued at \$1 in the l
 
 **However, don't just accept the figure the company gives you. Do the maths yourself.** Valuations can be stated ambiguously, share numbers can be cited selectively, and mistakes do happen. Understand the current valuation and the total share pool, and verify the arithmetic. You need to know: how many fully diluted shares exist, what is the total value of all those shares, how many of those shares are you being offered.
 
-**This number is only the beginning.**
+**NOTE: This number is only the beginning.**
 
 #### Discount 1: vesting
 You won't own all your equity from day one. Most startup equity comes with a vesting schedule, typically four years with a one-year cliff. This means you earn nothing in your first year, then accrue monthly over the following three.
@@ -58,7 +58,7 @@ So to actually unlock all the value of the equity, you would need to stay for fo
 So it's worth asking yourself: realistically, based on your best guess today, what fraction do you expect to vest?
 
 #### Discount 2: probability of successful liquidation
-You've probably heard that "most startups fail", but maybe you feel that this company might really be different. Maybe it's the great founding team, the great investors, the size of the market opportunity, etc etc.
+You've probably heard the trope that "most startups fail". Maybe you feel that this company might be one that makes it. Maybe it's the great founding team, the great investors, the size of the market opportunity, etc etc.
 
 The thing is; that's already factored in. All start-ups are promising, or else they wouldn't have raised. Investors are investing on the *expectation* that most of their portfolio will give no return.
 
@@ -76,7 +76,7 @@ That's the ceiling. Now apply the two discounts:
 
 **Liquidation probability**: Applying the ~20% heuristic: \$945,000 × ~20% = **~\$189,000**.
 
-So: from an \$80,000 headline, a \$1.4M ceiling if everything goes perfectly, down to a realistic expected value of around **\$189,000**. (And don't forget you'll need to pay tax on whatever you make - currently 20% in the UK.)
+So: from an \$80,000 headline, a \$1.4M ceiling if everything goes perfectly, down to a realistic expected value of around **\$189,000**. (And don't forget you'll need to pay tax on whatever you make.)
 
 
 ## How much equity should I expect?
@@ -88,7 +88,7 @@ One consistent pattern: US companies are meaningfully more generous with equity 
 
 As rough ballparks: early hires in technical roles (pre-Series A) typically land in the 0.3–1.5% range. The very first employees at seed-stage companies may get as much as 2–5%, but it depends on the company's philosophy. Post-Series A hires are usually in the 0.1–0.8% range. US companies skew toward the top of those bands; European ones toward the bottom.
 
-To make those percentages concrete: at a \$1 billion exit, 0.5% is \$5 million before dilution and tax. Run that through the worked example from the previous section — apply future dilution from funding rounds, apply the liquidation probability discount — and the real expected value comes into view. The percentage is just the starting point.
+To make those percentages concrete: at a \$1 billion exit, 0.5% is \$5 million before dilution and tax. Run that through the worked example from the previous section - apply future dilution from funding rounds, apply the liquidation probability discount - and the real expected value comes into view. The percentage is just the starting point.
 
 
 ## How can I get what I deserve?
@@ -131,21 +131,21 @@ Make your case clearly, once. Then let it settle. Pushing too hard or bringing t
 ##### (5) Get everything in writing
 **A verbal agreement is not enough. If it's not written down, it doesn't exist.** The high-level items (e.g., salary amount) will be in the contract, but there can be important details that aren't explicitly documented; it's your job to make sure that anything that matters is. 
 
-More on this below, but I once joined a company where the executives laughed at an incoming hire for requesting things to be documented; only for that employee to lean on that very writing 6 months later (and if it hadn't been written down, I don't think the company would have honored the verbal agreement).
+More on this below, but I once joined a company where the executives laughed at an incoming hire for requesting things to be documented; only for that employee to lean on that very writing 6 months later in a dispute.
 
 
 ## How things can still go wrong - a cautionary tale
-**All of the above assumes the company issues what it promises. That assumption is not as safe as it sounds.**
+**All of the above assumes the company actually issues what it promises. That assumption is not as safe as it sounds.**
 
 Now you might ask: "What? Of course they will! You've just signed a contract that's legally binding etc." Maybe this is indeed true in the majority of cases, but I've seen this go wrong often enough that this warrants its own section. Let me illustrate with a personal story here.
 
-A while ago, I joined a start-up at an early stage. I followed my own advice from above. I had candid conversations with the hiring manager and ultimately landed on an equity amount that I believe was a win-win for both me and the company. I had to decide between working on my own start-up or joining this one. It was a tight call, but I ultimately decided to join the start-up, and the prospect of solid ownership played a role in tipping the scale in that direction.
+A while ago, I joined a start-up at an early stage. I followed my own advice from above. I had candid conversations with the hiring manager and ultimately landed on an equity amount that I believe was a win-win for both me and the company. I had to decide between working on my own start-up (where I'd have founder-level equity, but lower probability of success) or joining this one (lower equity, slightly higher probability of success). It was a tight call, but I ultimately decided to join the start-up, and the prospect of solid ownership played a role in tipping the scale in that direction.
 
 I went all-in on the company for the subsequent 6 months and changed the early trajectory of the company. I worked long hours and weekends, I built a product that was the best out there, demo'd it to customers, iterated based on their feedback, and came up with approaches that are still used by the company today. I added a ton of value and was told by a co-founder that "expectations were sky high, but you've somehow exceeded them.. you are the best first employee we could have possibly hoped for".
 
 Then, as a result of the progress we'd made, the company raised another investment round. I looked at the cap table for the first time and... I saw that the equity I'd been issued was not what we'd agreed.
 
-**The total value was less than 2/3 of what I'd been told.** (Which is like being offered a job for a £100k salary but then you get your first paycheck and it was only for £60k.)
+**The total value was less than 2/3 of what I'd been told.** (I.e., In salary terms, the equivalent of being offered a job for a £100k salary but then you get your first paycheck and it was only for £60k.)
 
 I spoke to other early employees about it, and they were in the same boat. The majority of employees who'd joined the company at seed stage, across all functions in the company, had been misled: they had been verbally offered a stated dollar amount of equity, but then been issued less than 2/3 of that amount. 
 
@@ -173,5 +173,5 @@ After the maths, the benchmarking and the negotiation, there's one more thing wo
 
 The goal of this article isn't to eliminate that uncertainty. It's to make sure you've sized the bet correctly before you take it. Do that, and whatever happens next, you made a reasonable decision with the information available. 
 
- Then forget about it. The equity will materialise or it won't. Maximise the chances it will by focusing on doing great work.
+Then forget about it. The equity will materialise or it won't. Maximise the chances it will by focusing on doing great work.
  
