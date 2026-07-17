@@ -18,7 +18,7 @@ Okay, so you've been offered equity: 80 thousand options, with a pre-money valua
 
 **Equity is murkier**: What needs to happen for it to have real-world value? What are the different scenarios? How much is it ultimately worth? When would I actually receive the money?
 
-I've spent the past seven and a half years around startups. I've received equity, issued it, watched people approach it with everything from indifference to intensity, and seen how things have ultimately played out. 
+I've spent the past seven and a half years around startups. I've received equity, issued it, watched people approach it with everything from indifference to intensity, and seen how things have ultimately played out. And enough people have reached out for advice that it felt time to write up some thoughts.
 
 To help you appraise an equity offer, I'll help you answer:
 1. [how much are my shares really worth?](#how-much-are-my-shares-actually-worth)
