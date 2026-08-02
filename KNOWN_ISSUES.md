@@ -69,7 +69,17 @@ cd ~/Documents/4_WEBSITE && bundle install
 Any Ruby ≥ 3.1 satisfies the gemspec (`required_ruby_version ~> 3.1`); the CI
 workflow uses 3.1, so staying on a 3.1.x locally keeps parity.
 
-## 5. Root-directory clutter (untracked)
+## 5. Matomo instance no longer exists
+
+`https://chrislovejoy.matomo.cloud/` returns 404 — the Matomo Cloud account
+appears to be gone (expired trial?). The config URL was fixed in PR #18, but
+tracking still can't work against a dead instance.
+
+**Fix:** either resurrect the Matomo account, or remove the `matomo:` block
+from `_config.yml`'s analytics section so the page stops trying to load it.
+Umami and GoatCounter are both working, so removing it is probably right.
+
+## 6. Root-directory clutter (untracked)
 
 Untracked screenshots and working notes sit in the repo root
 (`Captura de Pantalla*.png`, `aesthetic-ideas.md`, `website-review-2026-07.md`,
