@@ -17,6 +17,10 @@ tabs:
   about: About
   youtube: YouTube
   services: Services
+  # custom tabs (v7.5+ looks up tab page titles here; missing keys break <title>)
+  writing: Writing
+  speaking: Speaking
+  email: Email
 
 # the text displayed in the search bar & search results
 search:
