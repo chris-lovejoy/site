@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Variant D — Swiss Print</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Archivo+Narrow:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --coral:#ff4d3d; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#fff; color:#000; font-family:'Archivo',sans-serif; }
+  .wrap { max-width:1100px; margin:0 auto; padding:0 40px; }
+  .rule { border-top:3px solid #000; }
+  header { display:flex; justify-content:space-between; align-items:baseline; padding:20px 0; }
+  .wordmark { font-weight:900; font-size:22px; letter-spacing:-.02em; text-transform:uppercase; }
+  header nav { display:flex; gap:26px; font-family:'Archivo Narrow',sans-serif; font-size:14px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+  header a { color:#000; text-decoration:none; }
+  header a.active { color:var(--coral); }
+  .hero { padding:64px 0 56px; }
+  .hero h1 { font-weight:900; font-size:84px; line-height:.98; letter-spacing:-.03em; text-transform:uppercase; }
+  .hero h1 span { color:var(--coral); }
+  .hero p { margin-top:32px; font-size:17px; line-height:1.6; max-width:58ch; font-weight:500; }
+  .sec-head { display:flex; justify-content:space-between; align-items:baseline; padding:18px 0 14px; }
+  .sec-head h2 { font-size:15px; font-weight:900; letter-spacing:.16em; text-transform:uppercase; }
+  .sec-head span { font-family:'Archivo Narrow',sans-serif; font-size:13px; letter-spacing:.08em; color:#555; }
+  table { width:100%; border-collapse:collapse; }
+  tr { border-top:1px solid #000; }
+  tr:hover { background:#f4f4f4; }
+  td { padding:20px 12px 20px 0; vertical-align:baseline; }
+  .idx { font-weight:900; font-size:15px; width:64px; }
+  .title { font-size:26px; font-weight:700; letter-spacing:-.01em; line-height:1.15; }
+  .yr { font-family:'Archivo Narrow',sans-serif; font-size:14px; color:#555; width:90px; text-align:right; }
+  .stat { font-family:'Archivo Narrow',sans-serif; font-size:14px; font-weight:500; letter-spacing:.06em; color:var(--coral); width:150px; text-align:right; text-transform:uppercase; white-space:nowrap; }
+  footer { display:flex; justify-content:space-between; padding:20px 0 60px; font-family:'Archivo Narrow',sans-serif; font-size:13px; letter-spacing:.08em; text-transform:uppercase; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="rule"></div>
+  <header>
+    <span class="wordmark">Chris Lovejoy</span>
+    <nav><a class="active" href="#">Home</a><a href="#">Writing</a><a href="#">Speaking</a><a href="#">Notes</a><a href="#">Email</a></nav>
+  </header>
+  <div class="rule"></div>
+  <div class="hero">
+    <h1>Doctor turned ML&nbsp;engineer.<br>I build AI for <span>complex verticals.</span></h1>
+    <p>Currently Member of Technical Staff at Anthropic. Previously founding team at Anterior (Sequoia/NEA-backed). Healthcare, life sciences, domain-native AI.</p>
+  </div>
+  <div class="rule"></div>
+  <div class="sec-head"><h2>Selected work</h2><span>2020 — 2026</span></div>
+  <table>
+    <tr><td class="idx">01</td><td class="title">Own your vertical: a playbook for building a domain-native LLM application</td><td class="yr">2024</td><td class="stat">100k+ views</td></tr>
+    <tr><td class="idx">02</td><td class="title">AI versus clinicians: a systematic review</td><td class="yr">2020</td><td class="stat">1,000+ citations</td></tr>
+    <tr><td class="idx">03</td><td class="title">Enterprise tech stacks for AI agents</td><td class="yr">2026</td><td class="stat">Talk</td></tr>
+    <tr><td class="idx">04</td><td class="title">The domain-native AI organization</td><td class="yr">2026</td><td class="stat">Essay</td></tr>
+    <tr><td class="idx">05</td><td class="title">Mission-critical evals at scale</td><td class="yr">2025</td><td class="stat">Talk + essay</td></tr>
+    <tr><td class="idx">06</td><td class="title">Lessons from building verticalized AI agents</td><td class="yr">2026</td><td class="stat">Essay</td></tr>
+  </table>
+  <div class="rule" style="margin-top:-1px"></div>
+  <footer><span>© 2026 Chris Lovejoy</span><span>London / San Francisco</span></footer>
+</div>
+</body>
+</html>

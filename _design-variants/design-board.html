@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>chrislovejoy.me — homepage design variants</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#16161c; color:#eee; font-family:-apple-system,'Helvetica Neue',sans-serif; padding:36px; }
+  h1 { font-size:22px; margin-bottom:6px; }
+  .hint { color:#9a9aa6; font-size:14px; margin-bottom:30px; max-width:80ch; line-height:1.5; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(480px,1fr)); gap:28px; }
+  .cell { background:#1e1e26; border:1px solid #2c2c36; border-radius:12px; overflow:hidden; }
+  .cell h2 { font-size:15px; padding:14px 18px; display:flex; justify-content:space-between; align-items:center; }
+  .cell h2 span { color:#9a9aa6; font-weight:400; font-size:13px; }
+  .cell a.open { font-size:12px; color:#7dd3c0; text-decoration:none; border:1px solid #3a5c54; border-radius:6px; padding:4px 10px; }
+  .frame { height:560px; overflow:hidden; background:#fff; }
+  iframe { width:1280px; height:1500px; border:0; transform:scale(0.375); transform-origin:0 0; pointer-events:none; }
+  .cell:hover { border-color:#4a4a58; }
+</style>
+</head>
+<body>
+  <h1>chrislovejoy.me — 5 homepage directions</h1>
+  <p class="hint">Scroll through the previews below. Click <b>Open full size</b> to view any variant live in its own tab (real fonts, real text — resize the window to feel it). Then come back to the Claude Code session and tell me: which variant(s) you prefer, ratings out of 5 if you like, and any elements you'd want to mix (e.g. "layout of A with the timeline from B").</p>
+  <div class="grid">
+    <div class="cell"><h2>A — The Journal <span>Fraunces serif · cream · editorial index</span><a class="open" href="variant-A.html" target="_blank">Open full size ↗</a></h2><div class="frame"><iframe src="variant-A.html"></iframe></div></div>
+    <div class="cell"><h2>B — Clinical Precision <span>Newsreader · teal sidebar · career timeline</span><a class="open" href="variant-B.html" target="_blank">Open full size ↗</a></h2><div class="frame"><iframe src="variant-B.html"></iframe></div></div>
+    <div class="cell"><h2>C — Neural Dark <span>Space Grotesk · dark · gradient + network motif</span><a class="open" href="variant-C.html" target="_blank">Open full size ↗</a></h2><div class="frame"><iframe src="variant-C.html"></iframe></div></div>
+    <div class="cell"><h2>D — Swiss Print <span>Archivo · black rules · coral · dense index</span><a class="open" href="variant-D.html" target="_blank">Open full size ↗</a></h2><div class="frame"><iframe src="variant-D.html"></iframe></div></div>
+    <div class="cell"><h2>E — Digital Garden <span>Spectral · paper + botanical green · growth stages</span><a class="open" href="variant-E.html" target="_blank">Open full size ↗</a></h2><div class="frame"><iframe src="variant-E.html"></iframe></div></div>
+  </div>
+</body>
+</html>
