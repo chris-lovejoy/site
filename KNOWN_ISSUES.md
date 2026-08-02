@@ -80,6 +80,15 @@ location (e.g. `_private/`), or deleting.
 
 ## Already fixed in PR #18 (for reference)
 
+- **Old-URL redirects would have broken**: Chirpy v7.6.0 dropped its
+  `jekyll-redirect-from` dependency, but 9 posts use `redirect_from` front
+  matter. Re-added the gem explicitly in the `Gemfile` and `_config.yml`
+  plugins list. (Many other posts have an *empty* `redirect_from:` key — a
+  harmless template stub, could be cleaned up someday.)
+- **ESLint lint-js CI failure**: the v7.6.0 flat ESLint config linted the whole
+  repo, including vendored reveal.js under `slides/`, `scripts/`, and
+  `.obsidian/` plugins. Added those to `globalIgnores`.
+
 - **Matomo tracking silently broken**: `_config.yml` had
   `domain: https://chrislovejoy.matomo.cloud/`, but the template prepends `//`
   itself, producing the malformed URL `http://https//chrislovejoy.matomo.cloud//matomo.js`.

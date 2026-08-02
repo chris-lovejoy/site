@@ -5,6 +5,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "jekyll-gist"
+# chirpy dropped this in v7.6.0, but 9 posts rely on redirect_from front matter
+gem "jekyll-redirect-from"
 gem "html-proofer", "~> 5.0", group: :test
 
 platforms :windows, :jruby do
