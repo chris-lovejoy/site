@@ -17,6 +17,10 @@ tabs:
   about: About
   youtube: YouTube
   services: Services
+  # custom tabs (v7.5+ looks up tab page titles here; missing keys break <title>)
+  writing: Writing
+  speaking: Speaking
+  email: Email
 
 # the text displayed in the search bar & search results
 search:
@@ -48,8 +52,13 @@ not_found:
   statement: Oops! Page not found. The URL might be wrong, the page may have been moved, or it could be a draft I haven’t published yet.
 
 notification:
-  update_found: A new version of content is available.
+  update_found: New content available
   update: Update
+
+theme:
+  light: Light
+  dark: Dark
+  system: System
 
 # ----- Posts related labels -----
 
@@ -62,6 +71,7 @@ post:
   read_time:
     unit: min
     prompt: read
+  edit: Edit this post
   relate_posts: Further Reading
   share: Share
   button:
