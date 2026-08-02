@@ -249,6 +249,7 @@ exclude:
   - "*.config.js"
   - "package*.json"
   - scripts
+  - KNOWN_ISSUES.md
 
 jekyll-archives:
   enabled: [categories, tags]
