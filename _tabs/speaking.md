@@ -14,6 +14,10 @@ image:
 ## Guest talks and podcast appearances
 
 
+{% include embed/youtube.html id="mav15aW9lLM" %}
+
+---
+
 {% include embed/youtube.html id="MRM7oA3JsFs" %}
 
 --
