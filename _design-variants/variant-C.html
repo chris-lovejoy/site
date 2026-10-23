@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Variant C — Neural Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0a0a0f; --fg:#ececf1; --dim:#8b8b99; --purple:#8b5cf6; --teal:#14b8a6; --line:#1e1e2a; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--fg); font-family:'Inter',sans-serif; }
+  .grad { background:linear-gradient(90deg,var(--purple),var(--teal)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 48px; position:relative; z-index:1; }
+  nav { display:flex; justify-content:space-between; align-items:center; padding:30px 0; border-bottom:1px solid var(--line); }
+  .wordmark { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:18px; }
+  nav ul { display:flex; gap:28px; list-style:none; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; }
+  nav a { color:var(--dim); text-decoration:none; }
+  nav a.active, nav a:hover { color:var(--fg); }
+  .hero { padding:100px 0 80px; position:relative; }
+  svg.net { position:absolute; top:0; right:-40px; opacity:.35; z-index:0; }
+  .hero h1 { font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:60px; line-height:1.08; letter-spacing:-.02em; max-width:17ch; position:relative; }
+  .hero p.sub { margin-top:24px; font-size:18px; line-height:1.65; color:#b8b8c4; max-width:52ch; position:relative; }
+  .status { margin-top:28px; font-family:'IBM Plex Mono',monospace; font-size:13.5px; color:var(--dim); position:relative; }
+  .status b { color:var(--teal); font-weight:500; }
+  section { padding:56px 0; border-top:1px solid var(--line); }
+  .kicker { font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.16em; color:var(--dim); margin-bottom:30px; }
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .card { border:1px solid var(--line); border-radius:12px; padding:26px; background:linear-gradient(180deg,#101018,#0c0c13); position:relative; }
+  .card::before { content:''; position:absolute; inset:0; border-radius:12px; padding:1px; background:linear-gradient(120deg,rgba(139,92,246,.5),rgba(20,184,166,.5)); -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0); -webkit-mask-composite:xor; mask-composite:exclude; pointer-events:none; }
+  .chip { display:inline-block; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; color:var(--teal); border:1px solid rgba(20,184,166,.4); border-radius:4px; padding:4px 10px; margin-bottom:16px; }
+  .card h3 { font-family:'Space Grotesk',sans-serif; font-size:21px; font-weight:500; line-height:1.35; }
+  .list { list-style:none; }
+  .list li { display:flex; gap:24px; align-items:baseline; padding:15px 0; border-bottom:1px solid var(--line); }
+  .list .date { font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--dim); min-width:90px; }
+  .list a { color:var(--fg); text-decoration:none; font-size:16.5px; }
+  .list a:hover { color:var(--teal); }
+  footer { padding:36px 0 60px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:#55555f; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <span class="wordmark">chris lovejoy</span>
+    <ul><li><a class="active" href="#">HOME</a></li><li><a href="#">WRITING</a></li><li><a href="#">SPEAKING</a></li><li><a href="#">NOTES</a></li><li><a href="#">EMAIL</a></li></ul>
+  </nav>
+  <div class="hero">
+    <svg class="net" width="420" height="320" viewBox="0 0 420 320" fill="none">
+      <g stroke="#2a2a3a" stroke-width="1">
+        <line x1="60" y1="60" x2="180" y2="120"/><line x1="180" y1="120" x2="320" y2="70"/><line x1="180" y1="120" x2="240" y2="230"/><line x1="320" y1="70" x2="240" y2="230"/><line x1="60" y1="60" x2="100" y2="220"/><line x1="100" y1="220" x2="240" y2="230"/><line x1="320" y1="70" x2="390" y2="180"/><line x1="240" y1="230" x2="390" y2="180"/>
+      </g>
+      <g><circle cx="60" cy="60" r="4" fill="#8b5cf6"/><circle cx="180" cy="120" r="5" fill="#14b8a6"/><circle cx="320" cy="70" r="4" fill="#8b5cf6"/><circle cx="240" cy="230" r="5" fill="#14b8a6"/><circle cx="100" cy="220" r="3" fill="#55556a"/><circle cx="390" cy="180" r="3" fill="#55556a"/></g>
+    </svg>
+    <h1>Hi, I'm Chris Lovejoy. I build AI for <span class="grad">domain-specific verticals.</span></h1>
+    <p class="sub">Products for complex fields like healthcare and life sciences — where domain depth, not model access, is the moat.</p>
+    <p class="status">&gt; currently: <b>Member of Technical Staff @ Anthropic</b> — previously: founding team @ Anterior</p>
+  </div>
+  <section>
+    <div class="kicker">// POPULAR</div>
+    <div class="cards">
+      <div class="card"><span class="chip">100K+ VIEWS</span><h3>Own your vertical: a playbook for building a domain-native LLM application</h3></div>
+      <div class="card"><span class="chip">1,000+ CITATIONS</span><h3>AI versus clinicians: a systematic review</h3></div>
+    </div>
+  </section>
+  <section>
+    <div class="kicker">// RECENT ESSAYS</div>
+    <ul class="list">
+      <li><span class="date">2026-07</span><a href="#">Enterprise tech stacks for AI agents</a></li>
+      <li><span class="date">2026-05</span><a href="#">The domain-native AI organization</a></li>
+      <li><span class="date">2026-02</span><a href="#">Lessons from building verticalized AI agents</a></li>
+      <li><span class="date">2025-11</span><a href="#">Should you join a startup for the equity?</a></li>
+    </ul>
+  </section>
+  <footer>© 2026 chris lovejoy — open devtools for a surprise 👀</footer>
+</div>
+</body>
+</html>
